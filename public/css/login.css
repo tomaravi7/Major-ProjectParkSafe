@@ -1,0 +1,22 @@
+.full{
+    height: 100vh;
+}
+.heading{
+    font-family: 'Poppins', sans-serif;
+}
+.big{
+    font-weight: 900;
+    font-size: calc(3rem + 3.3vw);
+}
+.mid{
+    font-weight: 800;
+    font-size: calc(0.5rem + 3.3vw);
+}
+.tablet{
+    border: 9px solid var(--yellow);
+    border-radius: 20px;
+}
+.small{
+    font-size: calc(0.2rem + 1.5vw);
+    font-weight: 600;
+}

@@ -26,6 +26,13 @@ app.get('/about', function(req, res) {
     });
 });
 
+// Login page
+app.get('/login', function(req, res) {
+    res.render('pages/login',{
+        title:'ParkSafe:login',
+    });
+});
+
 // listening port
 app.listen(3000);
 console.log('Listening on port 3000 http://localhost:3000');
