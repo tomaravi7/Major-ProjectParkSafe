@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+    <link href="/css/index.css" rel="stylesheet" type="text/css">
+</head>
+<body class="container">
+
+    <navbar>
+        <%- include('../partials/navbar'); %>
+    </navbar>
+
+    <main>
+        <div class="row">
+            <div class="col-sm-12 col-md-6">
+                <h1>ParkSafe</h1>
+                <p><%= tagline %></p>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <img src="/img/car.svg" class="img-fluid">
+            </div>
+        </div>
+    </main>
+
+    <footer> 
+        <!-- no footer in ui do we have to remove this or keep it -->
+        <%- include('../partials/footer'); %>
+    </footer>
+
+</body>
+</html>
