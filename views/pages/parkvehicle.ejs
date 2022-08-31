@@ -3,7 +3,7 @@
 
 <head>
     <%- include('../partials/head'); %>
-        <link href="/css/parkvehicle.css" rel="stylesheet">
+    <link href="/css/parkvehicle.css" rel="stylesheet">
 </head>
 
 <body>
@@ -14,26 +14,66 @@
 
     <div class="container-fluid">
         <div class="row">
+            <!-- start of left column -->
             <div class="col-4">
                 <h1 class="display-1">Park Vehicle</h1>
+                <!-- start of saved vehicles list -->
                 <div class="row">
-                    <div class="col">
-                        <button> iconHere<br> Add vehicle</button>
+                    <div class="col-3">
+                        <button class="button-cstm rounded-3 p-3 mt-3"> iconHere<br> Add vehicle</button>
                     </div>
-                    <div class="col">
-                        <button> iconHere<br> Add vehicle</button>
+                    <div class="col-3">
+                        <button class="button-cstm rounded-3 p-3 mt-3"> iconHere <br>DL 07DS 4391 </button>
                     </div>
-                    <div class="col">
-                        <button> iconHere<br> Add vehicle</button>
+                    <div class="col-3">
+                        <button class="button-cstm rounded-3 p-3 mt-3"> iconHere<br> DL 07DS 4391 </button>
+                    </div>
+                    <div class="col-3">
+                        <button class="button-cstm rounded-3 p-3 mt-3"> iconHere<br> DL 07DS 4391 </button>
+                    </div>
+                    <div class="col-3">
+                        <button class="button-cstm rounded-3 p-3 mt-3"> iconHere<br> DL 07DS 4391 </button>
+                    </div>
+                    <div class="col-3">
+                        <button class="button-cstm rounded-3 p-3 mt-3"> iconHere<br> DL 07DS 4391 </button>
                     </div>
                 </div>
-            </div>
-            <div class="col-8">
+                <!-- end of save vehicles list -->
+                <!-- start of Vehciles Parked -->
+                <div class="row">
+                    <h5 class="py-4">Vehicles Parked</h5>
+                    <!-- start of parked vehciles -->
+                    <div class="text-center">
+                        <!-- start of a card -->
+                        <div class="row card-vehiclepark rounded-3 p-4 m-1">
+                            <div class="col">
+                                <div class="row">
+                                    DL 07DS 4391
+                                </div>
+                                <div class="row">
+                                    Rs/50/hr
+                                </div>
+                            </div>
+                            <div class="col">
+                                <button class="button-cstm rounded-3 p-3">Check Out</button>
+                            </div>
+                        </div>
+                        <!-- end of a card -->
+                    </div>
+                    <!-- end of parked vechiles -->
+                </div>
+                <!-- end of vehicles parked -->
+                </div>
+                <!-- end of left column -->
+                <!-- start of ight column -->
+                <div class="rounded-map col-8 ">
                 <form class="row" role="search">
                     <input class="form-control me-2 col" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success col" type="submit">Search</button>
                 </form>
-                <div class="map min-vh-100 bg-primary"></div>
+                <div class="map">
+                    MAP
+                </div>
             </div>
         </div>
     </div>

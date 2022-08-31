@@ -1,0 +1,23 @@
+[
+  {
+    "id": 0,
+    "vehicleType": "two-wheeler",
+    "image": "🏍️",
+    "": "DL 58458 546",
+    "price": "6.50"
+  },
+  {
+    "id": 0,
+    "vehicleType": "two-wheeler",
+    "image": "🚘",
+    "": "DL 58458 546",
+    "price": "6.50"
+  },
+  {
+    "id": 0,
+    "vehicleType": "two-wheeler",
+    "image": "🏍️",
+    "": "DL 58458 546",
+    "price": "6.50"
+  }
+]

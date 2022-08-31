@@ -1,7 +1,7 @@
 // load the things we need
 var express = require('express');
 var app = express();
-
+const fs=require('fs');
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 
@@ -39,6 +39,8 @@ app.get('/team', function(req, res) {
         title:'ParkSafe:Team',
     });
 });
+
+const tempcard=fs.readFileSync(`${__dirname}/template-overview.html`,'utf-8')
 
 // park vehicle page
 app.get('/parkvehicle', function(req, res) {
