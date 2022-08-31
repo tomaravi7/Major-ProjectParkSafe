@@ -33,6 +33,20 @@ app.get('/login', function(req, res) {
     });
 });
 
+// Teams page
+app.get('/team', function(req, res) {
+    res.render('pages/team',{
+        title:'ParkSafe:Team',
+    });
+});
+
+// park vehicle page
+app.get('/parkvehicle', function(req, res) {
+    res.render('pages/parkvehicle',{
+        title:'ParkSafe:Park Vehicle',
+    });
+});
+
 // listening port
 app.listen(3000);
 console.log('Listening on port 3000 http://localhost:3000');

@@ -4,7 +4,7 @@
     <%- include('../partials/head'); %>
     <link href="/css/index.css" rel="stylesheet">
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 
     <navbar>
         <%- include('../partials/navbar'); %>
@@ -27,9 +27,7 @@
                             <button class="p-3 rounded-3 text-dark">Park Vehicle</button>
                         </div>
                     </div>
-                    
-                    
-                    </div>
+                </div>
             </div>
             <div class="col-sm-12 col-md-6">
                 <img src="/img/car.svg" class="img-fluid">
@@ -37,7 +35,7 @@
         </div>
     </div>
 
-    <footer> 
+    <footer class="mt-auto"> 
         <!-- no footer in ui do we have to remove this or keep it -->
         <%- include('../partials/footer'); %>
     </footer>
