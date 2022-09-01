@@ -1,9 +1,8 @@
 .rounded-map {
     border: 2px solid black;
     border-radius: 15px 0px 0px 15px !important;
-    background-color: white;
     /* need to solve this after adding mapbox map */
-    min-height: 90vh;
+    min-height: 100vh;
 }
 
 .button-cstm {
@@ -13,4 +12,16 @@
 }
 .card-vehiclepark{
     background-color: var(--greyLight);
+}
+.marker {
+    background-size: cover;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid blue;
+    cursor: pointer;
+    background-color: transparent;
+    text-align: center;
+    padding-top: 2px;
+    font-weight: 900;
 }

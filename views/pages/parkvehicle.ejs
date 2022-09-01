@@ -4,6 +4,8 @@
 <head>
     <%- include('../partials/head'); %>
     <link href="/css/parkvehicle.css" rel="stylesheet">
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css' rel='stylesheet' />
 </head>
 
 <body>
@@ -66,20 +68,19 @@
                 </div>
                 <!-- end of left column -->
                 <!-- start of ight column -->
-                <div class="rounded-map col-8 ">
-                <form class="row" role="search">
+                
+                <!-- <form class="row" role="search">
                     <input class="form-control me-2 col" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success col" type="submit">Search</button>
-                </form>
-                <div class="map">
-                    MAP
-                </div>
-            </div>
+                </form> -->
+                <div id="map" style="height: 100%;" class="rounded-map col-8"></div>
         </div>
     </div>
+    
 
     <footer>
-        <%- include('../partials/footer'); %>
+        <!-- <%- include('../partials/footer'); %> -->
+        <script src="/js/mapinit.js"></script>
     </footer>
 
 </body>

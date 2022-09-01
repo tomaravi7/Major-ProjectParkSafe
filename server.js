@@ -49,12 +49,21 @@ app.get('/parkvehicle', function(req, res) {
     });
 });
 
+// rentspace
+app.get('/rentspace', function(req, res) {
+    res.render('pages/rent',{
+        title:'ParkSafe:Rent Space',
+    });
+});
+
 // 404 page
 app.get('*', function(req, res){
     res.status(404).render('pages/error404.ejs',{
         title:'ParkSafe:Page Not Found'
     });
-  });
+});
+
+
 
 // listening port
 app.listen(3000);
