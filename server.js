@@ -40,7 +40,7 @@ app.get('/team', function(req, res) {
     });
 });
 
-const tempcard=fs.readFileSync(`${__dirname}/template-overview.html`,'utf-8')
+const tempcard=fs.readFileSync(`${__dirname}/views/partials/vehicleTemplate.ejs`,'utf-8')
 
 // park vehicle page
 app.get('/parkvehicle', function(req, res) {
@@ -48,6 +48,13 @@ app.get('/parkvehicle', function(req, res) {
         title:'ParkSafe:Park Vehicle',
     });
 });
+
+// 404 page
+app.get('*', function(req, res){
+    res.status(404).render('pages/error404.ejs',{
+        title:'ParkSafe:Page Not Found'
+    });
+  });
 
 // listening port
 app.listen(3000);
