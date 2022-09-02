@@ -1,3 +1,6 @@
+*{
+    color: var(--greyLight) !important;
+}
 .rounded-map {
     border: 2px solid black;
     border-radius: 15px 0px 0px 15px !important;
