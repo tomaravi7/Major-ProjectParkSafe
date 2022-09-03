@@ -3,27 +3,170 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Display a map on a webpage</title>
+    <title>ParkSafe:Rent Space</title>
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
-    <link href="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css" rel="stylesheet">
-    <script src="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js"></script>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-        }
+    <%- include('../partials/head'); %>
+        <link href="/css/rent.css" rel="stylesheet">
+        <link href="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css" rel="stylesheet">
+        <script src="https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js"></script>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+            }
 
-        #map {
+            /* #map {
             position: absolute;
             top: 0;
             bottom: 0;
             width: 100%;
-        }
-    </style>
+        } */
+        </style>
 </head>
 
-<body>
-    <div id="map"></div>
+<body class="d-flex flex-column min-vh-100">
+    <navbar>
+        <%- include('../partials/navbar'); %>
+    </navbar>
+
+    <div>
+        <div class="row gx-0">
+            <div class="col-sm-12 col-md-4">
+                <div class="container">
+                    <p class="h1 text-center">Rent Space</p>
+                    <section class="container box">
+                        <div class="p-3">
+                            <form action="">
+                                <input type="range" class="form-range" min="0" max="100" id="customRange2">
+                                <div class="d-flex mb-3">
+                                    <div class="me-auto">Min</div>
+                                    <div>Max</div>
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+                    <div class="p-3">
+                        <div class="row text-center">
+                            <div class="col-6">
+                                Add image
+                            </div>
+                            <div class="col-6">
+                                <div class="p-1">
+                                    <div class="btn-y2">
+                                        +
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                Price
+                            </div>
+                            <div class="col-6">
+                                <div class="p-1">
+                                    <div class="btn-y2">
+                                        200/hr
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                Max Hours
+                            </div>
+                            <div class="col-6">
+                                <div class="p-1">
+                                    <div class="btn-y2">
+                                        8hrs
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="p-5"></div>
+                    <!-- Parking Spots -->
+                    <div>
+                        <p class="">Your Parking Spots</p>
+                        <div class="row container">
+                            <div class="box sp col-12">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <p>
+                                            F-1563 Laxmi Nagar
+                                        </p>
+                                        <p>
+                                            Rs 50/hour
+                                        </p>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="toggle-outer">
+                                            <div class="circle-inner"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box sp col-12">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <p>
+                                            F-1563 Laxmi Nagar
+                                        </p>
+                                        <p>
+                                            Rs 50/hour
+                                        </p>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="toggle-outer">
+                                            <div class="circle-inner"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box sp col-12">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <p>
+                                            F-1563 Laxmi Nagar
+                                        </p>
+                                        <p>
+                                            Rs 50/hour
+                                        </p>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="toggle-outer">
+                                            <div class="circle-inner"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="box sp col-12">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <p>
+                                            F-1563 Laxmi Nagar
+                                        </p>
+                                        <p>
+                                            Rs 50/hour
+                                        </p>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="toggle-outer">
+                                            <div class="circle-inner"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-8 full">
+                <div class="frame">
+                        <div class="tools sp"></div>
+                    <div id="map"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <script>
         mapboxgl.accessToken = 'pk.eyJ1IjoidG9tYXJhdmk3IiwiYSI6ImNrdnhqc3BuazBsaDYyd3FpZ2M5NWYwMmkifQ.PRrPkVOL6OJIpOXQ8u5lTQ';
         const map = new mapboxgl.Map({
