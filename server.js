@@ -40,12 +40,33 @@ app.get('/team', function(req, res) {
     });
 });
 
+function replaceTemplate(temp,vehicleDetail){
+    let output=temp.replace(/{%VEHICLETYPE%}/g,vehicleDetail.vehicleType)
+    output=output.replace(/{%ID%}/g,vehicleDetail.id)
+    output=output.replace(/{%IMAGE%}/g,vehicleDetail.image)
+    output=output.replace(/{%VEHICLEID%}/g,vehicleDetail.vehicleid)
+    output=output.replace(/{%COST%}/g,vehicleDetail.price)
+    return output
+}
+
 const tempcard=fs.readFileSync(`${__dirname}/views/partials/vehicleTemplate.ejs`,'utf-8')
+const park_vehicle=fs.readFileSync(`${__dirname}/views/pages/parkvehicle.ejs`,'utf-8')
+const data = fs.readFileSync(`${__dirname}/dev-data/data.json`,'utf-8')
+const dataobj=JSON.parse(data)
+
 
 // park vehicle page
 app.get('/parkvehicle', function(req, res) {
+    // res.writeHead(200,{'Content-type':'text/html'})
+    // const cardsHtml=dataobj.map(el => replaceTemplate(tempcard,el)).join('')
+    // console.log(cardsHtml)
+    // const output=park_vehicle.replace('{%VEHICLE_CARDS%}',cardsHtml)
+    // console.log(output)
+    // res.write(output)
+    // res.end()
     res.render('pages/parkvehicle',{
         title:'ParkSafe:Park Vehicle',
+        // VEHICLE_CARDS:cardsHtml
     });
 });
 
