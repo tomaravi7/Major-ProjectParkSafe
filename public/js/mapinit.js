@@ -121,7 +121,7 @@ map.addControl(
   new MapboxGeocoder({
   accessToken: mapboxgl.accessToken,
   localGeocoder: coordinatesGeocoder,
-  zoom: 4,
+  zoom: 12,
   placeholder: 'SEARCH',
   mapboxgl: mapboxgl,
   reverseGeocode: true
