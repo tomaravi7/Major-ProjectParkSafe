@@ -3,21 +3,21 @@
     "id": 0,
     "vehicleType": "two-wheeler",
     "image": "🏍️",
-    "": "DL 58458 546",
+    "vehicleid": "DL 04 58458 546",
     "price": "6.50"
   },
   {
-    "id": 0,
-    "vehicleType": "two-wheeler",
+    "id": 1,
+    "vehicleType": "four-wheeler",
     "image": "🚘",
-    "": "DL 58458 546",
-    "price": "6.50"
+    "vehicleid": "DL 04 58458 546",
+    "price": "9.50"
   },
   {
-    "id": 0,
+    "id": 3,
     "vehicleType": "two-wheeler",
     "image": "🏍️",
-    "": "DL 58458 546",
+    "vehicleid": "UK 06 57864 875",
     "price": "6.50"
   }
 ]
