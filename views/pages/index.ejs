@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="d-flex flex-column min-vh-100 center">
 <head>
     <%- include('../partials/head'); %>
     <link href="/css/index.css" rel="stylesheet">
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body>
 
     <navbar>
         <%- include('../partials/navbar'); %>
@@ -12,19 +12,19 @@
 
     <div>
         <div class="row gx-0">
-            <div class="col-sm-12 col-md-6 text-center center">
-                <div class="row">
-                    <h1 class="display-1">ParkSafe<br>
-                        <p class="display-6">
+            <div class="col-sm-12 col-md-6 text-center center order-1 order-md-0">
+                <div class="row my-5 my-md-0">
+                    <h1 class="display-1 heading-psf fw-bold">ParkSafe<br>
+                        <p class="h2 fw-bold">
                             <%= tagline %>
                         </p>
                     </h1>
-                    <div class="row">
+                    <div class="row my-2 my-md-0 p-3 order-md-1">
                         <div class="col display-6 text-end">
-                            <button class="p-3 rounded-3 text-dark" onclick="location.href='/rentspace'">Rent Space</button>
+                            <button class="p-3 rounded-3 text-dark btn-psf" onclick="location.href='/rentspace'">Rent Space</button>
                         </div>
                         <div class="col display-6 text-start">
-                            <button class="p-3 rounded-3 text-dark" onclick="location.href='/parkvehicle'">Park Vehicle</button>
+                            <button class="p-3 rounded-3 text-dark btn-psf" onclick="location.href='/parkvehicle'">Park Vehicle</button>
                         </div>
                     </div>
                 </div>
@@ -35,10 +35,10 @@
         </div>
     </div>
 
-    <footer class="mt-auto"> 
-        <!-- no footer in ui do we have to remove this or keep it -->
+    <!-- <footer class="mt-auto"> 
+        no footer in ui do we have to remove this or keep it
         <%- include('../partials/footer'); %>
-    </footer>
+    </footer> -->
 
 </body>
 </html>
