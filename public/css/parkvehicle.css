@@ -41,3 +41,7 @@
     font-family: 'Poppins', sans-serif !important;
     text-decoration: none !important;
 }
+#map{
+    color: var(--greyLight) !important; /*not working*/
+    background-color: #000000 !important;
+}

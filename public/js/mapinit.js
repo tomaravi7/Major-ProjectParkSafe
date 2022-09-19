@@ -54,12 +54,15 @@ function markUserLocation(){
     longitude=crd.longitude
     console.log(`Longitude: ${crd.longitude}`);
     console.log(`More or less ${crd.accuracy} meters.`);
-  //default marker on User
-  const hm = document.createElement('div');
-  hm.className = 'marker';
-  hm.style.backgroundImage = `url('/img/icons/location.png')`;
-  // console.log(latitude," + ",longitude)
-  const marker1 = new mapboxgl.Marker(hm).setLngLat([crd.longitude,crd.latitude]).addTo(map);
+    //default marker on User
+    const hm = document.createElement('div');
+    hm.className = 'marker';
+    hm.style.backgroundImage = `url('/img/icons/location.png')`;
+    // console.log(latitude," + ",longitude)
+    const marker1 = new mapboxgl.Marker(hm).setLngLat([crd.longitude,crd.latitude]).addTo(map);
+    map.flyTo({
+      center: [longitude,latitude]
+    });
   }
   function error(err) {
     alert(`ERROR(${err.code}): ${err.message}`);
