@@ -3,8 +3,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoidG9tYXJhdmk3IiwiYSI6ImNrems2ZG94ODBkbGMybnRhN
 const map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/mapbox/streets-v11?optimize=true',
-  center: [76.6598,30.5161],
-  zoom: 9
+  zoom: 10
 });
 //bounds that map sticks to in the starting
 const bounds = [
@@ -61,7 +60,9 @@ function markUserLocation(){
     // console.log(latitude," + ",longitude)
     const marker1 = new mapboxgl.Marker(hm).setLngLat([crd.longitude,crd.latitude]).addTo(map);
     map.flyTo({
-      center: [longitude,latitude]
+      center: [longitude,latitude],
+      zoom: 13,
+      projection: 'globe'
     });
   }
   function error(err) {
