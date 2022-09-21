@@ -1,43 +1,44 @@
 // load the things we need
-var express = require('express');
+const { Console } = require("console");
+var express = require("express");
 var app = express();
-const fs=require('fs');
+const fs = require("fs");
 // set the view engine to ejs
-app.set('view engine', 'ejs');
+app.set("view engine", "ejs");
 
 // public directory serving static files
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + "/public"));
 
 // use res.render to load up an ejs view file
 
-// index page 
-app.get('/', function(req, res) {
-    var tagline = "Parking Made Easy";
-    res.render('pages/index', {
-        title:'ParkSafe:Home',
-        tagline: tagline
-    });
+// index page
+app.get("/", function (req, res) {
+  var tagline = "Parking Made Easy";
+  res.render("pages/index", {
+    title: "ParkSafe:Home",
+    tagline: tagline,
+  });
 });
 
 // about page
-app.get('/about', function(req, res) {
-    res.render('pages/about',{
-        title:'ParkSafe:About',
-    });
+app.get("/about", function (req, res) {
+  res.render("pages/about", {
+    title: "ParkSafe:About",
+  });
 });
 
 // Login page
-app.get('/login', function(req, res) {
-    res.render('pages/login',{
-        title:'ParkSafe:login',
-    });
+app.get("/login", function (req, res) {
+  res.render("pages/login", {
+    title: "ParkSafe:login",
+  });
 });
 
 // Teams page
-app.get('/team', function(req, res) {
-    res.render('pages/team',{
-        title:'ParkSafe:Team',
-    });
+app.get("/team", function (req, res) {
+  res.render("pages/team", {
+    title: "ParkSafe:Team",
+  });
 });
 
 // park vehicle page
@@ -48,24 +49,30 @@ app.get("/parkvehicle", function (req, res) {
 });
 
 // rentspace
-app.get('/rentspace', function(req, res) {
-    res.render('pages/rent',{
-        title:'ParkSafe:Rent Space',
-    });
+app.get("/rentspace", function (req, res) {
+  res.render("pages/rent", {
+    title: "ParkSafe:Rent Space",
+  });
 });
 
 // faq page
-app.get('/faq', function(req, res){
-    res.render('pages/faq.ejs',{
-        title:'ParkSafe:FAQ'
-    });
+app.get("/faq", function (req, res) {
+  const faqdata = fs.readFileSync(
+    `${__dirname}/dev-data/faqData.json`,
+    "utf-8"
+  );
+  const dataobj = JSON.parse(faqdata);
+  res.render("pages/faq", {
+    title: "ParkSafe:FAQ",
+    faqdata: dataobj,
+  });
 });
 
 // 404 page
-app.get('*', function(req, res){
-    res.status(404).render('pages/error404.ejs',{
-        title:'ParkSafe:Page Not Found'
-    });
+app.get("*", function (req, res) {
+  res.status(404).render("pages/error404", {
+    title: "ParkSafe:Page Not Found",
+  });
 });
 
 // listening port
