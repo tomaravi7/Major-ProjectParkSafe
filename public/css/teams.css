@@ -54,8 +54,15 @@
         }
         
       }
+      @media (min-width:1500px) and (max-width: 1900px) {
+        
+        .park-ing img{
+            width:25rem;
+            margin-top:3rem;
+        }
+      }
 
-      @media (min-width:1900px) and (max-width: 2100px) {
+      @media (min-width:1900px) and (max-width: 2200px) {
         
         .park-ing img{
             width:30rem;
