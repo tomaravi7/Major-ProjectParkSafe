@@ -21,16 +21,15 @@
         
     }
     
-    .park-ing{
-        margin-top:3rem;
+    .park{
         display: flex;
-        align-items: center;
-        justify-content: space-around;
+text-align: center;
+        justify-content: space-evenly;
         flex-wrap: wrap;
 
     }
-    .park-ing img{
-        width:20rem;
+    .park img{
+        width: 20rem;
         margin-top:3rem;
     }
 
@@ -54,18 +53,4 @@
         }
         
       }
-      @media (min-width:1500px) and (max-width: 1900px) {
-        
-        .park-ing img{
-            width:25rem;
-            margin-top:3rem;
-        }
-      }
-
-      @media (min-width:1900px) and (max-width: 2200px) {
-        
-        .park-ing img{
-            width:30rem;
-            margin-top:3rem;
-        }
-      }
+      
