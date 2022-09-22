@@ -33,3 +33,32 @@
         width:20rem;
         margin-top:3rem;
     }
+
+
+    @media (min-width:301px) and (max-width: 420px) {
+        .park-ab{
+            font-size: 3.7rem;
+            
+        }
+        .meet-ab{
+            font-size: 1.7rem;
+            
+        }
+        
+      }
+
+    @media (min-width:430px) and (max-width: 600px) {
+        .park-ab{
+            font-size: 4.7rem;
+            
+        }
+        
+      }
+
+      @media (min-width:1900px) and (max-width: 2100px) {
+        
+        .park-ing img{
+            width:30rem;
+            margin-top:3rem;
+        }
+      }
