@@ -20,7 +20,10 @@
         padding:1rem 2rem;
         
     }
-    
+    .parking{
+        left:0;
+        right:0;
+    }
     .park{
         display: flex;
 text-align: center;
@@ -51,6 +54,15 @@ text-align: center;
             font-size: 4.7rem;
             
         }
+        .park img{
+            width:12rem;
+        }
+      }
+
+      @media (min-width:580px) and (max-width: 1000px) {
         
+        .park img{
+            width:10rem;
+        }
       }
       
