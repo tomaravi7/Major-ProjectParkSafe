@@ -68,6 +68,13 @@ app.get("/faq", function (req, res) {
   });
 });
 
+// contactus page
+app.get("/contact", function (req, res) {
+  res.render("pages/contact", {
+    title: "ParkSafe:Contact Us"
+  });
+});
+
 // 404 page
 app.get("*", function (req, res) {
   res.status(404).render("pages/error404", {
