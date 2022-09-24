@@ -13,7 +13,7 @@
     border-radius: 10px;
     border: none;
     min-height: 90px;
-    min-width: 160px;
+    min-width: 140px;
 }
 .card-vehiclepark{
     background-color: var(--greyLight);
@@ -44,4 +44,15 @@
 #map{
     color: var(--greyLight) !important; /*not working*/
     background-color: #000000 !important;
+}
+.modal{
+    backdrop-filter: blur(15px);
+}
+.modal-style{
+    background-color: var(--greyDark) !important;
+    
+}
+.form-style{
+    background-color: var(--greyLight) !important;
+    border: 1px solid var(--yellow);
 }

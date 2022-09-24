@@ -26,7 +26,7 @@
                 <!-- start of saved vehicles list -->
                 <div class="row text-center">
                     <div class="col-6 col-md-4">
-                        <button class="button-cstm rounded-3 p-2 mt-3 h5"><img src="/img/icons/plus.png"><br> Add Vehicle</button>
+                        <button class="button-cstm rounded-3 p-2 mt-3 h5" data-bs-toggle="modal" data-bs-target="#car_info_formmodal"><img src="/img/icons/plus.png"><br> Add Vehicle</button>
                     </div>
                     <div class="col-6 col-md-4">
                         <button class="button-cstm rounded-3 p-2 mt-3 h5">🏍️<br>DL 07DS 4391 </button>
@@ -45,11 +45,11 @@
                     </div>
                 </div>
                 <!-- end of save vehicles list -->
-                <!-- start of Vehciles Parked -->
+                <!-- start of Vehicles Parked -->
                 <!-- <div class="p-5"></div> -->
                 <div class="row py-5">
                     <h5 class="py-2 heading-pvh h5">Vehicles Parked</h5>
-                    <!-- start of parked vehciles -->
+                    <!-- start of parked vehiles -->
                     <div>
                         <!-- start of a card -->
                         <div class="container-fluid card-vehiclepark p-2 curve my-3">
@@ -97,13 +97,95 @@
                 <div id="map" style="height: 100%;" class="rounded-map col-12 col-md-8"></div>
         </div>
     </div>
-    
+    <!-- form for adding vehicle -->
+      
+      <!-- Modal -->
+      <div class="modal fade rounded-5 " id="car_info_formmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog ">
+          <div class="modal-content modal-style">
+            <div class="modal-header text-center">
+              <h5 class="modal-title " id="exampleModalLabel">Add Vehicle</h5>
+              <button type="button" class="btn-close bg-warning" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- form -->
+              <form class="container-fluid">
+                <!-- dropdown for vehicle type -->
+                <div class="row my-3">
+                    <div class="col">
+                        <select class="form-select form-style" aria-label="Default select vehicle_Type">
+                            <option selected>Select Vehicle Type</option>
+                            <option value="2">Two Wheeler</option>
+                            <option value="3">Three Wheeler</option>
+                            <option value="4">Four Wheeler</option>
+                          </select>
+                    </div>
+                </div>
+                <!-- file upload rc -->
+                <div class="row my-3">
+                    <div class="col-4 fs-5">
+                        <label for="uploadRC">Upload RC </label>
+                    </div>
+                    <div class="col-8">
+                        <input class="form-control form-style" type="file" id="uploadRC">
+                    </div>
+                </div>
+                <!-- file upload Vehicles -->
+                <div class="row  my-3">
+                    <div class="col-4 col-md-5 fs-5">
+                        <label for="uploadVehicleimg">Vehicle Photos</label>
+                    </div>
+                    <div class="col-8 col-md-7">
+                        <input class="form-control form-style" type="file" id="uploadVehicleimg">
+                    </div>
+                </div>
+                <div class="row my-3">
+                    <div class="col">
+                        <label class="fs-5" for="vehicleNumber">Vehicle Number</label>
+                        <input class="form-control form-style" id="vehicleNumber" type="text" placeholder="Eg-DL 07DS 4391" aria-label="default input">
+                    </div>
+                </div>
+                <div class="row my-3">
+                    <div class="col">
+                        <label class="fs-5" for="vehicle_color">Vehicle Color</label>
+                        <input class="form-control form-style" id="vehicle_color" type="text" placeholder="Eg- Black" aria-label="default input">
+                    </div>
+                </div>
+                <div class="row my-3">
+                    <div class="col">
+                        <label class="fs-5" for="manuf_year">Manufacture Year</label>
+                        <input class="form-control form-style" id="manuf_year" type="text" placeholder="2008" aria-label="default input">
+                    </div>
+                </div>
+                <div class="row my-3">
+                    <div class="col">
+                        <label class="fs-5" for="address_owner">Address</label>
+                        <textarea class="form-control form-style" aria-label="Address" id="address_owner" placeholder="House No., Street/Building Name, Landmark, State, Zip-Code"></textarea>
+                    </div>
+                </div>
+                <div class="row my-3">
+                    <div class="col">
+                        <label class="fs-5" for="owner_instruct">Add Instructions</label>
+                        <textarea class="form-control form-style" id="owner_instruct" type="text" placeholder="" aria-label="default input"></textarea>
+                    </div>
+                </div>
+                
+                
+
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-warning text-dark fw-bolder">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
     <footer>
         <!-- <%- include('../partials/footer'); %> -->
-        <script src="/js/mapinit.js"></script>
     </footer>
-
+    <script src="/js/mapinit.js"></script>
 </body>
 
 </html>
