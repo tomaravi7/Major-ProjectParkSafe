@@ -29,3 +29,15 @@ body {
     color: var(--greyDark);
     font-weight: 700;
 }
+.circle{
+    border-radius: 50%;
+    overflow: hidden;
+    max-width: 200px;
+}
+
+.offcanvas{
+    border-radius: 50px 0 0 50px;
+}
+.curve{
+    border-radius: 20px;
+}
