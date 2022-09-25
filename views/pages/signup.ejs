@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+    <link href="/css/signup.css" rel="stylesheet">
+</head>
+<body>
+    <%- include('../partials/navbar'); %>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-md-8 center text-center py-5 py-md-0">
+                <h1 class="display-1 heading-psf fw-bold font">ParkSafe<br>
+                    <p class="h2 fw-bold">
+                        <%= tagline %>
+                    </p>
+                </h1>
+            </div>
+            <div class="col-12 col-md-4 signup">
+                <h1 class="text-center my-4">Sign Up</h1>
+                <form class="px-4">
+                    <div class="col my-3">
+                        <label class="fs-5 p-2" for="user_name">Name</label>
+                        <input type="text" id="user_name" placeholder="Enter Your Full Name" class="form-control form-style rounded-4 p-3" aria-label="default input">
+                    </div>
+                    <div class="col my-3">
+                        <label class="fs-5 p-2" for="user_email">Email</label>
+                        <input type="email" id="user_email" placeholder="Enter Email" class="form-control form-style rounded-4 p-3" aria-label="default input">
+                    </div>
+                    <div class="col my-3">
+                        <label class="fs-5 p-2" for="user_password">Password</label>
+                        <input type="password" id="user_password" placeholder="Enter Password" class="form-control form-style rounded-4 p-3" aria-label="default input">
+                    </div>
+                    <div class="col my-3">
+                        <label class="fs-5 p-2" for="user_address">Address</label>
+                        <textarea id="user_address" class="form-control form-style rounded-4 p-3" placeholder="House No., Street/Building Name, Landmark, State, Zip-Code"></textarea>
+                    </div>
+                    <div class="col my-3">
+                        <label class="fs-5 p-2" for="user_phone">Phone Number</label>
+                        <input type="tel" pattern="[0-9]{10}" title="Phone Number can have max length of 10" id="user_phone" placeholder="8719-129-2123" class="form-control form-style rounded-4 p-3" aria-label="default input">
+                    </div>
+                    <div class="col my-3">
+                        <label class="fs-5 p-2" for="user_adhaar">Adhaar</label>
+                        <input type="number" pattern="[0-9]{12}" id="user_adhaar"  title="Adhaar can only be 12 digits long" placeholder="xxxx-xxxx-xxxx-xxxx" class="form-control form-style rounded-4 p-3" aria-label="default input">
+                    </div>
+                    <div class="col text-center my-4">
+                        <button class="btn-psf fs-3 rounded-4 p-2 px-3 k">SIGNUP</button>
+                    </div>
+                    
+                </form>
+
+            </div>
+        </div>
+    </div>
+    
+
+    <footer class="mt-auto"> 
+        <!-- no footer in ui do we have to remove this or keep it -->
+        <!-- <%- include('../partials/footer'); %> -->
+    </footer>
+
+</body>
+</html>

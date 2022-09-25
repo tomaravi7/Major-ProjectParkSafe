@@ -1,0 +1,17 @@
+.signup{
+    background-color: var(--greyLight);
+    /* border: 2px solid black; */
+    border-radius: 15px 0px 0px 15px !important;
+}
+.form-style{
+    background-color: var(--greyDark) !important;
+    border: 0px solid var(--yellow);
+}
+input:invalid {
+    border-color: red;
+}
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

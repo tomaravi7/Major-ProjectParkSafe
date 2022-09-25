@@ -34,6 +34,16 @@ app.get("/login", function (req, res) {
   });
 });
 
+// signup page
+app.get("/signup", function (req, res) {
+  var tagline = "Parking Made Easy";
+  res.render("pages/signup", {
+    title: "ParkSafe:SignUp",
+    tagline: tagline,
+  });
+});
+
+
 // Teams page
 app.get("/team", function (req, res) {
   res.render("pages/team", {

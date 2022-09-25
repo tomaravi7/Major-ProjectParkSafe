@@ -26,8 +26,11 @@ body {
 }
 .btn-psf{
     background-color: var(--yellow);
-    color: var(--greyDark);
+    color: var(--greyDark) !important;
     font-weight: 700;
+}
+.logo-font{
+    font-size: 7rem
 }
 .circle{
     border-radius: 50%;

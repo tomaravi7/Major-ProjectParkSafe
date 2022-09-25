@@ -46,8 +46,7 @@
     backdrop-filter: blur(15px);
 }
 .modal-style{
-    background-color: var(--greyDark) !important;
-    
+    background-color: var(--greyDark) !important;  
 }
 .form-style{
     background-color: var(--greyLight) !important;
