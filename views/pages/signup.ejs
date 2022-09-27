@@ -21,30 +21,30 @@
                 <form class="px-4">
                     <div class="col my-3">
                         <label class="fs-5 p-2" for="user_name">Name</label>
-                        <input type="text" id="user_name" placeholder="Enter Your Full Name" class="form-control form-style rounded-4 p-3" aria-label="default input">
+                        <input type="text" id="user_name" placeholder="Enter Your Full Name" autocomplete="cc-name" class="form-control form-style rounded-4 p-3" aria-label="default input">
                     </div>
                     <div class="col my-3">
                         <label class="fs-5 p-2" for="user_email">Email</label>
-                        <input type="email" id="user_email" placeholder="Enter Email" class="form-control form-style rounded-4 p-3" aria-label="default input">
+                        <input type="email" id="user_email" placeholder="Enter Email" autocomplete="email" class="form-control form-style rounded-4 p-3" aria-label="default input">
                     </div>
                     <div class="col my-3">
                         <label class="fs-5 p-2" for="user_password">Password</label>
-                        <input type="password" id="user_password" placeholder="Enter Password" class="form-control form-style rounded-4 p-3" aria-label="default input">
+                        <input type="password" id="user_password" placeholder="Enter Password" autocomplete="current-password" class="form-control form-style rounded-4 p-3" aria-label="default input">
                     </div>
                     <div class="col my-3">
                         <label class="fs-5 p-2" for="user_address">Address</label>
-                        <textarea id="user_address" class="form-control form-style rounded-4 p-3" placeholder="House No., Street/Building Name, Landmark, State, Zip-Code"></textarea>
+                        <textarea id="user_address" class="form-control form-style rounded-4 p-3" autocomplete="address-line1" placeholder="House No., Street/Building Name, Landmark, State, Zip-Code"></textarea>
                     </div>
                     <div class="col my-3">
                         <label class="fs-5 p-2" for="user_phone">Phone Number</label>
-                        <input type="tel" pattern="[0-9]{10}" title="Phone Number can have max length of 10" id="user_phone" placeholder="8719-129-2123" class="form-control form-style rounded-4 p-3" aria-label="default input">
+                        <input type="tel" pattern="[0-9]{10}" title="Phone Number can have max length of 10" autocomplete="cc-number" id="user_phone" placeholder="8719-129-2123" class="form-control form-style rounded-4 p-3" aria-label="default input">
                     </div>
                     <div class="col my-3">
                         <label class="fs-5 p-2" for="user_adhaar">Adhaar</label>
-                        <input type="number" pattern="[0-9]{12}" id="user_adhaar"  title="Adhaar can only be 12 digits long" placeholder="xxxx-xxxx-xxxx-xxxx" class="form-control form-style rounded-4 p-3" aria-label="default input">
+                        <input type="number" pattern="[0-9]{12}" id="user_adhaar" title="Adhaar can only be 12 digits long" placeholder="xxxx-xxxx-xxxx-xxxx" class="form-control form-style rounded-4 p-3" aria-label="default input">
                     </div>
                     <div class="col text-center my-4">
-                        <button class="btn-psf fs-3 rounded-4 p-2 px-3 k">SIGNUP</button>
+                        <button class="btn-psf fs-3 rounded-4 p-2 px-3 k" onclick="register()" >SIGNUP</button>
                     </div>
                     
                 </form>
@@ -56,8 +56,18 @@
 
     <footer class="mt-auto"> 
         <!-- no footer in ui do we have to remove this or keep it -->
-        <!-- <%- include('../partials/footer'); %> -->
+        <%- include('../partials/footer'); %>
     </footer>
-
+    <script>
+        function register(){
+            const name=document.getElementById('user_name').value;
+            const email=documen.getElementById('user_email').value
+            const password=document.getElementById('user_password').value
+            const address=document.getElementById('user_address').value
+            const phoneno=document.getElementById('user_phone').value
+            const adhaar=document.getElementById('user_adhaar').value
+            alert({name,email,password,address,phoneno,adhaar});
+        }
+    </script>
 </body>
 </html>
