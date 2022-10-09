@@ -18,33 +18,33 @@
             </div>
             <div class="col-12 col-md-4 signup">
                 <h1 class="text-center my-4">Sign Up</h1>
-                <form class="px-4">
+                <form class="px-4" action="login">
                     <div class="col my-3">
                         <label class="fs-5 p-2" for="user_name">Name</label>
-                        <input type="text" id="user_name" placeholder="Enter Your Full Name" autocomplete="cc-name" class="form-control form-style rounded-4 p-3" aria-label="default input">
+                        <input type="text" id="user_name" placeholder="Enter Your Full Name" autocomplete="cc-name" class="form-control form-style rounded-4 p-3" aria-label="default input" required>
                     </div>
                     <div class="col my-3">
                         <label class="fs-5 p-2" for="user_email">Email</label>
-                        <input type="email" id="user_email" placeholder="Enter Email" autocomplete="email" class="form-control form-style rounded-4 p-3" aria-label="default input">
+                        <input type="email" id="user_email" placeholder="Enter Email" autocomplete="email" class="form-control form-style rounded-4 p-3" aria-label="default input" required>
                     </div>
                     <div class="col my-3">
                         <label class="fs-5 p-2" for="user_password">Password</label>
-                        <input type="password" id="user_password" placeholder="Enter Password" autocomplete="current-password" class="form-control form-style rounded-4 p-3" aria-label="default input">
+                        <input type="password" id="user_password" placeholder="Enter Password" autocomplete="current-password" class="form-control form-style rounded-4 p-3" aria-label="default input" required>
                     </div>
                     <div class="col my-3">
                         <label class="fs-5 p-2" for="user_address">Address</label>
-                        <textarea id="user_address" class="form-control form-style rounded-4 p-3" autocomplete="address-line1" placeholder="House No., Street/Building Name, Landmark, State, Zip-Code"></textarea>
+                        <textarea id="user_address" class="form-control form-style rounded-4 p-3" autocomplete="address-line1" placeholder="House No., Street/Building Name, Landmark, State, Zip-Code" required></textarea>
                     </div>
                     <div class="col my-3">
                         <label class="fs-5 p-2" for="user_phone">Phone Number</label>
-                        <input type="tel" pattern="[0-9]{10}" title="Phone Number can have max length of 10" autocomplete="cc-number" id="user_phone" placeholder="8719-129-2123" class="form-control form-style rounded-4 p-3" aria-label="default input">
+                        <input type="tel" pattern="[0-9]{10}" title="Phone Number can have max length of 10" autocomplete="cc-number" id="user_phone" placeholder="8719-129-2123" class="form-control form-style rounded-4 p-3" aria-label="default input" required>
                     </div>
                     <div class="col my-3">
                         <label class="fs-5 p-2" for="user_adhaar">Adhaar</label>
-                        <input type="number" pattern="[0-9]{12}" id="user_adhaar" title="Adhaar can only be 12 digits long" placeholder="xxxx-xxxx-xxxx-xxxx" class="form-control form-style rounded-4 p-3" aria-label="default input">
+                        <input type="number" pattern="[0-9]{12}" id="user_adhaar" title="Adhaar can only be 12 digits long" placeholder="xxxx-xxxx-xxxx-xxxx" class="form-control form-style rounded-4 p-3" aria-label="default input" required>
                     </div>
                     <div class="col text-center my-4">
-                        <button class="btn-psf fs-3 rounded-4 p-2 px-3 k" onclick="register()" >SIGNUP</button>
+                        <button type="submit" class="btn-psf fs-3 rounded-4 p-2 px-3 k" id="signUp" onclick="register()">SIGNUP</button>
                     </div>
                     
                 </form>
@@ -60,13 +60,29 @@
     </footer>
     <script>
         function register(){
+            console.log("executing register func")
             const name=document.getElementById('user_name').value;
-            const email=documen.getElementById('user_email').value
+            const email=document.getElementById('user_email').value
             const password=document.getElementById('user_password').value
             const address=document.getElementById('user_address').value
             const phoneno=document.getElementById('user_phone').value
             const adhaar=document.getElementById('user_adhaar').value
-            alert({name,email,password,address,phoneno,adhaar});
+            console.log({name,email,password,address,phoneno,adhaar});
+            fetch('/api/v1/register',{
+                method:'POST',
+                credentials: "same-origin",
+                headers:{
+                    'Accept':'application/json, text/plain, */*',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ name, email, password, phoneno, address, adhaar})
+            }).then(res=>res.json()).then(data=>{
+                console.log(data);
+                if(data.success===false){
+                    alert(data.message)
+                    return;
+                }
+            })
         }
     </script>
 </body>

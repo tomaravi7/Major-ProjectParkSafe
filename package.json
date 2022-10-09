@@ -1,11 +1,32 @@
 {
-  "name": "node-ejs",
+  "name": "parksafe",
   "main": "server.js",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "bootstrap": "^5.2.0",
+    "cookie-parser": "^1.4.6",
     "dotenv": "^16.0.2",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
-    "mongoose": "^6.6.1"
-  }
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.6.1",
+    "nodemailer": "^6.8.0",
+    "validator": "^13.7.0"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "description": "majorproject",
+  "version": "1.0.0",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomaravi7/Major-ProjectParkSafe.git"
+  },
+  "author": "Avi Tomar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tomaravi7/Major-ProjectParkSafe/issues"
+  },
+  "homepage": "https://github.com/tomaravi7/Major-ProjectParkSafe#readme"
 }

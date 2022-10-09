@@ -1,26 +1,28 @@
-const app = require("./app");
-const mongoose = require("mongoose");
-const dotenv = require("dotenv");
+const app = require('./app');
+const mongoose = require('mongoose')
+const dotenv = require('dotenv');
 
-dotenv.config({
-  path: "./config/dotenv.config.env",
-});
  
-// const DB = process.env.DATABASE.replace(
-//   "<PASSWORD>",
-//   process.env.DATABASE_PASSWORD
-// );
+// Setting up Config File 
+dotenv.config({
+    path: 'config/config.env'
+})
 
-// mongoose.connect(process.env.DATABASE, {
-//     useNewUrlParser: true,
-//     useCreateIndex: true,
-//     useFindAndModify: false,
-//   })
-//   .then(() => console.log("DB connection successful!"));
+// Connecting to Database 
+mongoose.connect(process.env.DATABASE,{
+    useNewUrlParser:true,
+    useUnifiedTopology:true,
+    // useCreateIndex:true,
+}).then(con=>{
+    console.log(`MongoDB is Connected with Host :${con.connection.host}`)
+})
+const port=process.env.PORT;
+const server = app.listen(port,()=>{
+    console.log(`Server Started on Port : ${port} ...http://localhost:${port} in ${process.env.NODE_ENV} mode.`)
+})
 
-
-// listening port
-const port = process.env.PORT || 3000;
-const server = app.listen(port, () => {
-  console.log(`App running on port ${port}... http://localhost:${port}`);
-});
+// Handle Unhandled Promise Rejection
+process.on('unhandledRejection',(err)=>{
+    console.log(`Error ${err.message}`);
+    console.log('Unhandled Promise Rejection');
+})

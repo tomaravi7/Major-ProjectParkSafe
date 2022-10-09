@@ -1,24 +1,28 @@
-// load the things we need
-const express = require("express");
-const app = express();
+const express =require('express');
+const app = express()
+
+const CookieParser = require('cookie-parser')
+
+const errorMiddleware = require('./middlewares/errors')
 app.use(express.json())
-// set the view engine to ejs
-app.set("view engine", "ejs");
-// const AppError = require("./utils/appError");
+app.use(CookieParser())
 
-const index = require('./routes/index-route');
-// const userRouter=require('./routes/userRoutes')
-
-// Serving static files
-app.use(express.static(`${__dirname}/public`));
+app.set('view engine', 'ejs')
+app.use(express.static('public'))
 
 
+// Import All Routes
+const auth = require('./routes/auth.route');
+const index = require('./routes/index.route');
+const user = require('./routes/user.route');
 
-// logging
-if(process.env.NODE_ENV==='development'){
-    app.use(morgan('dev'));
-}
-const route=require('./routes/index-route')
-app.use('/',route)
 
-module.exports=app
+
+app.use('/api/v1', auth)
+app.use('/', index)
+app.use('/user',user)
+
+// MiddleWare To handle Errors
+app.use(errorMiddleware);
+
+module.exports = app
