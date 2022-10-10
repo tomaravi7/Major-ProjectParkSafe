@@ -4,10 +4,11 @@ const crypto = require('crypto');
 const catchAsyncErrors = require("../middlewares/catchAsyncErrors");
 const { isAuthenticatedUser } = require("../middlewares/auth");
 const router = require("express").Router();
+const fs=require('fs')
 
 require('dotenv').config()
 
-// Homepage   --Public Route
+// Homepage
 router.get('/',isAuthenticatedUser , async (req, res, next) => {
     const isAuthenticatedUser = req.isAuthenticatedUser;
     res.render('pages/index', { title: 'ParkSafe' , user: req.user,isAuthenticatedUser, tagline: 'Parking Made Easy',});
@@ -20,6 +21,51 @@ router.get("/about", function (req, res, next) {
     });
 });
 
+// Teams page
+router.get("/team", function (req, res, next) {
+    res.render("pages/team", {
+      title: "ParkSafe:Team",
+    });
+});
+  
+TODO:
+//  these two are to be removed after login system is created
+// park vehicle page
+router.get("/parkvehicle", function (req, res, next) {
+    res.render("pages/parkvehicle", {
+      title: "ParkSafe:Park Vehicle",
+    });
+});
+  
+// rentspace
+router.get("/rentspace", function (req, res, next) {
+     res.render("pages/rent", {
+      title: "ParkSafe:Rent Space",
+    });
+});
+  
+// faq page
+router.get("/faq", function (req, res, next) {
+    const faqdata = fs.readFileSync(
+      `${__dirname}/../dev-data/faqData.json`,
+      "utf-8"
+    );
+    const dataobj = JSON.parse(faqdata);
+    res.render("pages/faq", {
+      title: "ParkSafe:FAQ",
+      faqdata: dataobj,
+    });
+});
+  
+// contact us page
+router.get("/contact", function (req, res, next) {
+    res.render("pages/contact", {
+      title: "ParkSafe:Contact Us",
+    });
+});
+  
+
+
 // signup page
 router.get("/signup", function (req, res, next) {
     var tagline = "Parking Made Easy";
@@ -29,7 +75,7 @@ router.get("/signup", function (req, res, next) {
     });
 });
 
-//Login Page   --Public Route
+//Login Page
 router.get('/login',isAuthenticatedUser, async (req, res, next) => {
     const isAuthenticatedUser = req.isAuthenticatedUser;
     if (isAuthenticatedUser===true) {
@@ -61,5 +107,11 @@ router.get('/reset_password/:id', catchAsyncErrors(async (req, res, next) => {
     // handle when Token is Expired
     return res.redirect('/')
 }))
+// 404 page
+router.get("*", function (req, res, next) {
+    res.status(404).render("pages/error404", {
+      title: "ParkSafe:Page Not Found",
+    });
+});
 
 module.exports = router;

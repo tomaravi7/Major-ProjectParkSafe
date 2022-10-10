@@ -68,7 +68,7 @@
             const phoneno=document.getElementById('user_phone').value
             const adhaar=document.getElementById('user_adhaar').value
             console.log({name,email,password,address,phoneno,adhaar});
-            fetch('/api/v1/register',{
+            fetch('/postapi/register',{
                 method:'POST',
                 credentials: "same-origin",
                 headers:{

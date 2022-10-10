@@ -37,20 +37,17 @@
                                     Login
                                 </p> -->
                                 <div class="m-3">
-                                    <label for="email" class="col-sm-2 col-form-label">Email</label>
-                                    <input type="email" class="form-control" id="email">                                    
-                                    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-                                      <input type="password" class="form-control" id="inputPassword">
-                                  </div>
+                                    <label for="user_email" class="col-sm-2 col-form-label">Email</label>
+                                    <input type="email" class="form-control" id="user_email">                                    
+                                    <label for="user_password" class="col-sm-2 col-form-label">Password</label>
+                                      <input type="password" class="form-control" id="user_password">
+                                </div>
                                   <div class="p-5"></div>
-
-
-
                         </div>
                         <center>
                             <div class="p-2">
                                 <div class="p-1"></div>
-                                <button class="btn-y">
+                                <button class="btn-y" onclick="login()">
                                     <b>
                                         Login
                                     </b>
@@ -69,6 +66,28 @@
             <%- include('../partials/footer'); %>
         </footer>
     </div>
-
+<script>
+    function login(){
+        const email=document.getElementById('user_email').value
+        const password=document.getElementById('user_password').value
+        console.log(email,password)
+        fetch('/postapi/login',{
+            method:'POST',
+            credentials:'same-origin',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email, password })
+        }).then(res => res.json()).then(data => {
+        console.log(data);
+        if (data.success === false) {
+          alert(data.message)
+          return;
+        }
+        window.location.href = `/user/${data.user.email}`;
+      })
+    }
+</script>
 </body>
 </html>

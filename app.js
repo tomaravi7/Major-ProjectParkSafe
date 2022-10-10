@@ -18,7 +18,7 @@ const user = require('./routes/user.route');
 
 
 
-app.use('/api/v1', auth)
+app.use('/postapi', auth)
 app.use('/', index)
 app.use('/user',user)
 
