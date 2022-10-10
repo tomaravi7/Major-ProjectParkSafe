@@ -44,3 +44,8 @@ body {
 .curve{
     border-radius: 20px;
 }
+
+.form-style{
+    background-color: var(--greyDark) !important;
+    border: 0px solid var(--yellow);
+}
