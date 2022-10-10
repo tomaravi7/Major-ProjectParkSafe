@@ -5,65 +5,49 @@
     <link href="/css/login.css" rel="stylesheet">
 </head>
 <body>
-
-    <div class="full">
-        <navbar>
-            <%- include('../partials/navbar'); %>
-        </navbar>
-    
-        <div class="container">
-            <div class="row full justify-content-center align-items-center">
-                <!-- Side1 -->
-                <div class="col-12 col-md-6 d-flex align-items-center">
-                    <div>
-                        <p class="h3">
-                            <div class="p-5"></div>
-                            <span class="heading big">ParkSafe</span>
-                            <br>
-                            <center>
-                                <span class="small">Parking Made Easy</span>
-                            </center>
-                        </p>
-                    </div>
-                </div>
-                <!-- Side2 -->
-                <div class="col-12 col-md-6">
+    <%- include('../partials/navbar'); %>
+    <div class="full gx-0">
+        <div class="container-fluid full d-flex justify-content-evenly align-items-center">
+            <!--Side1-->
+            <div class="d-none d-lg-block">
+                <h1 class="display-1 heading-psf fw-bold">ParkSafe<br>
+                    <p class="h2 fw-bold text-center flex-wrap">
+                        Parking Made Easy
+                    </p>
+                </h1>
+            </div>
+            <!-- Side2 -->
+            <div>
+                <div class="container tablet">
+                    <div class="p-2">
+                        <div class="p-2"></div>
                     <div class="container tablet">
+                        <div class="p-4"></div>
+                        <div class="p-1"></div>
+                            <div class="m-3">
+                                <label for="email" class="col-sm-2 col-form-label">Email</label>
+                                <input type="email" class="form-control form-style" id="email">                                    
+                                <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                                  <input type="password" class="form-control form-style" id="inputPassword">
+                              </div>
+                              <div class="p-5"></div>
+
+
+
+                    </div>
+                    <center>
                         <div class="p-2">
-                            <div class="p-2"></div>
-                        <div class="container tablet">
-                            <div class="p-5"></div>
-                                <!-- <p class="h1 heading mid">
+                            <div class="p-1"></div>
+                            <button class="btn-y">
+                                <b>
                                     Login
-                                </p> -->
-                                <div class="m-3">
-                                    <label for="email" class="col-sm-2 col-form-label">Email</label>
-                                    <input type="email" class="form-control form-style" id="email">                                    
-                                    <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
-                                      <input type="password" class="form-control form-style" id="inputPassword">
-                                  </div>
-                                  <div class="p-5"></div>
-
-
-
+                                </b>
+                            </button>
                         </div>
-                        <center>
-                            <div class="p-2">
-                                <div class="p-1"></div>
-                                <button class="btn-y">
-                                    <b>
-                                        Login
-                                    </b>
-                                </button>
-                            </div>
-                        </center>
-                    </div>
-                    </div>
+                    </center>
                 </div>
             </div>
-            
         </div>
-
     </div>
 
 </body>
