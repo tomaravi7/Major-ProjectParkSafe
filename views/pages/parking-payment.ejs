@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+    <link href="/css/about.css" rel="stylesheet">
+</head>
+<body>
+
+    <navbar>
+        <body style="background-color:#1E1E1E;" ></body>
+        <%- include('../partials/navbar'); %>
+    </navbar>
+
+    
+
+
+    <div class="pay-ment">
+        
+        <div class="row park-payment">
+            <div class="col-md-8">
+                <h1>Select Payment 
+                    Method</h1>
+                <label for="cars">Choose a car:</label>
+
+                <select name="cars" id="cars">
+                  <option value="volvo">Volvo</option>
+                  <option value="saab">Saab</option>
+                  <option value="mercedes">Mercedes</option>
+                  <option value="audi">Audi</option>
+                </select> 
+            </div>
+            <div class="col-md-4">
+                <img src="/img/credit.png"  alt="">
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+
+</body>
+</html>

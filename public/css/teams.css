@@ -38,6 +38,8 @@
     }
 
 
+
+/* responsive css start from here */
     @media (min-width:301px) and (max-width: 420px) {
         .park-ab{
             font-size: 3.7rem;
