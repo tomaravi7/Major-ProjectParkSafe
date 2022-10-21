@@ -1,8 +1,8 @@
 .full{
-    height: 100vh;
+    height: 50vh;
 }
 .frame{
-    border-radius: 20px 0 0 20px;
+    border-radius: 0 0 20px 20px;
     height: 100%;
     width: 100%;
 }
@@ -24,16 +24,27 @@
     padding-top: 10px;
 }
 .toggle-outer{
-    width: 40px;
-    background-color: var(--greyDark);
-    border-radius: 50px;
-}
-.circle-inner{
-    border-radius: 50%;
-    width: 50%;
-    padding: 10px;
-    background-color: var(--yellow);
-}
-.toggle-outer{
     float: right;
 }
+.scrollable{
+    height: 50vh;
+    overflow: auto
+}
+
+@media screen and (min-width:720px) {
+    .full{
+        height: 100vh;
+    }
+    .frame{
+        border-radius: 20px 0 0 20px;
+    }
+    .scrollable{
+        height: 100vh;
+        overflow:auto;
+      }
+  }
+
+  .modal-content{
+    background-color: var(--greyDark);
+    color: var(--white);
+  }

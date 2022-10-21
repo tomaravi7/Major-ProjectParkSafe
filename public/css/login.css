@@ -20,3 +20,6 @@
     font-size: calc(0.2rem + 1.5vw);
     font-weight: 600;
 }
+.form-control{
+    color: black!important;
+}
