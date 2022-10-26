@@ -45,9 +45,15 @@ router.get("/rentspace", function (req, res, next) {
 });
 
 // Parking payment
-router.get("/rentspace", function (req, res, next) {
+router.get("/parking-payment", function (req, res, next) {
   res.render("pages/parking-payment", {
    title: "ParkSafe:Parking payment",
+ });
+});
+
+router.get("/loggedout", function (req, res, next) {
+  res.render("pages/loggedout", {
+   title: "ParkSafe:Logged Out",
  });
 });
   
