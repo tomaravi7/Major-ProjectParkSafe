@@ -1,0 +1,21 @@
+*{
+    margin:0;
+    padding:0;
+    font-family: 'Poppins';
+}
+.logout{
+    display: flex;
+    flex-direction: row;
+    margin: 10rem 0 10rem 0;
+}
+.logout h1{
+    font-style: normal;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 96px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #FFFFFF;
+    margin-bottom: 3rem;
+}
