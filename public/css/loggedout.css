@@ -1,0 +1,47 @@
+*{
+    margin:0;
+    padding:0;
+    font-family: 'Poppins';
+    font-style: normal;
+}
+.logout{
+    display: flex;
+    flex-direction: row;
+    margin: 10rem 0 10rem 0;
+    align-items: center;
+}
+.changes{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.logout h1{
+    width: 703px;
+    font-weight: 900;
+    font-size: 110px;
+    color: #FFFFFF;
+    margin-bottom: 5rem;
+}
+.logout h4{
+width: 317px;
+font-weight: 900;
+font-size: 40px;
+color: #FFFFFF;
+
+}
+.logout p{
+font-size: 25px;
+line-height: 51px;
+color: #F7D03B !important;
+text-align: center;
+margin-bottom: 3rem;
+}
+
+.logout a{
+background: #424242;
+border-radius: 50px;
+text-align: center;
+text-decoration: none;
+font-size:1.3rem;
+padding: 1rem 5rem;
+}
