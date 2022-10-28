@@ -10,8 +10,12 @@
     color: var(--white) !important;
     scroll-behavior: smooth;
     font-family: 'Poppins', sans-serif;
+    margin: 0px;
+    padding: 0px;
 }
-
+.full{
+    height: 100vh;
+}
 body {
     background-color: var(--greyDark) !important;
 }

@@ -38,20 +38,10 @@
         <div class="row gx-0 flex-wrap-reverse">
             <div class="col-sm-12 col-md-4">
                 <div class="container scrollable">
-                    <p class="h1 text-center">Rent Space</p>
-                    <div class="p-2"></div>
-                    <p>Price</p>
-                    <section class="container box">
-                        <div class="p-3">
-                            <input type="range" class="form-range" min="0" max="100" id="customRange2">
-                            <div class="d-flex mb-3">
-                                <div class="me-auto">Min</div>
-                                <div>Max</div>
-                            </div>
-                        </div>
-                    </section>
                     <div class="p-3"></div>
-                    <p>No. of Hours</p>
+                    <p class="h1 text-center">Rent Space</p>
+                    <div class="p-3"></div>
+                    <!-- <p>No. of Hours</p>
                     <section class="container box">
                         <div class="p-3">
                             <input type="range" class="form-range" min="0" max="100" id="customRange2">
@@ -60,18 +50,12 @@
                                 <div>Max</div>
                             </div>
                         </div>
-                    </section>
+                    </section> -->
                     <div class="container">
                         <div class="p-3"></div>
-                        <div class="row">
-                            <div class="col-md-6 col-12">
-                                <button type="button " class="btn btn-warning">Add image</button>
-                            </div>
-                            <div class="col-md-6 col-12">
-                                <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                                    data-bs-target="#staticBackdrop">Add Address</button>
-                            </div>
-                        </div>
+                        <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop">+</button>
+
 
                     </div>
 
@@ -185,6 +169,28 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <div class="p-1"></div>
+                    <p>
+                        <b>
+                            Select Vehicle Type
+                        </b>
+                    </p>
+                    <select name="v-type" id="v-type" class="form-select box mb-3">
+                            <option value="2w">2 Wheels</option>
+                            <option value="3w">3 Wheels</option>
+                            <option value="4w">4 Wheels</option>
+                    </select>
+                    <div class="p-1"></div>
+                    <p><b><span id="price">Price</span>/Hr</b></p>
+                    <section class="container box mb-3">
+                        <div class="p-2">
+                            <input type="range" class="form-range" min="0" max="100" id="customRange2" onchange="updateVal(this.value)">
+                            <div class="d-flex mb-3">
+                                <div class="me-auto">Min</div>
+                                <div>Max</div>
+                            </div>
+                        </div>
+                    </section>
                     <div class="row">
                         <div class="col-12">
                             <p>
@@ -236,7 +242,7 @@
                         </div>
                         <div class="col-12 col-md-6">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="other-allow" id="flexRadioDefault1">
+                                <input class="form-check-input" type="radio" name="other-allow" id="flexRadioDefault1" onclick="extraV(this.value)" value="yes">
                                 <label class="form-check-label" for="flexRadioDefault1">
                                     Yes
                                 </label>
@@ -244,18 +250,47 @@
                         </div>
                         <div class="col-12 col-md-6">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="other-allow" id="flexRadioDefault1">
+                                <input class="form-check-input" type="radio" name="other-allow" id="flexRadioDefault1" onclick="extraV(this.value)" value="no">
                                 <label class="form-check-label" for="flexRadioDefault1">
                                     No
                                 </label>
                             </div>
                         </div>
+                        <div class="col-12">
+                            <div id="typehidden">
+                                <p>Select Type</p>
+                                <select name="" id="" class="form-select box mb-3">
+                                    <option value="2w">2 Wheels</option>
+                                    <option value="3w">3 Wheels</option>
+                                    <option value="4w">4 Wheels</option>
+                            </select>
+                            </div>
+                        </div>
                         <div class="p-1"></div>
                         <div class="col-12">
                             <div class="mb-3">
-                                <label for="exampleFormControlTextarea1" class="form-label">Address</label>
-                                <textarea class="form-control box" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                <label for="address" class="form-label">Address</label>
+                                <textarea class="form-control box" id="address" rows="3"></textarea>
                             </div>
+                            <div class="mb-3">
+                                <label for="img" class="form-label"><b>Add Image</b></label>
+                                <input class="form-control box" type="file" id="img">
+                              </div>
+                        </div>
+                        <div class="col-12">
+                            <p>
+                                <b>
+                                    Enter Availability Time
+                                </b>
+                            </p>
+                        </div>
+                        <div class="col-6">
+                            <label for="tm-start" class="form-label">From:</label>
+                            <input type="time" name="tm-start" id="tm-start">
+                        </div>
+                        <div class="col-6">
+                            <label for="tm-end" class="form-label">To:</label>
+                            <input type="time" name="tm-end" id="tm-end">
                         </div>
                     </div>
                 </div>
@@ -269,8 +304,9 @@
 
 
 
-    <script> src = "/js/button.js"</script>
+    <script src = "/js/rent.js"></script>
     <script src="/js/mapinit.js"></script>
+
 
 </body>
 

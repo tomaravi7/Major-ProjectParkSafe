@@ -48,3 +48,7 @@
     background-color: var(--greyDark);
     color: var(--white);
   }
+
+  #typehidden{
+    display: none;
+  }
