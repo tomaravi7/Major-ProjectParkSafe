@@ -13,6 +13,7 @@ exports.isAuthenticatedUser = catchAsyncErrors(async (req, res, next) => {
     if (!token) {
         req.isAuthenticatedUser = false;
         return next();
+
     }
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET)

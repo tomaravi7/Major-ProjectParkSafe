@@ -12,13 +12,13 @@ app.use(express.static('public'))
 
 
 // Import All Routes
-const auth = require('./routes/auth.route');
-const index = require('./routes/index.route');
-const user = require('./routes/user.route');
+const auth = require('./routes/auth-route');
+const index = require('./routes/index-route');
+const user = require('./routes/user-route');
 
 
 
-app.use('/postapi', auth)
+app.use('/api/v1', auth)
 app.use('/', index)
 app.use('/user',user)
 

@@ -18,7 +18,7 @@
             </div>
             <div class="col-12 col-md-4 signup">
                 <h1 class="text-center my-4">Sign Up</h1>
-                <form class="px-4" action="login">
+                <form class="px-4">
                     <div class="col my-3">
                         <label class="fs-5 p-2" for="user_name">Name</label>
                         <input type="text" id="user_name" placeholder="Enter Your Full Name" autocomplete="cc-name" class="form-control form-style rounded-4 p-3" aria-label="default input" required>
@@ -68,7 +68,7 @@
             const phoneno=document.getElementById('user_phone').value
             const adhaar=document.getElementById('user_adhaar').value
             console.log({name,email,password,address,phoneno,adhaar});
-            fetch('/postapi/register',{
+            fetch('/api/v1/register',{
                 method:'POST',
                 credentials: "same-origin",
                 headers:{
@@ -82,6 +82,7 @@
                     alert(data.message)
                     return;
                 }
+                window.location.href='/login'
             })
         }
     </script>
