@@ -7,13 +7,8 @@ const router = require("express").Router();
 
 require('dotenv').config()
 
-// Homepage   --Public Route
-router.get('/',isAuthenticatedUser , async (req, res, next) => {
-    const isAuthenticatedUser = req.isAuthenticatedUser;
-    res.render('pages/index', { title: 'ParkSafe' , user: req.user,isAuthenticatedUser, tagline:'Parking Made Easy'});
-})
 //Login Page
-router.get('/login',isAuthenticatedUser, async (req, res, next) => {
+router.get('/',isAuthenticatedUser, async (req, res, next) => {
     const isAuthenticatedUser = req.isAuthenticatedUser;
     if (isAuthenticatedUser===true) {
         res.redirect('/');

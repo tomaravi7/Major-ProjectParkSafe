@@ -15,17 +15,18 @@
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
+        <% if (isAuthenticatedUser===true) { %>
         <main>
           <div class="container">
             <section>
               <center>
                 <div class="circle">
-                  <img src="img/logo.png" class="img-fluid" srcset="">
+                  <img src="/img/logo.png" class="img-fluid" alt="usericon">
                 </div>
                 <div>
                   <div class="p-2"></div>
                   <p class="h3">
-                    User
+                    <%= user.name %>
                   </p>
                 </div>
               </center>
@@ -42,33 +43,45 @@
             <a class="nav-link" href="/about">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/parkvehicle">Park Vehicles</a>
+            <a class="nav-link" href="/user/pv/<%= user.email %>">Park Vehicles</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/parking-payment">Parking Payment</a>
+            <a class="nav-link" href="/user/rs/<%= user.email %>">Rent Space</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/rentspace">Rent Space</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/login">Login</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/signup">SignUp</a>
-          </li>
-          <!-- TODO: -->
-          <!-- remove these afterwords -->
-          <li class="nav-item">
-            <a class="nav-link" href="/loggedout">LoggedOut(remove this later)</a>
+            <a class="nav-link" href="/parking-payment">Parking Payment(To be removed)</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/api/v1/logout">Logout</a>
           </li>
+          </ul>
+          <% } else {%>
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/login">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/signup">SignUp</a>
+            </li>
+          </ul>
+          <% } %>
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">
             <a class="nav-link" href="/faq">FAQ</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/team">Our Team</a>
+          </li>
+          <!-- TODO: -->
+          <!-- remove these afterwords -->
+          <li class="nav-item">
+            <a class="nav-link" href="/loggedout">LoggedOut(remove this later)</a>
           </li>
         </ul>
         </div>
