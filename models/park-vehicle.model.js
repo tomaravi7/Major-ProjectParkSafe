@@ -1,25 +1,21 @@
-const jwt = require("jsonwebtoken");
 const mongoose = require("mongoose");
 express = require("express");
 
-const userSchema = new mongoose.Schema({
-  select: {
+const vehicleSchema = new mongoose.Schema({
+  vehicleType: {
     type: String,
   },
-  vehicleno:{
+  vehiclenumber:{
     type: Number,
     required: [true, "Please Enter your Vehicle Number"],
-    
   },
   vehiclecolour:{
     type:String ,
     required: [true, "Please Enter your Vehicle Colour"],
-    
   },
   manufactureyear:{
     type:Number ,
     required: [true, "Please Enter your Vehicle Manufacture Year"],
-    
   },
   address: {
     type: String,
@@ -27,8 +23,6 @@ const userSchema = new mongoose.Schema({
   },
   instructions: {
     type: String,
-    required: [true, "Instructions is Required"],
-    maxlength: [100, "Please Add Instructions in Description"],
   },
   createdAt: {
     type: Date,
@@ -36,4 +30,4 @@ const userSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("User", userSchema);
+module.exports = mongoose.model("Vehicle", vehicleSchema);

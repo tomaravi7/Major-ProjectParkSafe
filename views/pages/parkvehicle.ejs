@@ -109,11 +109,11 @@
             </div>
             <div class="modal-body">
                 <!-- form -->
-              <form class="container-fluid">
+              <form class="container-fluid" action="/user/addVehicle/<%= user.email %>" method="get" >
                 <!-- dropdown for vehicle type -->
                 <div class="row my-3">
                     <div class="col">
-                        <select class="form-select form-style" aria-label="Default select vehicle_Type">
+                        <select name="vehicleType" class="form-select form-style" aria-label="Default select vehicle_Type" required>
                             <option selected>Select Vehicle Type</option>
                             <option value="2">Two Wheeler</option>
                             <option value="3">Three Wheeler</option>
@@ -122,61 +122,60 @@
                     </div>
                 </div>
                 <!-- file upload rc -->
-                <div class="row my-3">
+                <!-- <div class="row my-3">
                     <div class="col-4 fs-5">
                         <label for="uploadRC">Upload RC </label>
                     </div>
                     <div class="col-8">
-                        <input class="form-control form-style" type="file" id="uploadRC">
+                        <input class="form-control form-style" type="file" id="uploadRC" >
                     </div>
-                </div>
+                </div> -->
                 <!-- file upload Vehicles -->
-                <div class="row  my-3">
+                <!-- <div class="row  my-3">
                     <div class="col-4 col-md-5 fs-5">
                         <label for="uploadVehicleimg">Vehicle Photos</label>
                     </div>
                     <div class="col-8 col-md-7">
                         <input class="form-control form-style" type="file" id="uploadVehicleimg">
                     </div>
-                </div>
+                </div> -->
                 <div class="row my-3">
                     <div class="col">
                         <label class="fs-5" for="vehicleNumber">Vehicle Number</label>
-                        <input class="form-control form-style" id="vehicleNumber" type="text" placeholder="Eg-DL 07DS 4391" aria-label="default input">
+                        <input class="form-control form-style" name="vehiclenumber" id="vehicleNumber" type="text" placeholder="Eg-DL 07DS 4391" aria-label="default input" required>
                     </div>
                 </div>
                 <div class="row my-3">
                     <div class="col">
                         <label class="fs-5" for="vehicle_color">Vehicle Color</label>
-                        <input class="form-control form-style" id="vehicle_color" type="text" placeholder="Eg- Black" aria-label="default input">
+                        <input class="form-control form-style" name="vehiclecolour" id="vehicle_color" type="text" placeholder="Eg- Black" aria-label="default input" required>
                     </div>
                 </div>
                 <div class="row my-3">
                     <div class="col">
                         <label class="fs-5" for="manuf_year">Manufacture Year</label>
-                        <input class="form-control form-style" id="manuf_year" type="text" placeholder="2008" aria-label="default input">
+                        <input class="form-control form-style" name="manufactureyear" id="manuf_year" type="text" placeholder="2008" aria-label="default input" required>
                     </div>
                 </div>
                 <div class="row my-3">
                     <div class="col">
                         <label class="fs-5" for="address_owner">Address</label>
-                        <textarea class="form-control form-style" aria-label="Address" id="address_owner" placeholder="House No., Street/Building Name, Landmark, State, Zip-Code"></textarea>
+                        <textarea class="form-control form-style" name="address" aria-label="Address" id="address_owner" placeholder="House No., Street/Building Name, Landmark, State, Zip-Code" required></textarea>
                     </div>
                 </div>
                 <div class="row my-3">
                     <div class="col">
                         <label class="fs-5" for="owner_instruct">Add Instructions</label>
-                        <textarea class="form-control form-style" id="owner_instruct" type="text" placeholder="" aria-label="default input"></textarea>
+                        <textarea class="form-control form-style" name="instructions" id="owner_instruct" type="text" placeholder="" aria-label="default input"></textarea>
                     </div>
                 </div>
-                
-                
-
+                <button type="submit" class="btn btn-warning text-dark fw-bolder">Submit</button>
+           
               </form>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-warning text-dark fw-bolder">Submit</button>
+              
             </div>
           </div>
         </div>
