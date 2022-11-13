@@ -6,7 +6,7 @@ const vehicleSchema = new mongoose.Schema({
     type: String,
   },
   vehiclenumber:{
-    type: Number,
+    type: String,
     required: [true, "Please Enter your Vehicle Number"],
   },
   vehiclecolour:{

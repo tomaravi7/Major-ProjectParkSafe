@@ -8,7 +8,7 @@ const router = require("express").Router();
 require('dotenv').config()
 
 //Login Page
-router.get('/',isAuthenticatedUser, async (req, res, next) => {
+router.get('/'||'/login',isAuthenticatedUser, async (req, res, next) => {
     const isAuthenticatedUser = req.isAuthenticatedUser;
     if (isAuthenticatedUser===true) {
         res.redirect('/');
