@@ -33,7 +33,7 @@ router.get('/:email', isAuthenticatedUser, catchAsyncErrors(async (req, res, nex
     if (req.isAuthenticatedUser === false) {
         return res.redirect('/login');
     }
-    console.log("User Name home",req.params.email);
+    console.log("User Name home : ",req.params.email);
     const requestedUser = (req.user!==undefined)?req.user:null;
     const user = await userModel.findOne({ email: req.params.email }, { _id: 1, name: 1, email:1}); 
     console.log(user);
@@ -49,10 +49,26 @@ router.get('/addVehicle/:email', isAuthenticatedUser, catchAsyncErrors(async (re
     console.log("in addvehicle user route")
     console.log("res.query is ",req.query);
     const newVehicleData=req.query
+    newVehicleData.user = req.user._id
 
     const newVehicle=new Vehicle(newVehicleData)
     const vehicleDetail=await newVehicle.save()
     res.redirect('back')
+}))
+
+
+router.post('/getVehicle/:email',isAuthenticatedUser,catchAsyncErrors(async(req,res,next)=>{
+    console.log('get vehicle req.query : ',req.body.userId)
+    userId=req.body.userId
+    const vehicles=await Vehicle.find({user:req.body.userId})
+    const vehicleCount=await Vehicle.find({user:req.body.userId}).count()
+    console.log(vehicles)
+    res.status(200).json({
+        success:true,
+        vehicles,
+        vehicleCount,
+        message:'cars'
+    })
 }))
 
 

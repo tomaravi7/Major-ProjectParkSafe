@@ -4,17 +4,18 @@ express = require("express");
 const vehicleSchema = new mongoose.Schema({
   vehicleType: {
     type: String,
+    required:[true,"Vehicle Type is required"]
   },
-  vehiclenumber:{
+  vehiclenumber: {
     type: String,
     required: [true, "Please Enter your Vehicle Number"],
   },
-  vehiclecolour:{
-    type:String ,
+  vehiclecolour: {
+    type: String,
     required: [true, "Please Enter your Vehicle Colour"],
   },
-  manufactureyear:{
-    type:Number ,
+  manufactureyear: {
+    type: Number,
     required: [true, "Please Enter your Vehicle Manufacture Year"],
   },
   address: {
@@ -23,6 +24,11 @@ const vehicleSchema = new mongoose.Schema({
   },
   instructions: {
     type: String,
+  },
+  user: {
+    type: String,
+    required: true,
+    ref: "User",
   },
   createdAt: {
     type: Date,
