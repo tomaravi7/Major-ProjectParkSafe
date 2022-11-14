@@ -8,17 +8,17 @@ const router = require("express").Router();
 require('dotenv').config()
 
 //Login Page
-router.get('/'||'/login',isAuthenticatedUser, async (req, res, next) => {
+router.get(['/','/login'],isAuthenticatedUser, async (req, res, next) => {
     const isAuthenticatedUser = req.isAuthenticatedUser;
     if (isAuthenticatedUser===true) {
-        res.redirect('/');
+        res.redirect(`/user/${req.user.email}`);
     }
     res.render('pages/login', { title: 'Login' , user: req.user,isAuthenticatedUser});
 })
 router.get('/signup',isAuthenticatedUser, async (req, res, next) => {
     const isAuthenticatedUser = req.isAuthenticatedUser;
     if (isAuthenticatedUser===true) {
-        res.redirect('/');
+        res.redirect(`/user/${req.user.email}`);
     }
     res.render('pages/signup', { title: 'SignUp' , user: req.user,isAuthenticatedUser,tagline:'Parking Made Easy'});
 })
