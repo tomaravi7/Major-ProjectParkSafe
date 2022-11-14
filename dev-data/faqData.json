@@ -1,18 +1,67 @@
 [
     {
         "head": "what is parksafe",
-        "body": "parksafe is ---"
+        "body": "ParkSafe is a smart parking platform, where you can search and book a parking spot at your desired location or in your vicinity. ParkSafe also supports long term parking and rental parkings. ParkSafe relies on new technology and software that allows you to monitor your vehicle in realtime post parking your vehicle in the parking spot."
     },
     {
-        "head": "2",
-        "body": "3"
+        "head": "Why do I need to add my vehicle number at the time of booking? Is it safe",
+        "body": "We require your vehicle number just to make the post booking process more convenient. You dont need to wait for a parking operator to just to register your vehicle numbers manually."
     },
     {
-        "head": "5 head",
-        "body": "6 body"
+        "head": "Is it safe to add my vehicle number on the ParkSafe",
+        "body": "We dont share your personal details no matter what. We'll keep that our secret.We require your vehicle number just to make the post booking process more convenient."
     },
     {
-        "head": "new head",
-        "body": "new body"
+        "head": "How can your platform help me?",
+        "body": "The problem that people in urban areas face is, where do they find a parking space? We list the safest parking sites and show you the parking places you can visit. We desire to be the goto place for parking sites."
+    },
+    {
+        "head":"How safe is your platform ?",
+        "body":"We have built the entire platform while pushing security and transparency to the limit. You can monitor your vehicle at realtime for the peace of your mind."
+    },
+    {
+        "head":"Does ParkSafe support cashless and no contact bookings ?",
+        "body":"Yes ParkSpot supports cashless modes of payments and you can book a parking site and park your vehicle at your allocated spot without having to contact a person in person or any other mode."
+    },
+    {
+        "head":"How can I rent my empty parking space?",
+        "body":"Follow below simple steps:- 1) After Loging into the website click on RENT SPACE button. 2)adjust the pricing and NO of hours. 3)click on Add Images for adding  the Parking Space area images. 4)click on Add Address for adding the adress location and additional information. Click ADD and you are good to GO!!!"
+    },
+    {
+        "head":"Where can I see my Active Rent Space",
+        "body":"You can see your active rented space at the bpottom of the RENT SPACE page. there's also an option for activating and deactivating your rented space given beside RENTED SPACE "
+    },
+    {
+        "head":"What would be the minimum duration to book a parking spot?",
+        "body":"Depending upon the spot, the minimum duration for car and bike parking space may vary from hourly to monthly basis."
+    },
+    {
+        "head":"How to make the payment for booking a parking spot?",
+        "body":"To make the payment you cango to our ParkSafe website and search nearby parking spots or any location then choose the best parking spot based on your requirement and make the payment to confirm the booking. You can opt for any payment method, UPI, card, or net banking. "
+    },
+    {
+        "head":"How to reach the booked spot location?",
+        "body":"You can go to PARK VEHICLE Page on our ParkSafe website.Ther will be a MAP which will show you your pakring spot loaction and will also show you the navigating route to reach the parking spot. "
+    },
+    {
+        "head":"Is this application available for free?",
+        "body":"yes , for using the parking service for your personal vehicle you need to pay a certain amount. the price varies according to the location and the time of booking "
+    },
+    {
+        "head":"Why do I need to install this ParkSafe?",
+        "body":"Well ParkSafe is created not only for vehicle owners, this can also be helpful for anyone who is planning to earn money by converting their free space into a parking spot.Additionally this helps to reduce traffic by diverting the vehicles which are park on roads to the private locations."
+    },
+    {
+        "head":"Does this app suggest me any spots based on my current location?",
+        "body":"yes , the app will provide you the Parking spot according to your current location. you will see the spot highlighted on the Map. "
+    },{
+        "head":"How can I tell if my payment has been processed?",
+        "body":"Once your payment has been processed, the app will display a green confirmation screen with a checkmark that states: 'Payment Completed'.  Refresh the screen and a countdown clock will appear. "
+    },
+    {
+        "head":"The ParkSafe is not working, who can I contact?",
+        "body":"For app functionality, please contact the Parkmobile Customer Service Help Desk at _ _ _ _ _ _ _ _ _"
     }
+    
+
 ]
