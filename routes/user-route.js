@@ -4,6 +4,7 @@ const catchAsyncErrors = require('../middlewares/catchAsyncErrors');
 const { ObjectId } = require('mongodb');
 const userModel = require('../models/user.model');
 const Vehicle=require('../models/park-vehicle.model')
+const Space=require('../models/rent-space.model')
 
 // For User --Public Route
 router.get('/pv/:email', isAuthenticatedUser, catchAsyncErrors(async (req, res, next) => {
@@ -55,6 +56,19 @@ router.get('/addVehicle/:email', isAuthenticatedUser, catchAsyncErrors(async (re
     res.redirect('back')
 }))
 
+router.get('/addSpace/:email', isAuthenticatedUser, catchAsyncErrors(async (req, res, next) => {
+
+    if (req.isAuthenticatedUser === false) {
+        return res.redirect('/login');
+    }
+    console.log("in addspace user route")
+    console.log("res.query is ",req.query);
+    const newSpaceData=req.query
+
+    const newSpace=new Space(newSpaceData)
+    const spaceDetail=await newSpace.save()
+    res.redirect('back')
+}))
 
 
 

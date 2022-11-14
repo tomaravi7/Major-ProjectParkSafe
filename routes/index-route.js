@@ -23,4 +23,8 @@ router.get('/signup',isAuthenticatedUser, async (req, res, next) => {
     res.render('pages/signup', { title: 'SignUp' , user: req.user,isAuthenticatedUser,tagline:'Parking Made Easy'});
 })
 
+// router.get('/team', (req, res)=> {
+//     res.render("pages/team", {title: "ParkSafe:Team",});
+// });
+
 module.exports = router;
