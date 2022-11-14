@@ -2,23 +2,23 @@ const mongoose = require("mongoose");
 express = require("express");
 
 const rentSpaceSchema = new mongoose.Schema({
-  Vtype: {
+  vehicleType: {
     type: String,
     required: [true, "Please select vehical type"],
     maxlength: [2, "Your have selected an invalid type"],
   },
   price: {
-    type: number,
+    type: Number,
     required: [true, "Please Enter price"],
     maxlength: [3, "Your have entered an invalid price"],
   },
-  shadded: {
-    type: Boolean,
+  shade: {
+    type: String,
     required: [true, "Pick any one from shaded and non shaded"],
     
   },
-  Fencing: {
-    type: Boolean,
+  fence: {
+    type: String,
     required: [true, "Pick any one from fenced and non fenced"],
   },
   address: {
@@ -26,11 +26,11 @@ const rentSpaceSchema = new mongoose.Schema({
     required: [true, "Please Enter Your Address"],
   },
   startTime: {
-    type: Time,
+    type: String,
     required: [true, "Starting Time is required"],
   },
   endTime: {
-    type: Time,
+    type: String,
     required: [true, "Ending Time is required"],
   },
   addedAt: {

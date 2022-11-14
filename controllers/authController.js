@@ -55,4 +55,5 @@ exports.logout = catchAsyncErrors(async (req, res, next) => {
         httpOnly: true
     })
     next()
+    
 })

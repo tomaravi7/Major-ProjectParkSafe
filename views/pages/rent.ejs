@@ -169,13 +169,14 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <form action="/user/addSpace/<%= user.email %>" method="get">
                     <div class="p-1"></div>
                     <p>
                         <b>
                             Select Vehicle Type
                         </b>
                     </p>
-                    <select name="v-type" id="v-type" class="form-select box mb-3">
+                    <select name="vehicleType" id="v-type" class="form-select box mb-3">
                             <option value="2w">2 Wheels</option>
                             <option value="3w">3 Wheels</option>
                             <option value="4w">4 Wheels</option>
@@ -184,7 +185,7 @@
                     <p><b><span id="price">Price</span>/Hr</b></p>
                     <section class="container box mb-3">
                         <div class="p-2">
-                            <input type="range" class="form-range" min="0" max="100" id="customRange2" onchange="updateVal(this.value)">
+                            <input type="range" class="form-range" min="0" max="100" name="price" id="customRange2" onchange="updateVal(this.value)">
                             <div class="d-flex mb-3">
                                 <div class="me-auto">Min</div>
                                 <div>Max</div>
@@ -201,35 +202,18 @@
                         </div>
                         <div class="col-12 col-md-6">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="shad" id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                    Shadded
-                                </label>
+                                <select name="shade" id="shade" class="form-select box mb-3">
+                                    <option value="true">Shadded</option>
+                                    <option value="false">Non Shadded</option>
+                            </select>
                             </div>
                         </div>
                         <div class="col-12 col-md-6">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="shad" id="flexRadioDefault2" checked>
-                                <label class="form-check-label" for="flexRadioDefault2">
-                                    Non-Shadded
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="fencing" id="flexRadioDefault1">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                    Fenced
-                                </label>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="fencing" id="flexRadioDefault2"
-                                    checked>
-                                <label class="form-check-label" for="flexRadioDefault2">
-                                    Non-Fenced
-                                </label>
+                                <select name="fence" id="fence" class="form-select box mb-3">
+                                    <option value="true">Fenced</option>
+                                    <option value="false">Non Fenced</option>
+                            </select>
                             </div>
                         </div>
                         <div class="p-1"></div>
@@ -240,7 +224,7 @@
                                 </b>
                             </p>
                         </div>
-                        <div class="col-12 col-md-6">
+                        <!-- <div class="col-12 col-md-6">
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="other-allow" id="flexRadioDefault1" onclick="extraV(this.value)" value="yes">
                                 <label class="form-check-label" for="flexRadioDefault1">
@@ -255,8 +239,8 @@
                                     No
                                 </label>
                             </div>
-                        </div>
-                        <div class="col-12">
+                        </div> -->
+                        <!-- <div class="col-12">
                             <div id="typehidden">
                                 <p>Select Type</p>
                                 <select name="" id="" class="form-select box mb-3">
@@ -265,12 +249,12 @@
                                     <option value="4w">4 Wheels</option>
                             </select>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="p-1"></div>
                         <div class="col-12">
                             <div class="mb-3">
                                 <label for="address" class="form-label">Address</label>
-                                <textarea class="form-control box" id="address" rows="3"></textarea>
+                                <input type="text" name="address" class="form-control box" id="address">
                             </div>
                             <div class="mb-3">
                                 <label for="img" class="form-label"><b>Add Image</b></label>
@@ -286,17 +270,18 @@
                         </div>
                         <div class="col-6">
                             <label for="tm-start" class="form-label">From:</label>
-                            <input type="time" name="tm-start" id="tm-start">
+                            <input type="time" name="startTime" id="tm-start">
                         </div>
                         <div class="col-6">
                             <label for="tm-end" class="form-label">To:</label>
-                            <input type="time" name="tm-end" id="tm-end">
+                            <input type="time" name="endTime" id="tm-end">
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-warning">Add</button>
+                    <button type="submit" class="btn btn-warning">Add</button>
+                </form>
                 </div>
             </div>
         </div>
