@@ -65,6 +65,7 @@ router.get('/addSpace/:email', isAuthenticatedUser, catchAsyncErrors(async (req,
     console.log("in addspace user route")
     console.log("res.query is ",req.query);
     const newSpaceData=req.query
+    newSpaceData.user = req.user._id
 
     const newSpace=new Space(newSpaceData)
     const spaceDetail=await newSpace.save()
@@ -86,6 +87,19 @@ router.post('/getVehicle/:email',isAuthenticatedUser,catchAsyncErrors(async(req,
 }))
 
 
+router.post('/getSpace/:email',isAuthenticatedUser,catchAsyncErrors(async(req,res,next)=>{
+    console.log('get Space req.query : ',req.body.userId)
+    userId=req.body.userId
+    const space=await Space.find({user:req.body.userId})
+    const spaceCount=await Space.find({user:req.body.userId}).count()
+    console.log(space)
+    res.status(200).json({
+        success:true,
+        space,
+        spaceCount,
+        message:'space'
+    })
+}))
 
 
 module.exports = router;

@@ -65,8 +65,8 @@
                     <div>
                         <p class="">Your Parking Spots</p>
                         <div class="container">
-                            <div class="row justify-content-center align-items-center">
-                                <div class="box sp col-12">
+                            <div class="row justify-content-center align-items-center" id="spaceData">
+                                <!-- <div class="box sp col-12">
                                     <div class="row">
                                         <div class="col-6">
                                             <p>
@@ -137,7 +137,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
                             </div>
                         </div>
@@ -254,7 +254,7 @@
                         <div class="col-12">
                             <div class="mb-3">
                                 <label for="address" class="form-label">Address</label>
-                                <input type="text" name="address" class="form-control box" id="address">
+                                <input type="text" name="address" class="form-control tm" id="address">
                             </div>
                             <div class="mb-3">
                                 <label for="img" class="form-label"><b>Add Image</b></label>
@@ -270,11 +270,11 @@
                         </div>
                         <div class="col-6">
                             <label for="tm-start" class="form-label">From:</label>
-                            <input type="time" name="startTime" id="tm-start">
+                            <input type="time" class="tm" name="startTime" id="tm-start">
                         </div>
                         <div class="col-6">
                             <label for="tm-end" class="form-label">To:</label>
-                            <input type="time" name="endTime" id="tm-end">
+                            <input type="time" class="tm" name="endTime" id="tm-end">
                         </div>
                     </div>
                 </div>
@@ -288,7 +288,76 @@
     </div>
 
 
-
+<script>
+    const userId='<%= (user && user._id)?user._id:null %>'
+        console.log("script user id ",userId)
+        function getSpace(){
+            console.log("executing getSpace")
+            let url='/user/getSpace/'
+            url+='<%= user.email %>'
+            console.log("url:",url)
+            fetch(url,{
+                method: 'POST',
+                credentials:'same-origin',
+                headers:{
+                    'Accept':'application.json, text/plain, */*',
+                    'Content-Type':'application/json',
+                },
+                body:JSON.stringify({userId})
+            }).then(res => res.json()).then(data=>{
+                if(data===false){
+                    alert(data.message)
+                    return
+                }
+                console.log('data we get back',data,'\n and',data.spaceCount)
+                let spaceInnerHTML=""
+                if(data.spaceCount==0){
+                    spaceInnerHTML='No Space Found'
+                }
+                console.log(data.space[0])
+                for(let i=0;i<data.spaceCount;i++){
+                    const spa=data.space[i]
+                    console.log("type : ",spa.vehicleType)
+                    // if(spa.vehicleType=='2w'){
+                    //     console.log("two wheeler")
+                    //     logo="🏍️"
+                    // }
+                    // else if(spa.vehicleType=='3w'){
+                    //     console.log("Three wheeler")
+                    //     logo="🏍️🚘"
+                    // }
+                    // else{
+                    //     logo="🚘"
+                    // }
+                    const vehicle=`
+                    <div class="box sp col-12">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <p>
+                                                ${spa.address}
+                                            </p>
+                                            <p>
+                                            Price:Rs${spa.price}/h
+                                            </p>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="form-check form-switch toggle-outer">
+                                                <input class="form-check-input" type="checkbox" role="switch"
+                                                    id="flexSwitchCheckDefault">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                    `
+                    spaceInnerHTML+=vehicle
+                }
+                let SpaceTag=document.getElementById('spaceData')
+                SpaceTag.innerHTML+=spaceInnerHTML
+            })
+            
+        }
+        getSpace()
+</script>
     <script src = "/js/rent.js"></script>
     <script src="/js/mapinit.js"></script>
 
