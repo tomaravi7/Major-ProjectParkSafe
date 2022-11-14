@@ -69,7 +69,7 @@
                 }).then(res => res.json()).then(data => {
                 console.log("data",data);
                 if (data.success === false) {
-                    console.log(data.message)
+                    alert(data.errMessage)
                     return;
                 }
                 window.location.href = `/user/${data.user.email}`;
