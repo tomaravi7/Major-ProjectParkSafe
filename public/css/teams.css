@@ -1,76 +1,19 @@
  *{
-        padding:0;
-        margin:0;
+        padding:0px;
+        margin:0px;
     }
-    .meet-ab {
-    color: white;
-    font-size: 2.5rem;
-    font-family: poppins;
+.park-ab{
+    font-weight: 700;
+    font-size: calc(1.525rem + 3.3vw);
+    line-height: 80%;
+
+}
+.meet-ab{
     font-weight: 400;
-    }
+    font-size: calc(1rem + 0.5vw);
+}
 
-    .park-ab{
-        color: white;
-        font-size: 6.7rem;
-        font-family: poppins;
-        font-weight: 700;
-        margin-top: -1rem;
-    }
-    body{
-        padding:1rem 2rem;
-        
-    }
-    .parking{
-        left: 0;
-        right: 0;
-        position: absolute;
-        top: 35%;
-    }
-    .park{
-        display: flex;
-        text-align: center;
-        justify-content: space-evenly;
-        flex-wrap: wrap;
-
-    }
-    .park img{
-        width: 20rem;
-    }
-
-
-
-/* responsive css start from here */
-    @media (min-width:301px) and (max-width: 420px) {
-        .park-ab{
-            font-size: 3.7rem;
-            
-        }
-        .meet-ab{
-            font-size: 1.7rem;
-            
-        }
-        
-      }
-
-    @media (min-width:430px) and (max-width: 600px) {
-        .park-ab{
-            font-size: 4.7rem;
-            
-        }
-        .park img{
-            width:12rem;
-        }
-      }
-
-      @media (min-width:580px) and (max-width: 1000px) {
-        
-        .park img{
-            width:10rem;
-        }
-      }
-      
-
-
-.nm{
-    color: var(--yellow)!important;
+.slf{
+    align-self: center;
+    justify-self: center;
 }
