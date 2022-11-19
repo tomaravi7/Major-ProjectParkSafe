@@ -203,6 +203,12 @@
                     // console.log(latitude," + ",longitude)
                     const marker1 = new mapboxgl.Marker(hm)
                     .setLngLat([coor[0], coor[1]])
+                    .setPopup(
+                        new mapboxgl.Popup({ offset: 25 }) // add popups
+                            .setHTML(
+                            `<h5>Vehcile Type : ${veh.vehicleType}</h5><p>Fenced : ${veh.fence}<br>Shaded : ${veh.shade}<br>Price : ${veh.price}<br>Address : ${veh.address}</p><br><button>Book</button>`
+                            )
+                    )
                     .addTo(map);
                 }
                 let vehicleInnerHTML=""
