@@ -15,6 +15,7 @@
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
+        <!-- TODO: to be fixed so that pages can be viewed even when authenticated -->
         <% if (isAuthenticatedUser===true) { %>
         <main>
           <div class="container">
@@ -79,6 +80,18 @@
             <a class="nav-link" href="/team">Our Team</a>
           </li>
         </ul>
+        </div>
+        <div class="text-end p-2 m-1">
+          <div class="row">
+            <div class="col h5 p-2">Theme</div>
+            <div class="col">
+              <select class="form-select form-select-lg mb-3 bg-dark" aria-label=".form-select">
+                <option value="1" selected>Dark</option>
+                <option value="2">Light</option>
+                <option value="3">Blue</option>
+              </select>
+            </div>
+          </div>
         </div>
       </div>
     </div>

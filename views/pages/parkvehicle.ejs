@@ -79,7 +79,7 @@
                 <!-- end of left column -->
                 <!-- start of right column -->
                 
-                <div id="map" style="height: 100%;" class="rounded-map col-12 col-md-8"></div>
+                <div id="map" style="height: 100%;color: black !important;" class="rounded-map col-12 col-md-8"></div>
         </div>
     </div>
     <!-- form for adding vehicle -->
@@ -191,13 +191,27 @@
                     return
                 }
                 console.log('data we get back',data.vehicles,'\n and',data.vehicleCount)
+                console.log("COORDINATES DATA THAT WE GET BACK FROM DB -",data.spacesAvailable)
+                for(i=0;i<data.spacesAvailableCount;i++){
+                    const veh=data.spacesAvailable[i]
+                    // console.log(`For space ${i} - `,veh.coordinates.split(",")[0])
+                    coor=veh.coordinates.split(",")
+                    //available parking spaces markerw
+                    const hm = document.createElement("div");
+                    hm.className = "marker";
+                    hm.style.backgroundImage = `url('/img/icons/parking-sign.png')`;
+                    // console.log(latitude," + ",longitude)
+                    const marker1 = new mapboxgl.Marker(hm)
+                    .setLngLat([coor[0], coor[1]])
+                    .addTo(map);
+                }
                 let vehicleInnerHTML=""
                 if(data.vehicleCount===0){
                     vehicleInnerHTML='No Vehicles Found'
                 }
                 for(let i=0;i<data.vehicleCount;i++){
                     const veh=data.vehicles[i]
-                    console.log("type : ",data.vehicleType)
+                    console.log("type : ",veh.vehicleType)
                     if(veh.vehicleType=='2'){
                         console.log("two wheeler")
                         logo="🏍️"
@@ -219,6 +233,7 @@
         }
         getVehicle()
     </script>
+    </body>
 </body>
 
 </html>

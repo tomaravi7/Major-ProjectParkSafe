@@ -33,6 +33,15 @@ const rentSpaceSchema = new mongoose.Schema({
     type: String,
     required: [true, "Ending Time is required"],
   },
+  user: {
+    type: String,
+    required: true,
+    ref: "User",
+  },
+  coordinates:{
+    type: String,
+    required:[true, "You are missing space coordinates"]
+  },
   addedAt: {
     type: Date,
     default: Date.now,
