@@ -3,6 +3,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoidG9tYXJhdmk3IiwiYSI6ImNrems2ZG94ODBkbGMybnRhN
 const map = new mapboxgl.Map({
   container: 'map',
   style: 'mapbox://styles/mapbox/streets-v11?optimize=true',
+  center: [77.2090,28.6139],
   zoom: 11
 });
 //bounds that map sticks to in the starting
@@ -11,20 +12,11 @@ const bounds = [
   [97.34466,28.20453] // Northeast coordinates
 ];
 
-
 //Full Screen Option
 map.addControl(new mapboxgl.FullscreenControl(), 'bottom-right');
 
 //map-controls
 map.addControl(new mapboxgl.NavigationControl(),'bottom-right');
-
-// Add the control to the map.
-// map.addControl(
-//   new mapboxgl({
-//   accessToken: mapboxgl.accessToken,
-//   mapboxgl: mapboxgl
-//   })
-// );
 
 //Get user location manually
 map.addControl(new mapboxgl.GeolocateControl({
@@ -75,13 +67,6 @@ function markUserLocation() {
   navigator.geolocation.getCurrentPosition(success, error, options);
 }
 window.onload = markUserLocation();
-// map.on("load", function () {
-//   console.log("maploaded");
-//   console.log(
-//     "in mapinit outside longitude : ",
-//     JSON.parse(localStorage.getItem("coordinate")),
-//   );
-// });
 
 // // search bar
 map.addControl(

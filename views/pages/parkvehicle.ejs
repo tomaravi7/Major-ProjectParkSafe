@@ -28,6 +28,9 @@
                     <div class="col-6 col-md-4">
                         <button class="button-cstm rounded-3 p-2 mt-3 h5" data-bs-toggle="modal" data-bs-target="#car_info_formmodal"><img src="/img/icons/plus.png"><br> Add Vehicle</button>
                     </div>
+                    <div class="row">
+                        
+                    </div>
                 </div>
                 <!-- end of save vehicles list -->
                 <!-- start of Vehicles Parked -->
@@ -210,7 +213,7 @@
                         .setPopup(
                             new mapboxgl.Popup({ offset: 25 }) // add popups
                                 .setHTML(
-                                `<h5>Vehcile Type : ${veh.vehicleType}</h5><p>Fenced : ${veh.fence}<br>Shaded : ${veh.shade}<br>Price : ${veh.price}<br>Address : ${veh.address}</p><br><button class="btn btn-warning">Book</button>`
+                                `<br><h6>Vehcile Type : ${veh.vehicleType}</h6><p>Fenced : ${veh.fence}<br>Shaded : ${veh.shade}<br>Price : ${veh.price}<br>Address : ${veh.address}</p><br><button class="btn btn-warning">Book</button>`
                                 )
                         )
                         .addTo(map);
