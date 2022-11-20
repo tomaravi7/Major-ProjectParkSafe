@@ -8,52 +8,56 @@
 
 <body>
     <%- include('../partials/navbar'); %>
-        <div class="full gx-0">
-            <div class="container-fluid full d-flex justify-content-evenly align-items-center">
-                <!--Side1-->
-                <div class="d-none d-lg-block">
-                    <h1 class="display-1 heading-psf fw-bold">ParkSafe<br>
-                        <p class="h2 fw-bold text-center flex-wrap">
-                            Parking Made Easy
-                        </p>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-6 center text-center vh-100 d-none d-md-flex">
+                    <h1 class="display-1 fw-bold heading-psf">ParkSafe
+                        <br>
+                        <p class="h2 fw-bold"><%= tagline %></p>
                     </h1>
                 </div>
-                <!-- Side2 -->
-                <div>
-                    <div class="container tablet">
-                        <div class="p-2">
-                            <div class="p-2"></div>
-                        <div class="container tablet">
-                            <div class="p-4"></div>
-                            <div class="p-1"></div>
-                                <div class="m-3">
-                                    <label for="user_email" class="col-sm-2 col-form-label">Email</label>
-                                    <input type="email" class="form-control form-style" id="user_email" required>                                    
-                                    <label for="user_password" class="col-sm-2 col-form-label">Password</label>
-                                      <input type="password" class="form-control form-style" id="user_password" required>
-                                  </div>
-                                  <div class="p-4"></div>
-                                  <p class="text-center"><a href="/signup">Not a user ? <b>Sign Up</b></a></p>
-
+                <div class="col-12 col-md-6 center text-center vh-100">
+                    <div class="container-fluid border border-5 border-warning rounded-4 p-3 p-md-5 ">
+                        <div class="col-12 text-center d-md-none d-sm-flex my-3">
+                            <h1 class="display-1 fw-bold heading-psf">ParkSafe
+                                <br>
+                                <p class="h2 fw-bold"><%= tagline %></p>
+                            </h1>
                         </div>
-                        <center>
-                            <div class="p-2">
-                                <div class="p-1"></div>
-                                <button class="btn-y" type="submit" onclick="login()">
-                                    <b>
-                                        Login
-                                    </b>
-                                </button>
+                        <form class="border border-4 border-warning rounded-4 p-3" id="login_form">
+                            <div class="row text-start my-4 mx-1" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Registered Email">
+                                <label for="user_email" class="col-form-label">Email</label>
+                                <input type="email" class="form-control form-style" id="user_email" required>
                             </div>
-                        </center>
-                    </div>
+                            <div class="row text-start my-4 mx-1">
+                                <label for="user_password" class="col-form-label">Password</label>
+                                <input type="password" class="form-control form-style col" id="user_password" required  data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Password">
+                                <input class="col-2" type="checkbox" onclick="showPass()" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Show Password">
+                            </div>
+                            <div class="row text-center my-4 mx-1">
+                                <p class="text-end p-2"><a href="/signup">Not a user ? <b>Sign Up</b></a></p>
+                                <button  class="btn-psf fs-3 rounded-4 p-2 px-3 k" type="submit" onclick="login()" >Login</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-
-            
         </div>
         <script>
+            var submit_form=document.getElementById("login_form");
+            submit_form.onsubmit=function(e)
+            {
+                e.preventDefault();
+            }
+            function showPass(){
+                var x=document.getElementById("user_password")
+                if(x.type=="password"){
+                    x.type='text'
+                }
+                else{
+                    x.type='password'
+                }
+            }
             function login(){
                 const email=document.getElementById('user_email').value
                 const password=document.getElementById('user_password').value
@@ -75,6 +79,10 @@
                 window.location.href = `/user/${data.user.email}`;
               })
             }
+        </script>
+        <script>
+            const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+            const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
         </script>
 </body>
 

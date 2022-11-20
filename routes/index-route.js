@@ -14,7 +14,7 @@ router.get(['/','/login'],isAuthenticatedUser, async (req, res, next) => {
     if (isAuthenticatedUser===true) {
         res.redirect(`/user/${req.user.email}`);
     }
-    res.render('pages/login', { title: 'ParkSafe : Login' , user: req.user,isAuthenticatedUser});
+    res.render('pages/login', { title: 'ParkSafe : Login' , user: req.user,isAuthenticatedUser,tagline:'Parking Made Easy'});
 })
 // registration page
 router.get('/signup',isAuthenticatedUser, async (req, res, next) => {
