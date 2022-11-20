@@ -24,15 +24,15 @@
                                 <p class="h2 fw-bold"><%= tagline %></p>
                             </h1>
                         </div>
-                        <form class="border border-4 border-warning rounded-4 p-3" id="login_form">
+                        <form class="border border-4 border-warning rounded-4 p-3" id="login_form" >
                             <div class="row text-start my-4 mx-1" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Registered Email">
                                 <label for="user_email" class="col-form-label">Email</label>
-                                <input type="email" class="form-control form-style" id="user_email" required>
+                                <input type="email" class="form-control form-style" autocomplete="email" id="user_email" required>
                             </div>
                             <div class="row text-start my-4 mx-1">
                                 <label for="user_password" class="col-form-label">Password</label>
                                 <input type="password" class="form-control form-style col" id="user_password" required  data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Password">
-                                <input class="col-2" type="checkbox" onclick="showPass()" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Show Password">
+                                <input class="col-2" type="checkbox" onclick="showPass()" autocomplete="current-password" data-bs-toggle="tooltip" data-bs-placement="left" data-bs-title="Show Password">
                             </div>
                             <div class="row text-center my-4 mx-1">
                                 <p class="text-end p-2"><a href="/signup">Not a user ? <b>Sign Up</b></a></p>

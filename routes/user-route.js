@@ -109,5 +109,29 @@ router.post('/getSpace/:email',isAuthenticatedUser,catchAsyncErrors(async(req,re
     })
 }))
 
+router.post('/deleteSpace/:email',isAuthenticatedUser,catchAsyncErrors(async(req,res,next)=>{
+    console.log('deleting space : ',req.body.id)
+    try{
+        if(req.isAuthenticatedUser===false){
+            return res.redirect('/login')
+        }
+        const space=await Space.findOne({_id:req.body.id})
+        if(!space){
+            return res.status(404).json({
+                message:'Project Not Found'
+            })
+        }
+        await space.remove()
+        res.status(200).json({
+            success: true,
+            message:`Project ${req.body.id} deleted`
+        })
+    }
+    catch(error){
+        console.log(error)
+    }
+
+}))
+
 
 module.exports = router;
