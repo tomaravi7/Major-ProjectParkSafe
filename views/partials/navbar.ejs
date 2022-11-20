@@ -8,7 +8,7 @@
 <nav class="navbar navbar-dark fixed-top">
   <!-- fixed top later -->
   <div class="container-fluid">
-    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar"
+    <div class="offcanvas offcanvas-end nav-bar" tabindex="-1" id="offcanvasDarkNavbar"
       aria-labelledby="offcanvasDarkNavbarLabel">
       <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel"><!--PARKSAFE--></h5>
@@ -38,46 +38,46 @@
         <div class="container">
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/user/<%= user.email %>">Home</a>
+            <a class="nav-link active" aria-current="page" href="/user/<%= user.email %>"> <i class="fa-solid fa-house"></i> &nbsp; Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/about">About</a>
+            <a class="nav-link" href="/about"><i class="fa-solid fa-circle-info"></i> &nbsp; About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/user/pv/<%= user.email %>">Park Vehicles</a>
+            <a class="nav-link" href="/user/pv/<%= user.email %>"><i class="fa-solid fa-car"></i> &nbsp; Park Vehicles</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/user/rs/<%= user.email %>">Rent Space</a>
+            <a class="nav-link" href="/user/rs/<%= user.email %>"><i class="fa-solid fa-flag"></i> &nbsp; Rent Space</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/parking-payment">Parking Payment(To be removed)</a>
+            <a class="nav-link" href="/parking-payment"><i class="fa-regular fa-credit-card"></i> &nbsp; Parking Payment(To be removed)</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/api/v1/logout">Logout</a>
+            <a class="nav-link" href="/api/v1/logout"> <i class="fa-solid fa-right-from-bracket"></i> &nbsp;Logout</a>
           </li>
           </ul>
           <% } else {%>
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/">Home</a>
+              <a class="nav-link active" aria-current="page" href="/"> <i class="fa-solid fa-house"></i> &nbsp; Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/about">About</a>
+              <a class="nav-link" href="/about"> <i class="fa-solid fa-circle-info"></i> &nbsp; About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/login">Login</a>
+              <a class="nav-link" href="/login"><i class="fa-solid fa-right-to-bracket"></i> &nbsp; Login</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/signup">SignUp</a>
+              <a class="nav-link" href="/signup"><i class="fa-solid fa-address-card"></i> &nbsp; SignUp</a>
             </li>
           </ul>
           <% } %>
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
           <li class="nav-item">
-            <a class="nav-link" href="/faq">FAQ</a>
+            <a class="nav-link" href="/faq"><i class="fa-solid fa-file-circle-question"></i> &nbsp; FAQ</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/team">Our Team</a>
+            <a class="nav-link" href="/team"> <i class="fa-solid fa-people-group"></i> &nbsp; Our Team</a>
           </li>
         </ul>
         </div>
@@ -85,10 +85,9 @@
           <div class="row">
             <div class="col h5 p-2">Theme</div>
             <div class="col">
-              <select class="form-select form-select-lg mb-3 bg-dark" aria-label=".form-select">
+              <select class="form-select form-select-lg mb-3 themeBox" aria-label=".form-select" style="background-color: var(--yellow)!important;">
                 <option value="1" selected>Dark</option>
                 <option value="2">Light</option>
-                <option value="3">Blue</option>
               </select>
             </div>
           </div>
@@ -97,3 +96,5 @@
     </div>
   </div>
 </nav>
+<script src="/js/script.js"></script>
+

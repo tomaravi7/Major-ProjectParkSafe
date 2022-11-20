@@ -6,6 +6,13 @@
     --greyDark: #2d2d2d;
     --greyLight: #424242;
 }
+.light{
+    --greyDark:#FEFEFE;
+    --white:#000000;
+    --yellow:#E6F3FB;
+    --greyLight:#E6F3FB;
+}
+
 * {
     color: var(--white) !important;
     scroll-behavior: smooth;
@@ -47,4 +54,8 @@ body {
 }
 .curve{
     border-radius: 20px;
+}
+
+.nav-bar{
+    background-color: var(--greyLight)!important;
 }
