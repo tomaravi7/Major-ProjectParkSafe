@@ -27,7 +27,7 @@ router.get('/signup',isAuthenticatedUser, async (req, res, next) => {
 // about page
 router.get('/about',isAuthenticatedUser, async (req, res, next) => {
     const isAuthenticatedUser = req.isAuthenticatedUser;
-    res.render('pages/about', { title: 'ParkSafe : About',isAuthenticatedUser,tagline:'Parking Made Easy'});
+    res.render('pages/about', { title: 'ParkSafe : About',user: req.user,isAuthenticatedUser,tagline:'Parking Made Easy'});
 })
 // faq page
 router.get("/faq", isAuthenticatedUser, async (req, res, next)=> {
@@ -40,13 +40,14 @@ router.get("/faq", isAuthenticatedUser, async (req, res, next)=> {
     res.render("pages/faq", {
       title: "ParkSafe:FAQ",
       faqdata: dataobj,
+      user: req.user,
       isAuthenticatedUser
     });
 });
 // teams page
 router.get('/team',isAuthenticatedUser, async (req, res, next) => {
     const isAuthenticatedUser = req.isAuthenticatedUser;
-    res.render('pages/team', { title: 'ParkSafe : About',isAuthenticatedUser,tagline:'Parking Made Easy'});
+    res.render('pages/team', { title: 'ParkSafe : About',user: req.user,isAuthenticatedUser,tagline:'Parking Made Easy'});
 })
 // logout page
 router.get('/loggedout',isAuthenticatedUser,async(req,res,next)=>{

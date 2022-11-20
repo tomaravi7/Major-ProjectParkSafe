@@ -43,6 +43,9 @@
                 </div>
             </div>
         </div>
+        <footer> 
+        <%- include('../partials/footer'); %>
+        </footer>
         <script>
             var submit_form=document.getElementById("login_form");
             submit_form.onsubmit=function(e)
@@ -84,6 +87,7 @@
             const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
             const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
         </script>
+
 </body>
 
 </html>

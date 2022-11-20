@@ -14,9 +14,9 @@
         <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel"><!--PARKSAFE--></h5>
         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
+      <% if (isAuthenticatedUser===true) { %>
       <div class="offcanvas-body">
         <!-- TODO: to be fixed so that pages can be viewed even when authenticated -->
-        <% if (isAuthenticatedUser===true) { %>
         <main>
           <div class="container">
             <section>
@@ -55,24 +55,7 @@
           <li class="nav-item">
             <a class="nav-link" href="/api/v1/logout"> <i class="fa-solid fa-right-from-bracket"></i> &nbsp;Logout</a>
           </li>
-          </ul>
-          <% } else {%>
-            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="/"> <i class="fa-solid fa-house"></i> &nbsp; Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/about"> <i class="fa-solid fa-circle-info"></i> &nbsp; About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/login"><i class="fa-solid fa-right-to-bracket"></i> &nbsp; Login</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/signup"><i class="fa-solid fa-address-card"></i> &nbsp; SignUp</a>
-            </li>
-          </ul>
-          <% } %>
-          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+          
           <li class="nav-item">
             <a class="nav-link" href="/faq"><i class="fa-solid fa-file-circle-question"></i> &nbsp; FAQ</a>
           </li>
@@ -93,6 +76,62 @@
           </div>
         </div>
       </div>
+      <% } else {%>
+        <div class="offcanvas-body">
+          <!-- TODO: to be fixed so that pages can be viewed even when authenticated -->
+          <main>
+            <div class="container">
+              <section>
+                <center>
+                  <div class="circle">
+                    <img src="/img/logo.png" class="img-fluid" alt="usericon">
+                  </div>
+                  <div>
+                    <div class="p-2"></div>
+                    <p class="h3">
+                      User
+                    </p>
+                  </div>
+                </center>
+              </section>
+            </div>
+            <hr>
+          </main>
+          <div class="container">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/"> <i class="fa-solid fa-house"></i> &nbsp; Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/about"><i class="fa-solid fa-circle-info"></i> &nbsp; About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/login"><i class="fa-solid fa-right-to-bracket"></i> &nbsp; Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/signup"><i class="fa-solid fa-address-card"></i> &nbsp; SignUp</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/faq"><i class="fa-solid fa-file-circle-question"></i> &nbsp; FAQ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/team"> <i class="fa-solid fa-people-group"></i> &nbsp; Our Team</a>
+            </li>
+          </ul>
+          </div>
+          <div class="text-end p-2 m-1">
+            <div class="row">
+              <div class="col h5 p-2">Theme</div>
+              <div class="col">
+                <select class="form-select form-select-lg mb-3 themeBox" aria-label=".form-select" style="background-color: var(--yellow)!important;">
+                  <option value="1" selected>Dark</option>
+                  <option value="2">Light</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% } %>
     </div>
   </div>
 </nav>
