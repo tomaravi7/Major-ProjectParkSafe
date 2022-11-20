@@ -194,22 +194,27 @@
                 console.log("COORDINATES DATA THAT WE GET BACK FROM DB -",data.spacesAvailable)
                 for(i=0;i<data.spacesAvailableCount;i++){
                     const veh=data.spacesAvailable[i]
-                    // console.log(`For space ${i} - `,veh.coordinates.split(",")[0])
-                    coor=veh.coordinates.split(",")
-                    //available parking spaces markerw
-                    const hm = document.createElement("div");
-                    hm.className = "marker";
-                    hm.style.backgroundImage = `url('/img/icons/parking-sign.png')`;
-                    // console.log(latitude," + ",longitude)
-                    const marker1 = new mapboxgl.Marker(hm)
-                    .setLngLat([coor[0], coor[1]])
-                    .setPopup(
-                        new mapboxgl.Popup({ offset: [-380,400] }) // add popups
-                            .setHTML(
-                            `<h5>Vehcile Type : ${veh.vehicleType}</h5><p>Fenced : ${veh.fence}<br>Shaded : ${veh.shade}<br>Price : ${veh.price}<br>Address : ${veh.address}</p><br><button>Book</button>`
-                            )
-                    )
-                    .addTo(map);
+                    if(veh.occupied===true){
+                        continue
+                    }
+                    else{
+                        // console.log(`For space ${i} - `,veh.coordinates.split(",")[0])
+                        coor=veh.coordinates.split(",")
+                        //available parking spaces markerw
+                        const hm = document.createElement("div");
+                        hm.className = "marker";
+                        hm.style.backgroundImage = `url('/img/icons/parking-sign.png')`;
+                        // console.log(latitude," + ",longitude)
+                        const marker1 = new mapboxgl.Marker(hm)
+                        .setLngLat([coor[0], coor[1]])
+                        .setPopup(
+                            new mapboxgl.Popup({ offset: 25 }) // add popups
+                                .setHTML(
+                                `<h5>Vehcile Type : ${veh.vehicleType}</h5><p>Fenced : ${veh.fence}<br>Shaded : ${veh.shade}<br>Price : ${veh.price}<br>Address : ${veh.address}</p><br><button>Book</button>`
+                                )
+                        )
+                        .addTo(map);
+                    }
                 }
                 let vehicleInnerHTML=""
                 if(data.vehicleCount===0){

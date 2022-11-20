@@ -54,6 +54,7 @@ router.get('/loggedout',isAuthenticatedUser,async(req,res,next)=>{
     if(isAuthenticatedUser===true){
         res.send(404)
     }
-    res.render('pages/loggedout.ejs',{title:'Our Team',isAuthenticatedUser})
+    res.render('pages/loggedout.ejs',{title:'Logged Out',isAuthenticatedUser})
 })
+
 module.exports = router;

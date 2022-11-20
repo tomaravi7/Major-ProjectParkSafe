@@ -21,6 +21,12 @@ const user = require('./routes/user-route');
 app.use('/api/v1', auth)
 app.use('/', index)
 app.use('/user',user)
+app.get("*", function (req, res, next) {
+    res.status(404).render("pages/error404", {
+      title: "ParkSafe:Page Not Found",
+    });
+});
+
 
 // MiddleWare To handle Errors
 app.use(errorMiddleware);
