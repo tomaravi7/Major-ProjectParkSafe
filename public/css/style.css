@@ -63,3 +63,9 @@ body {
     background-color: var(--greyLight);
     border-radius: 20px;
 }
+#particles-js{
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: -10;
+}

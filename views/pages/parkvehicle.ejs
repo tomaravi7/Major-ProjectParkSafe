@@ -32,6 +32,9 @@
                             data-bs-target="#car_info_formmodal"><img src="/img/icons/plus.png"><br> Add
                             Vehicle</button>
                     </div>
+                    <div class="row">
+                        
+                    </div>
                 </div>
                 <!-- end of save vehicles list -->
                 <!-- start of Vehicles Parked -->
@@ -182,7 +185,7 @@
     </div>
 
     <footer>
-        <!-- <%- include('../partials/footer'); %> -->
+        <%- include('../partials/footer'); %>
     </footer>
     <script src="/js/mapinit.js"></script>
     <script>
@@ -222,14 +225,14 @@
                         hm.style.backgroundImage = `url('/img/icons/parking-sign.png')`;
                         // console.log(latitude," + ",longitude)
                         const marker1 = new mapboxgl.Marker(hm)
-                            .setLngLat([coor[0], coor[1]])
-                            .setPopup(
-                                new mapboxgl.Popup({ offset: 25 }) // add popups
-                                    .setHTML(
-                                        `<h5>Vehcile Type : ${veh.vehicleType}</h5><p>Fenced : ${veh.fence}<br>Shaded : ${veh.shade}<br>Price : ${veh.price}<br>Address : ${veh.address}</p><br><button>Book</button>`
-                                    )
-                            )
-                            .addTo(map);
+                        .setLngLat([coor[0], coor[1]])
+                        .setPopup(
+                            new mapboxgl.Popup({ offset: 25 }) // add popups
+                                .setHTML(
+                                `<h5>Vehcile Type : ${veh.vehicleType}</h5><p>Fenced : ${veh.fence}<br>Shaded : ${veh.shade}<br>Price : ${veh.price}<br>Address : ${veh.address}</p><br><button>Book</button>`
+                                )
+                        )
+                        .addTo(map);
                     }
                 }
                 let vehicleInnerHTML = ""

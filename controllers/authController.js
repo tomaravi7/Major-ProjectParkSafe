@@ -20,6 +20,10 @@ exports.registerUser = catchAsyncErrors(async (req, res, next) => {
       adhaar,
     });
     sendToken(user, 200, res)
+    res.status(200).json({
+        success:true,
+        message:'Signed Up'
+    })
 });
   
 
