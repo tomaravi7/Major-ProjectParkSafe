@@ -109,6 +109,30 @@ router.post('/getSpace/:email',isAuthenticatedUser,catchAsyncErrors(async(req,re
     })
 }))
 
+router.post('/deleteVehicle/:email',isAuthenticatedUser,catchAsyncErrors(async(req,res,next)=>{
+    console.log('deleting vehicle : ',req.body.id)
+    try{
+        if(req.isAuthenticatedUser===false){
+            return res.redirect('/login')
+        }
+        const vehicle=await Vehicle.findOne({_id:req.body.id})
+        if(!vehicle){
+            return res.status(404).json({
+                message:'Vehicle Not Found'
+            })
+        }
+        await vehicle.remove()
+        res.status(200).json({
+            success: true,
+            message:`Vehicle ${req.body.id} deleted`
+        })
+    }
+    catch(error){
+        console.log(error)
+    }
+
+}))
+
 router.post('/deleteSpace/:email',isAuthenticatedUser,catchAsyncErrors(async(req,res,next)=>{
     console.log('deleting space : ',req.body.id)
     try{
@@ -133,5 +157,12 @@ router.post('/deleteSpace/:email',isAuthenticatedUser,catchAsyncErrors(async(req
 
 }))
 
+router.post('/bookSpace/:email',isAuthenticatedUser,catchAsyncErrors(async(req,res,next)=>{
+    console.log('booking space : ',req.body.sid,' for vehicle ',req.body.vid)
+    
+    
+    
+
+}))
 
 module.exports = router;

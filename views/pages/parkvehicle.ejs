@@ -32,9 +32,9 @@
                             data-bs-target="#car_info_formmodal"><img src="/img/icons/plus.png"><br> Add
                             Vehicle</button>
                     </div>
-                    <div class="row">
+                    <!-- <div class="row">
                         
-                    </div>
+                    </div> -->
                 </div>
                 <!-- end of save vehicles list -->
                 <!-- start of Vehicles Parked -->
@@ -189,9 +189,40 @@
     </footer>
     <script src="/js/mapinit.js"></script>
     <script>
-        const userId = '<%= (user && user._id)?user._id:null %>'
-        console.log("script user id ", userId)
-        function getVehicle() {
+        const userId='<%= (user && user._id)?user._id:null %>'
+        console.log("script user id ",userId)
+
+        // delete vehicle
+        function deleteVehicle(id) {
+            let text = "Are Your Sure You Want to Delete This Vehicle!\nPress ok to Confirm";
+            if (confirm(text) == true) {
+                console.log("executing delete vehicle",id)
+                url=`/user/deleteVehicle/<%= user.email %>`
+                console.log("Deleteing url : ",url)
+                fetch(url,{
+                    method:'POST',
+                    credentials:'same-origin',
+                        headers:{
+                            'Accept':'application.json, text/plain, */*',
+                            'Content-Type':'application/json',
+                        },
+                        body:JSON.stringify({id})
+                        }).then(res => res.json()).then(data=>{
+                            alert(data.message)
+                            if(data===false){
+                                alert(data.message)
+                                return
+                            }
+                            location.reload();
+                })
+            } else {
+                alert("Not Deleted")
+            }
+            
+        }
+
+        // getVehicles
+        function getVehicle(){
             console.log("executing getVehicle")
             let url = '/user/getVehicle/'
             url += '<%= user.email %>'
@@ -209,16 +240,16 @@
                     alert(data.message)
                     return
                 }
-                console.log('data we get back', data.vehicles, '\n and', data.vehicleCount)
-                console.log("COORDINATES DATA THAT WE GET BACK FROM DB -", data.spacesAvailable)
-                for (i = 0; i < data.spacesAvailableCount; i++) {
-                    const veh = data.spacesAvailable[i]
-                    if (veh.occupied === true) {
+                console.log('data we get back',data.vehicles,'\n and',data.vehicleCount)
+                console.log("COORDINATES DATA THAT WE GET BACK FROM DB -",data.spacesAvailable)
+                for(i=0;i<data.spacesAvailableCount;i++){
+                    const space=data.spacesAvailable[i]
+                    if(space.occupied===true||space.available!=true){
                         continue
                     }
-                    else {
-                        // console.log(`For space ${i} - `,veh.coordinates.split(",")[0])
-                        coor = veh.coordinates.split(",")
+                    else{
+                        // console.log(`For space ${i} - `,space.coordinates.split(",")[0])
+                        coor=space.coordinates.split(",")
                         //available parking spaces markerw
                         const hm = document.createElement("div");
                         hm.className = "marker";
@@ -229,7 +260,7 @@
                         .setPopup(
                             new mapboxgl.Popup({ offset: 25 }) // add popups
                                 .setHTML(
-                                `<h5>Vehcile Type : ${veh.vehicleType}</h5><p>Fenced : ${veh.fence}<br>Shaded : ${veh.shade}<br>Price : ${veh.price}<br>Address : ${veh.address}</p><br><button>Book</button>`
+                                `<h6>Vehicle Type : ${space.vehicleType}</h6><p>Fenced : ${space.fence}<br>Shaded : ${space.shade}<br>Price : ${space.price}<br>Address : ${space.address}</p><br><button class="btn btn-warning" onClick="bookSpace(\'${space._id}\')">Book</button>`
                                 )
                         )
                         .addTo(map);
@@ -250,24 +281,26 @@
                         logo = "<img src='/img/car.png' alt='' class='img-fluid'>"
                     }
                     const vehicle = `
-                    <div class="col-10">
-                        <div class="p-2">
-                        <div class="row box justify-content-center align-items-center">
-                        <div class="col-md-4 col-12">
-                            <div class="p-2">${logo}</div>
-                            <p class="h5">${veh.vehiclenumber}</p>
+                    <div class="col-10" onClick="selectVehicle(\'${veh._id}\')">
+                        <div class="p-2" id="${veh._id}">
+                            <div class="row box justify-content-center align-items-center">
+                                <div class="col-md-4 col-12">
+                                    <div class="p-2">${logo}</div>
+                                    <p class="h5">${veh.vehiclenumber}</p>
 
+                                </div>
+                                <div class="col-md-8 col-12 text-start">
+                                    <p>Color : ${veh.vehiclecolour}</p>
+                                    <p>MFD : ${veh.manufactureyear}</p>
+                                    <p>Address : ${veh.address}</p>
+                                    <p>Instruction : ${veh.instructions}</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button onClick="deleteVehicle(\'${veh._id}\')" class="btn btn-warning mb-3">Delete</button>
+                            </div>
                         </div>
-                        <div class="col-md-8 col-12 text-start">
-                            <p>Color : ${veh.vehiclecolour}</p>
-                            <p>MFD : ${veh.manufactureyear}</p>
-                            <p>Address : ${veh.address}</p>
-                            <p>Instruction : ${veh.instructions}</p>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-                    `
+                    </div>`
                     vehicleInnerHTML += vehicle
                 }
                 let vehiclesTag = document.getElementById('allVehicles')
@@ -276,9 +309,40 @@
 
         }
         getVehicle()
+        selectedVehicle=null;
+        function selectVehicle(vid){
+            console.log("vehicle selected is ",vid)
+            if(selectedVehicle==vid){
+                return(console.log("already selected"))
+            }
+            else{
+                vehSel=document.getElementById(`${selectedVehicle}`)
+                $(`#${selectedVehicle}>p`).remove()
+                selectedVehicle=vid
+                vehSel=document.getElementById(`${vid}`)
+                vehSel.innerHTML+=`<p>Selected</p>`
+            }
+        }
+        function bookSpace(sid){
+            const vid=selectedVehicle
+            if(vid===null){
+                return(alert("Please select a vehicle"))
+            }
+            else{
+                console.log("Bookng space ",sid,"for vehicle ",vid)
+                url=`/user/bookSpace/<%= user.email %>`
+                fetch(url,{
+                    method:'POST',
+                    credentials:'same-origin',
+                    headers:{
+                        'Accept':'application.json, text/plain, */*',
+                        'Content-Type':'application/json',
+                    },
+                    body:JSON.stringify({sid,vid})
+                })
+            }
+        }
     </script>
-
-</body>
 </body>
 
 </html>

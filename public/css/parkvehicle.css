@@ -23,7 +23,7 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
     cursor: pointer;
     background-color: transparent;
     text-align: center;

@@ -1,12 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <title>ParkSafe:Rent Space</title>
-    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
     <%- include('../partials/head'); %>
-        <link href="/css/rent.css" rel="stylesheet">
+        <link href="/css/rentspace.css" rel="stylesheet">
         <script src='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.js'></script>
         <link href='https://api.mapbox.com/mapbox-gl-js/v2.10.0/mapbox-gl.css' rel='stylesheet' />
         <script
@@ -14,234 +11,131 @@
         <link rel="stylesheet"
             href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css"
             type="text/css">
-        <style>
-            body {
-                margin: 0;
-                padding: 0;
-            }
-
-            /* #map {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 100%;
-        } */
-        </style>
 </head>
 
 <body>
+
     <navbar>
         <%- include('../partials/navbar'); %>
     </navbar>
-
-    <div>
-        <div class="row gx-0 flex-wrap-reverse">
-            <div class="col-sm-12 col-md-4">
-                <div class="container scrollable">
-                    <div class="p-3"></div>
-                    <p class="h1 text-center">Rent Space</p>
-                    <div class="p-3"></div>
-                    <!-- <p>No. of Hours</p>
-                    <section class="container box">
-                        <div class="p-3">
-                            <input type="range" class="form-range" min="0" max="100" id="customRange2">
-                            <div class="d-flex mb-3">
-                                <div class="me-auto">Min</div>
-                                <div>Max</div>
-                            </div>
-                        </div>
-                    </section> -->
-                    <div class="container">
-                        <div class="p-3"></div>
-                        <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                            data-bs-target="#staticBackdrop">+</button>
-
-
-                    </div>
-
-
-                    <!-- Parking Spots -->
-                    <div class="p-3"></div>
-                    <div>
-                        <p class="">Your Parking Spots</p>
-                        <div class="container">
-                            <div class="row justify-content-center align-items-center" id="spaceData">
-                            </div>
-                        </div>
-
-                    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <!-- map -->
+            <div class="col-12 col-md-7 vh-100 order-2 order-md-1" id="map"></div>
+            <!-- space data -->
+            <div class="col-12 col-md-5 order-md-2">
+                <div class="container">
+                    <h1 class="display1 p-4 text-center">Rent Space</h1>
+                    <button class="button-cstm rounded-3 p-3 m-3 fw-bold h5 col" data-bs-toggle="modal" data-bs-target="#space_info_modal"><img src="/img/icons/plus.png"><br> AddSpace</button>
                 </div>
-            </div>
-            <div class="col-sm-12 col-md-8 full" style="position: sticky;">
-                <div class="frame">
-                    <!-- <div class="tools sp"></div> -->
-                    <div id="map"></div>
+                <div class="container mt-4">
+                    <h5 class="fw-bolder headi">Your Parking Spots</h5>
+                    <div class="container" id="spaceData">
+                        <!-- spaces get dynamically added here -->
+
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-
-    <!--Modal-->
-
-
-
-
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5 text-center" id="staticBackdropLabel">Add Address</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    <!-- Modal -->
+    <!-- Modal -->
+    <div class="modal fade rounded-5 " id="space_info_modal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog ">
+            <div class="modal-content modal-style">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title " id="exampleModalLabel">Add Vehicle</h5>
+                    <button type="button" class="btn-close bg-warning" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form action="/user/addSpace/<%= user.email %>" method="get">
-                    <div class="p-1"></div>
-                    <p>
-                        <b>
-                            Select Vehicle Type
-                        </b>
-                    </p>
-                    <select name="vehicleType" id="v-type" class="form-select box mb-3">
-                            <option value="2">2 Wheels</option>
-                            <option value="3">3 Wheels</option>
-                            <option value="4">4 Wheels</option>
-                    </select>
-                    <div class="p-1"></div>
-                    <p><b><span id="price">Price</span>/Hr</b></p>
-                    <section class="container box mb-3">
-                        <div class="p-2">
-                            <input type="range" class="form-range" min="0" max="100" name="price" id="customRange2" oninput="updateVal(this.value)">
-                            <div class="d-flex mb-3">
-                                <div class="me-auto">Min</div>
-                                <div>Max</div>
+                    <!-- form -->
+                    <form class="container-" action="/user/addSpace/<%= user.email %>" method="get">
+                        <!-- dropdown for vehicle type -->
+                        <div class="row my-3">
+                            <p><b>Select Vehicle Type</b></p>
+                            <div class="col">
+                                <select name="vehicleType" class="form-select form-style"
+                                    aria-label="Default select vehicle_Type" required>
+                                    <option selected>Select Vehicle Type</option>
+                                    <option value="2">Two Wheeler</option>
+                                    <option value="3">Three Wheeler</option>
+                                    <option value="4">Four Wheeler</option>
+                                </select>
                             </div>
                         </div>
-                    </section>
-                    <div class="row">
-                        <div class="col-12">
-                            <p>
-                                <b>
-                                    Parking Type
-                                </b>
-                            </p>
+                        <div class="row my-3">
+                            <p><b><span id="price">Price</span>/Hr</b></p>
+                            <div class="p-3">
+                                <input type="range" class="form-range" min="0" max="150" name="price" id="customRange2" oninput="updateVal(this.value)">
+                                <div class="d-flex mb-3">
+                                    <div class="me-auto">Min</div>
+                                    <div>Max</div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-12 col-md-6">
-                            <div class="form-check">
+                        <div class="row my-3">
+                            <p><b>Parking Type</b></p>
+                            <div class="col-12 col-md-6">
                                 <select name="shade" id="shade" class="form-select box mb-3">
                                     <option value="true">Shadded</option>
-                                    <option value="false">Non Shadded</option>
-                            </select>
+                                    <option value="false">Non-Shadded</option>
+                                </select>
                             </div>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <div class="form-check">
+                            <div class="col-12 col-md-6">
                                 <select name="fence" id="fence" class="form-select box mb-3">
                                     <option value="true">Fenced</option>
-                                    <option value="false">Non Fenced</option>
-                            </select>
+                                    <option value="false">Non-Fenced</option>
+                                </select>
                             </div>
                         </div>
-                        <div class="p-1"></div>
-                        <div class="col-12">
-                            <p>
-                                <b>
-                                    Would you like to give space to any other vehical type
-                                </b>
-                            </p>
+                        <div class="row my-3">
+                            <label for="address" class="form-label"><b>Address</b></label>
+                            <input type="text" name="address" class="form-control tm" id="address">
                         </div>
-                        <!-- <div class="col-12 col-md-6">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="other-allow" id="flexRadioDefault1" onclick="extraV(this.value)" value="yes">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                    Yes
-                                </label>
+                        <div class="row my-3">
+                            <label for="img" class="form-label"><b>Add Image</b></label>
+                            <input class="form-control box" type="file" id="img">
+                        </div>
+                        <div class="row my-3">
+                            <p><b>Enter Availability Time</b></p>
+                            <div class="col-6">
+                                <label for="tm-start" class="form-label">From:</label>
+                                <input type="time" class="tm" name="startTime" id="tm-start">
+                            </div>
+                            <div class="col-6">
+                                <label for="tm-end" class="form-label">To:</label>
+                                <input type="time" class="tm" name="endTime" id="tm-end">
                             </div>
                         </div>
-                        <div class="col-12 col-md-6">
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="other-allow" id="flexRadioDefault1" onclick="extraV(this.value)" value="no">
-                                <label class="form-check-label" for="flexRadioDefault1">
-                                    No
-                                </label>
-                            </div>
-                        </div> -->
-                        <!-- <div class="col-12">
-                            <div id="typehidden">
-                                <p>Select Type</p>
-                                <select name="" id="" class="form-select box mb-3">
-                                    <option value="2w">2 Wheels</option>
-                                    <option value="3w">3 Wheels</option>
-                                    <option value="4w">4 Wheels</option>
-                            </select>
-                            </div>
-                        </div> -->
-                        <div class="p-1"></div>
-                        <div class="col-12">
-                            <div class="mb-3">
-                                <label for="address" class="form-label">Address</label>
-                                <input type="text" name="address" class="form-control tm" id="address">
-                            </div>
-                            <div class="mb-3">
-                                <label for="img" class="form-label"><b>Add Image</b></label>
-                                <input class="form-control box" type="file" id="img">
-                              </div>
+                        <div class="row my-3">
+                            <input value='' id="coordinateForm" name="coordinates" hidden>
                         </div>
-                        <div class="col-12">
-                            <p>
-                                <b>
-                                    Enter Availability Time
-                                </b>
-                            </p>
-                        </div>
-                        <div class="col-6">
-                            <label for="tm-start" class="form-label">From:</label>
-                            <input type="time" class="tm" name="startTime" id="tm-start">
-                        </div>
-                        <div class="col-6">
-                            <label for="tm-end" class="form-label">To:</label>
-                            <input type="time" class="tm" name="endTime" id="tm-end">
-                        </div>
-                        <input value='' id="coordinateForm" name="coordinates">
-                    </div>
+                        <button type="submit" class="btn btn-warning text-dark fw-bolder">Submit</button>
+                    </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-warning" data-bs-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-warning">Add</button>
-                </form>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
-
-<script>
-    function deleteSpace(id) { 
-        console.log("executing delete space",id)
-        url2=`/user/deleteSpace/<%= user.email %>`
-        console.log("Deleteing url : ",url2)
-        fetch(url2,{
-            method:'POST',
-            credentials:'same-origin',
-                headers:{
-                    'Accept':'application.json, text/plain, */*',
-                    'Content-Type':'application/json',
-                },
-                body:JSON.stringify({id})
-                }).then(res => res.json()).then(data=>{
-                    alert(data.message)
-                    if(data===false){
-                        alert(data.message)
-                        return
-                    }
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.js"></script>
+    <script>
+        $('.headi').click(function() {
+            console.log("checked")            
         })
-    }
+    </script>
+    <script>
+        const userId='<%= (user && user._id)?user._id:null %>'
 
-    const userId='<%= (user && user._id)?user._id:null %>'
-        console.log("script user id ",userId)
         coordinates=JSON.parse(localStorage.getItem("coordinate"))
-        console.log("coordinates in rent space page : ",coordinates)
         document.getElementById("coordinateForm").setAttribute("value",`${coordinates}`)
+
         function getSpace(){
             console.log("executing getSpace")
             let url='/user/getSpace/'
@@ -254,7 +148,7 @@
                     'Accept':'application.json, text/plain, */*',
                     'Content-Type':'application/json',
                 },
-                body:JSON.stringify({userId},{coordinates})
+                body:JSON.stringify({userId})
             }).then(res => res.json()).then(data=>{
                 if(data===false){
                     alert(data.message)
@@ -279,41 +173,65 @@
                         logo="🚘"
                     }
                     const vehicle=`
-                    <div class="box sp col-12">
-                                    <div class="row">
-                                        <div class="col-6">
-                                            <p>
-                                                ${spa.address}
-                                            </p>
-                                            <p>
-                                            Price:Rs${spa.price}/h
-                                            </p>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="form-check form-switch toggle-outer">
-                                                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
-                                            </div>
-                                        </div>
-                                        <div>
-                                                <button onClick="deleteSpace(\'${spa._id}\')" class="btn btn-warning mb-3">Delete Space</button>
-                                        </div>
-                                    </div>
+                    <div class="box my-3 p-3 col-12">
+                        <div class="row">
+                            <div class="col-6">
+                                <p>
+                                    ${spa.address}
+                                </p>
+                                <p>
+                                    Price:Rs${spa.price}/h
+                                </p>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-check form-switch toggle-outer">
+                                    <input class="form-check-input inputSpaceCheckAvailable" id="" type="checkbox" role="switch" id="flexSwitchCheckDefault" >
                                 </div>
+                            </div>
+                            <div>
+                                <button onClick="deleteSpace(\'${spa._id}\')" class="btn btn-warning mb-3">Delete Space</button>
+                            </div>
+                        </div>
+                    </div>
                     `
                     spaceInnerHTML+=vehicle
                 }
                 let SpaceTag=document.getElementById('spaceData')
                 SpaceTag.innerHTML+=spaceInnerHTML
             })
-            
         }
         getSpace()
-        
-</script>
-    <script src = "/js/rent.js"></script>
+
+        function deleteSpace(id){
+        let text = "Are Your Sure You Want to Delete This Space!\nPress ok to Confirm";
+            if (confirm(text) == true) {
+                console.log("executing delete space",id)
+                url=`/user/deleteSpace/<%= user.email %>`
+                console.log("Deleteing url : ",url)
+                fetch(url,{
+                    method:'POST',
+                    credentials:'same-origin',
+                        headers:{
+                            'Accept':'application.json, text/plain, */*',
+                            'Content-Type':'application/json',
+                        },
+                        body:JSON.stringify({id})
+                        }).then(res => res.json()).then(data=>{
+                            alert(data.message)
+                            if(data===false){
+                                alert(data.message)
+                                return
+                            }
+                            location.reload();
+                })
+            } else {
+                alert("Not Deleted")
+            }
+        }   
+    </script>
     <script src="/js/mapinit.js"></script>
-
-
+    <script src = "/js/rent.js"></script>
+    
 </body>
 
 </html>

@@ -42,6 +42,11 @@ const rentSpaceSchema = new mongoose.Schema({
     type: String,
     required:[true, "You are missing space coordinates"]
   },
+  available:{
+    type: Boolean,
+    default: true,
+    required: true
+  },
   occupied:{
     type: Boolean,
     default: false,

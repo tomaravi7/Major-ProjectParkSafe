@@ -1,0 +1,20 @@
+.button-cstm {
+    color: #000000!important;
+    background: var(--yellow);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border: none;
+}
+.marker {
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: transparent;
+    text-align: center;
+    padding-top: 2px;
+    font-weight: 900;
+}
+.toggle-outer{
+    float: right;
+}
