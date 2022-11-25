@@ -68,9 +68,9 @@
           <div class="row">
             <div class="col h5 p-2">Theme</div>
             <div class="col">
-              <select class="form-select form-select-lg mb-3 themeBox" aria-label=".form-select" style="background-color: var(--yellow)!important;">
-                <option value="1" selected>Dark</option>
-                <option value="2">Light</option>
+              <select onchange="theme(value)" class="form-select form-select-lg mb-3 themeBox" aria-label=".form-select" style="background-color: var(--yellow)!important;">
+                <option value="dark" id="dark">Dark</option>
+                <option value="light" id="light">Light</option>
               </select>
             </div>
           </div>
@@ -123,9 +123,9 @@
             <div class="row">
               <div class="col h5 p-2">Theme</div>
               <div class="col">
-                <select class="form-select form-select-lg mb-3 themeBox" aria-label=".form-select" style="background-color: var(--yellow)!important;">
-                  <option value="1" selected>Dark</option>
-                  <option value="2">Light</option>
+                <select onchange="theme(value)" class="form-select form-select-lg mb-3 themeBox" aria-label=".form-select" style="background-color: var(--yellow)!important;">
+                  <option value="dark" id="dark">Dark</option>
+                  <option value="light" id="light">Light</option>
                 </select>
               </div>
             </div>
@@ -135,5 +135,5 @@
     </div>
   </div>
 </nav>
-<script src="/js/script.js"></script>
+<script src="/js/theme.js"></script>
 
