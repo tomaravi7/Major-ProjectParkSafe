@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); %>
+    <link href="/css/profile.css" rel="stylesheet">
+</head>
+
+<body >
+    <navbar>
+        <%- include('../partials/navbar'); %>
+    </navbar>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-4 p-5">
+                <img src="/img/man.png" class="img-fluid p-5">
+            </div>
+            <div class="col-12 col-md-6 p-5">
+                <h1><%= user.name %></h1>
+                <h5><%= user.email %></h5>
+                <h5><%= user.phoneno %></h5>
+                <h5><%= user.address %></h5>
+                <p id="createdAtt">Created At : </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6  text-end">
+                <h1 class="text-center">Payments Due</h1>
+                <p>
+                    <h4 class="text-end"><%= user.paymentDue %></h4>
+                </p>
+                <button class="p-2 rounded fw-bold">Pay Now</button>
+            </div>
+            <div class="col-6 text-end">
+                <h1 class="text-center">Balance</h1>
+                <p>
+                    <h4 class="text-end"><%= user.balanceCredit %></h4>
+                </p>
+                <button class="p-2 rounded fw-bold">Redeem Now</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        date=new Date(`<%= Date(user.createdAt) %>`)
+        x=date.getDate()+"/"+date.getMonth()+"/"+date.getFullYear()
+        console.log(x)
+        document.getElementById('createdAtt').innerHTML+=x
+    </script>
+</body>
+
+</html>

@@ -30,6 +30,28 @@ const vehicleSchema = new mongoose.Schema({
     required: true,
     ref: "User",
   },
+  parked:{
+    type: Boolean,
+    default:false
+  }
+  ,
+  parkedAt:{
+    type: String,
+    default: 'NA'
+  },
+  addressParking:{
+    type: String,
+    default: 'NA'
+  },
+  startTime:{
+    type: String,
+    default:'00:00'
+  }
+  ,
+  checkOut:{
+    type: String,
+    default: '00:00'
+  },
   createdAt: {
     type: Date,
     default: Date.now,

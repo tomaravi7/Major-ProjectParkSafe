@@ -23,7 +23,6 @@
         <div class="row">
             <!-- start of left column -->
             <div class="col-12 col-md-4">
-                <div class="p-1"></div>
                 <h1 class="display-3 text-center my-5 mt-md-3 heading-pvh fw-normal"><a href="/">Park Vehicle</a></h1>
                 <!-- start of saved vehicles list -->
                 <div class="row text-center justify-content-center align-items-center" id="allVehicles">
@@ -39,8 +38,8 @@
                 <!-- end of save vehicles list -->
                 <!-- start of Vehicles Parked -->
                 <!-- <div class="p-5"></div> -->
-                <div class="row py-5">
-                    <h5 class="py-2 heading-pvh h5">Vehicles Parked</h5>
+                <div class="row py-5" id="parkedVehiclesShow">
+                    <h5 class="py-2 heading-pvh h5" >Vehicles Parked</h5>
                     <!-- start of parked vehiles -->
                     <div>
                         <!-- start of a card -->
@@ -62,7 +61,7 @@
                         </div>
                         <!-- end of a card -->
                         <!-- start of a card -->
-                        <div class="container- card-vehiclepark p-2 curve my-3">
+                        <div class="container card-vehiclepark p-2 curve my-3">
                             <div class="row">
                                 <div class="col-8">
                                     <div class="p-3">
@@ -120,22 +119,22 @@
                         </div>
                         <!-- file upload rc -->
                         <!-- <div class="row my-3">
-                    <div class="col-4 fs-5">
-                        <label for="uploadRC">Upload RC </label>
-                    </div>
-                    <div class="col-8">
-                        <input class="form-control form-style" type="file" id="uploadRC" >
-                    </div>
-                </div> -->
-                        <!-- file upload Vehicles -->
-                        <!-- <div class="row  my-3">
-                    <div class="col-4 col-md-5 fs-5">
-                        <label for="uploadVehicleimg">Vehicle Photos</label>
-                    </div>
-                    <div class="col-8 col-md-7">
-                        <input class="form-control form-style" type="file" id="uploadVehicleimg">
-                    </div>
-                </div> -->
+                        <div class="col-4 fs-5">
+                            <label for="uploadRC">Upload RC </label>
+                        </div>
+                        <div class="col-8">
+                            <input class="form-control form-style" type="file" id="uploadRC" >
+                        </div>
+                    </div> -->
+                            <!-- file upload Vehicles -->
+                            <!-- <div class="row  my-3">
+                        <div class="col-4 col-md-5 fs-5">
+                            <label for="uploadVehicleimg">Vehicle Photos</label>
+                        </div>
+                        <div class="col-8 col-md-7">
+                            <input class="form-control form-style" type="file" id="uploadVehicleimg">
+                        </div>
+                    </div> -->
                         <div class="row my-3">
                             <div class="col">
                                 <label class="fs-5" for="vehicleNumber">Vehicle Number</label>
@@ -266,9 +265,10 @@
                         .addTo(map);
                     }
                 }
-                let vehicleInnerHTML = ""
+                let allVehicleInnerHTML = ""
+                let parkedVehicleInnerHTML=""
                 if (data.vehicleCount === 0) {
-                    vehicleInnerHTML = 'No Vehicles Found'
+                    allVehicleInnerHTML = 'No Vehicles Found'
                 }
                 for (let i = 0; i < data.vehicleCount; i++) {
                     const veh = data.vehicles[i]
@@ -280,33 +280,63 @@
                     else {
                         logo = "<img src='/img/car.png' alt='' class='img-fluid'>"
                     }
-                    const vehicle = `
-                    <div class="col-10" onClick="selectVehicle(\'${veh._id}\')">
-                        <div class="p-2" id="${veh._id}">
-                            <div class="row box justify-content-center align-items-center">
-                                <div class="col-md-4 col-12">
-                                    <div class="p-2">${logo}</div>
-                                    <p class="h5">${veh.vehiclenumber}</p>
-
+                    if(veh.parked===false){
+                        const vehicle = `
+                        <div class="col-10" onClick="selectVehicle(\'${veh._id}\')">
+                            <div class="p-2" id="${veh._id}">
+                                <div class="row box justify-content-center align-items-center">
+                                    <div class="col-md-4 col-12">
+                                        <div class="p-2">${logo}</div>
+                                        <p class="h5">${veh.vehiclenumber}</p>
+    
+                                    </div>
+                                    <div class="col-md-8 col-12 text-start">
+                                        <p>Color : ${veh.vehiclecolour}</p>
+                                        <p>MFD : ${veh.manufactureyear}</p>
+                                        <p>Address : ${veh.address}</p>
+                                        <p>Instruction : ${veh.instructions}</p>
+                                    </div>
                                 </div>
-                                <div class="col-md-8 col-12 text-start">
-                                    <p>Color : ${veh.vehiclecolour}</p>
-                                    <p>MFD : ${veh.manufactureyear}</p>
-                                    <p>Address : ${veh.address}</p>
-                                    <p>Instruction : ${veh.instructions}</p>
+                                <div class="row">
+                                    <button onClick="deleteVehicle(\'${veh._id}\')" class="btn btn-warning mb-3">Delete</button>
                                 </div>
                             </div>
-                            <div class="row">
-                                <button onClick="deleteVehicle(\'${veh._id}\')" class="btn btn-warning mb-3">Delete</button>
+                        </div>`
+                        allVehicleInnerHTML += vehicle
+                    }
+                    else if(veh.parked===true){
+                        const vehicle=`
+                        <div class="col-10">
+                            <div class="p-2" id="${veh._id}">
+                                <div class="row box justify-content-center align-items-center">
+                                    <div class="col-md-4 col-12">
+                                        <div class="p-2">${logo}</div>
+                                        <p class="h5">${veh.vehiclenumber}</p>
+    
+                                    </div>
+                                    <div class="col-md-8 col-12 text-end">
+                                        <p>Color : ${veh.vehiclecolour}</p>
+                                        <p>MFD : ${veh.manufactureyear}</p>
+                                        <p>Address : ${veh.address}</p>
+                                        <p>Instruction : ${veh.instructions}</p>
+                                        <p>Parked At : ${veh.parkedAt}</p>
+                                        <p>Address Of Parking : ${veh.addressParking}</p>
+                                        <p>Start Time:${veh.startTime}</p>
+                                        <p>CheckOut Time : ${veh.checkOut}</p>
+                                        <button onClick="checkOutVehicle(\'${veh._id}\')" class="btn btn-warning mb-3">CheckOut</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>`
-                    vehicleInnerHTML += vehicle
+                        `
+                        parkedVehicleInnerHTML += vehicle
+                    }
                 }
                 let vehiclesTag = document.getElementById('allVehicles')
-                vehiclesTag.innerHTML += vehicleInnerHTML
+                vehiclesTag.innerHTML += allVehicleInnerHTML
+                let parkvehiclesTag = document.getElementById('parkedVehiclesShow')
+                parkvehiclesTag.innerHTML+=parkedVehicleInnerHTML
             })
-
         }
         getVehicle()
         selectedVehicle=null;
@@ -317,10 +347,25 @@
             }
             else{
                 vehSel=document.getElementById(`${selectedVehicle}`)
+                $(`#${selectedVehicle}>p`).empty()
                 $(`#${selectedVehicle}>p`).remove()
                 selectedVehicle=vid
                 vehSel=document.getElementById(`${vid}`)
-                vehSel.innerHTML+=`<p>Selected</p>`
+                vehSel.innerHTML+=`<p>Selected<br>
+                    <form>
+                        <div class="row my-3">
+                            <p><b>Enter Parking Time</b></p>
+                            <div class="col-6">
+                                <label for="time-start" class="form-label">From:</label>
+                                <input type="time" class="tm" name="vehStartTime" id="time-start">
+                            </div>
+                            <div class="col-6">
+                                <label for="tm-end" class="form-label">To:</label>
+                                <input type="time" class="tm" name="vehEndTime" id="time-end">
+                            </div>
+                        </div>
+                    </form>
+                    </p>`
             }
         }
         function bookSpace(sid){
@@ -329,6 +374,9 @@
                 return(alert("Please select a vehicle"))
             }
             else{
+                const srt=document.getElementById("time-start").value
+                const end=document.getElementById("time-end").value
+                console.log("timings are - ",srt,end)
                 console.log("Bookng space ",sid,"for vehicle ",vid)
                 url=`/user/bookSpace/<%= user.email %>`
                 fetch(url,{
@@ -338,9 +386,36 @@
                         'Accept':'application.json, text/plain, */*',
                         'Content-Type':'application/json',
                     },
-                    body:JSON.stringify({sid,vid})
+                    body:JSON.stringify({sid,vid,srt,end})
+                }).then(res => res.json()).then(data => {
+                    if (data === false) {
+                        alert(data.message)
+                        return
+                    }
+                    alert(data.message)
+                    location.reload();
                 })
             }
+        }
+        function checkOutVehicle(id){
+            console.log("Checking Out vehicle : ",id)
+            url=`/user/checkOutVehicle/<%= user.email %>`
+            fetch(url,{
+                method:'POST',
+                credentials:'same-origin',
+                headers:{
+                    'Accept':'application.json, text/plain, */*',
+                    'Content-Type':'application/json',
+                },
+                body:JSON.stringify({id})
+            }).then(res=>res.json()).then(data=>{
+                if(data===false){
+                    alert(data.message)
+                    return
+                }
+                alert(data.message)
+                location.reload();
+            })
         }
     </script>
 </body>

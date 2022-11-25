@@ -40,6 +40,14 @@ const userSchema = new mongoose.Schema({
     required: [true, "Adhaar No is required"],
     maxlength: [12, "Please Input your 12 digit adhaar Number"],
   },
+  balanceCredit:{
+    type: Number,
+    default:0
+  },
+  paymentDue:{
+    type: Number,
+    default:0
+  },
   createdAt: {
     type: Date,
     default: Date.now,
