@@ -132,6 +132,7 @@
     </script>
     <script>
         const userId='<%= (user && user._id)?user._id:null %>'
+        var checked
 
         coordinates=JSON.parse(localStorage.getItem("coordinate"))
         document.getElementById("coordinateForm").setAttribute("value",`${coordinates}`)
@@ -172,6 +173,11 @@
                     else if(spa.vehicleType=='4'){
                         logo="🚘"
                     }
+                    if (spa.available==true) {
+                        checked="checked"
+                    } else {
+                        checked=""
+                    }
                     const vehicle=`
                     <div class="box my-3 p-3 col-12">
                         <div class="row">
@@ -185,7 +191,7 @@
                             </div>
                             <div class="col-6">
                                 <div class="form-check form-switch toggle-outer">
-                                    <input class="form-check-input inputSpaceCheckAvailable" id="" type="checkbox" role="switch" id="flexSwitchCheckDefault" >
+                                    <input class="form-check-input inputSpaceCheckAvailable" ${checked} id="" type="checkbox" role="switch" id="flexSwitchCheckDefault" >
                                 </div>
                             </div>
                             <div>
