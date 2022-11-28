@@ -1,3 +1,7 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
 .faq {
     cursor: pointer;
     background-color: var(--greyLight);
@@ -17,3 +21,24 @@ details[open] summary~* {
         margin-top: 0px
     }
 }
+.bgtop{
+    background-color: var(--greyLight) !important;
+    background-image: url(/img/faq/faq.svg);
+    background-position-y: top;
+    background-position-x: right;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+.txtyelow{
+    color: var(--yellow) !important;
+}
+.card{
+    color: var(--white);
+    background-color: var(--greyLight);
+    border-radius: 15px;
+}
+@media only screen and (max-width: 1337px) {
+    .bgtop{
+        background-image: none;
+    }
+  }

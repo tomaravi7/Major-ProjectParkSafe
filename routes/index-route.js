@@ -38,7 +38,7 @@ router.get("/faq", isAuthenticatedUser, async (req, res, next)=> {
     );
     const dataobj = JSON.parse(faqdata);
     res.render("pages/faq", {
-      title: "ParkSafe:FAQ",
+      title: "ParkSafe : FAQ",
       faqdata: dataobj,
       user: req.user,
       isAuthenticatedUser
@@ -47,7 +47,7 @@ router.get("/faq", isAuthenticatedUser, async (req, res, next)=> {
 // teams page
 router.get('/team',isAuthenticatedUser, async (req, res, next) => {
     const isAuthenticatedUser = req.isAuthenticatedUser;
-    res.render('pages/team', { title: 'ParkSafe : About',user: req.user,isAuthenticatedUser,tagline:'Parking Made Easy'});
+    res.render('pages/team', { title: 'ParkSafe : Team',user: req.user,isAuthenticatedUser,tagline:'Parking Made Easy'});
 })
 // logout page
 router.get('/loggedout',isAuthenticatedUser,async(req,res,next)=>{
@@ -56,6 +56,11 @@ router.get('/loggedout',isAuthenticatedUser,async(req,res,next)=>{
         res.send(404)
     }
     res.render('pages/loggedout.ejs',{title:'Logged Out',isAuthenticatedUser})
+})
+// contact page
+router.get('/contactUs',isAuthenticatedUser, async (req, res, next) => {
+    const isAuthenticatedUser = req.isAuthenticatedUser;
+    res.render('pages/contact', { title: 'ParkSafe : Contact Us',user: req.user,isAuthenticatedUser,tagline:'Parking Made Easy'});
 })
 
 module.exports = router;

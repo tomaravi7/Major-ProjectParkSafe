@@ -10,19 +10,40 @@
     <navbar>
         <%- include('../partials/navbar'); %>
     </navbar>
-    <div class="container mt-3">
-        <h1 class="display-2 mb-5">Frequently Asked Questions</h1>
-        <% faqdata.forEach(faq => { %>
-            <div class="my-4">
-                <details class="pt-4 p-3 faq rounded-2">
-                    <summary class="h4"><%= faq.head %></summary>
-                    <div class="pt-2 h6"><%= faq.body %></div>
-                </details>
-            </div>
-        <% }); %>
-        
-        
+    <div class="container-fluid py-5 text-center bgtop">
+        <h3>FAQ</h3>
+        <h1 class="display-2">Ask Us Anything ? </h1>
+        <h4 class="txtyelow">Have Any Questions?We are here to assist You!!</h4>
     </div>
+    <div class="container mt-5">
+        <div class="row">
+            <% faqdata.forEach(faq => { %>
+            <div class="col-12 col-md-4 px-4 px-md-0 d-flex align-items-stretch my-4">
+                <div class="card p-3" style="width: 25rem;">
+                    <div class="card-body">
+                      <h5 class="card-title"><i class="fa-solid fa-file-circle-question"></i> &nbsp; <%= faq.head %></h5>
+                      <br>
+                      <p class="card-text"><%= faq.body %></p>
+                    </div>
+                </div>
+            </div>
+            <% }); %>
+        </div>
+    </div>
+    <div class="container p-5">
+        <div class="row faq p-5 my-4 rounded-4">
+            <div class="col-12 col-md-8">
+                <h1>Still have Questions ?</h1>
+                <h4>Can't find the answer you're looking for. Please contact our freindly team.</h4>
+            </div>
+            <div class="col-md-3">
+                <a><button class="btn-psf p-3 rounded-3 fw-bolder fs-5">Get In Touch</button></a>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
     <script>
         const details = document.querySelectorAll("details");
         // Add the onclick listeners.

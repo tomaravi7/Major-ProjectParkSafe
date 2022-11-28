@@ -29,9 +29,14 @@
                     <button class="button-cstm rounded-3 p-3 m-3 fw-bold h5 col" data-bs-toggle="modal" data-bs-target="#space_info_modal"><img src="/img/icons/plus.png"><br> AddSpace</button>
                 </div>
                 <div class="container mt-4">
-                    <h5 class="fw-bolder headi">Your Parking Spots</h5>
+                    <h5 class="fw-bolder">Your Parking Spots</h5>
                     <div class="container" id="spaceData">
                         <!-- spaces get dynamically added here -->
+
+                    </div>
+                    <h5 class="fw-bolder">Occupied Parking Spots</h5>
+                    <div class="container" id="spaceOccupiedData">
+                        <!-- occupied spaces get dynamically added here -->
 
                     </div>
                 </div>
@@ -126,14 +131,7 @@
     </footer>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.js"></script>
     <script>
-        $('.headi').click(function() {
-            console.log("checked")            
-        })
-    </script>
-    <script>
         const userId='<%= (user && user._id)?user._id:null %>'
-        var checked
-
         coordinates=JSON.parse(localStorage.getItem("coordinate"))
         document.getElementById("coordinateForm").setAttribute("value",`${coordinates}`)
 
@@ -157,6 +155,7 @@
                 }
                 console.log('data we get back',data,'\n and',data.spaceCount)
                 let spaceInnerHTML=""
+                let spaceOccupiedInnerHTML="<p>No Occupied Spaces</p>"
                 if(data.spaceCount==0){
                     spaceInnerHTML='No Space Found'
                 }
@@ -173,37 +172,63 @@
                     else if(spa.vehicleType=='4'){
                         logo="🚘"
                     }
-                    if (spa.available==true) {
+                    if (spa.available===true) {
                         checked="checked"
                     } else {
-                        checked=""
+                        checked='unchecked'
                     }
-                    const vehicle=`
-                    <div class="box my-3 p-3 col-12">
-                        <div class="row">
-                            <div class="col-6">
-                                <p>
-                                    ${spa.address}
-                                </p>
-                                <p>
-                                    Price:Rs${spa.price}/h
-                                </p>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-check form-switch toggle-outer">
-                                    <input class="form-check-input inputSpaceCheckAvailable" ${checked} id="" type="checkbox" role="switch" id="flexSwitchCheckDefault" >
+                    if(spa.occupied===false){
+                        const vehicle=`
+                        <div class="box my-3 p-3 col-12">
+                            <div class="row">
+                                <div class="col-6">
+                                    <p>
+                                        ${spa.address}
+                                    </p>
+                                    <p>
+                                        Price:Rs${spa.price}/h
+                                    </p>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-check form-switch toggle-outer">
+                                        <input class="form-check-input" ${checked} id="availableCheckBox" type="checkbox" role="switch" on id="flexSwitchCheckDefault" onclick="changeAvailability(\'${spa._id}\')">
+                                    </div>
+                                </div>
+                                <div>
+                                    <button onClick="deleteSpace(\'${spa._id}\')" class="btn btn-warning mb-3">Delete Space</button>
                                 </div>
                             </div>
-                            <div>
-                                <button onClick="deleteSpace(\'${spa._id}\')" class="btn btn-warning mb-3">Delete Space</button>
+                        </div>
+                        `
+                        spaceInnerHTML+=vehicle
+                    }
+                    else if(spa.occupied===true){
+                        const vehicle=`
+                        <div class="box my-3 p-3 col-12">
+                            <div class="row">
+                                <div class="col-6">
+                                    <p>
+                                        ${spa.address}
+                                    </p>
+                                    <p>
+                                        Price:Rs${spa.price}/h
+                                    </p>
+                                </div>
+                                <div class="col-6">
+                                    <div>
+                                        Occupied By : ${spa.occupiedBy}
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    `
-                    spaceInnerHTML+=vehicle
+                        `
+                        spaceOccupiedInnerHTML+=vehicle
+                    }
                 }
                 let SpaceTag=document.getElementById('spaceData')
                 SpaceTag.innerHTML+=spaceInnerHTML
+                let occupiedSpaceTag=document.getElementById('spaceOccupiedData')
+                occupiedSpaceTag.innerHTML=spaceOccupiedInnerHTML
             })
         }
         getSpace()
@@ -233,7 +258,31 @@
             } else {
                 alert("Not Deleted")
             }
-        }   
+        }
+        function changeAvailability(id){
+            console.log("Changing availability of : ",id)
+            if (document.getElementById('availableCheckBox').checked) {
+                checkedSpace=true
+            } else {
+                checkedSpace=false
+            }
+            url=`/user/changeSpaceAvailability/<%= user.email %>`
+            fetch(url,{
+                method:'POST',
+                credentials:'same-origin',
+                    headers:{
+                        'Accept':'application.json, text/plain, */*',
+                        'Content-Type':'application/json',
+                    },
+                    body:JSON.stringify({id,checkedSpace})
+                    }).then(res => res.json()).then(data=>{
+                        alert(data.message)
+                        if(data===false){
+                            alert(data.message)
+                            return
+                        }
+            })
+        }
     </script>
     <script src="/js/mapinit.js"></script>
     <script src = "/js/rent.js"></script>

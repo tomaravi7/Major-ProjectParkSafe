@@ -10,41 +10,75 @@
     <navbar>
         <%- include('../partials/navbar'); %>
     </navbar>
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-12 col-md-4 p-5">
-                <img src="/img/man.png" class="img-fluid p-5">
-            </div>
-            <div class="col-12 col-md-6 p-5">
+            <div class="col-12 col-md-4 p-5 text-center">
+                <img src="/img/man.png" class="img-fluid">
+                <br>
+                <br>
                 <h1><%= user.name %></h1>
-                <h5><%= user.email %></h5>
-                <h5><%= user.phoneno %></h5>
-                <h5><%= user.address %></h5>
-                <p id="createdAtt">Created At : </p>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-6  text-end">
-                <h1 class="text-center">Payments Due</h1>
-                <p>
-                    <h4 class="text-end"><%= user.paymentDue %></h4>
-                </p>
-                <button class="p-2 rounded fw-bold">Pay Now</button>
-            </div>
-            <div class="col-6 text-end">
-                <h1 class="text-center">Balance</h1>
-                <p>
-                    <h4 class="text-end"><%= user.balanceCredit %></h4>
-                </p>
-                <button class="p-2 rounded fw-bold">Redeem Now</button>
+            <div class="col-12 col-md-8 p-5 profile">
+                <form action="/user/updateUser/<%= user.email %>" method="get" class="updateUserInfoFrom">
+                    <div class="row my-3">
+                        <label class="fs-5 p-2 col-2" for="user_name">Name</label>
+                        <input type="text" id="user_name" name="name" placeholder="<%= user.name %>" autocomplete="cc-name" class="col-7 form-control form-style rounded-4 p-3" aria-label="default" required disabled>
+                    </div>
+                    <div class="row my-3">
+                        <label class="fs-5 p-2 " for="user_email">Email</label>
+                        <input type="email" id="user_email" name="email" placeholder="<%= user.email %>" autocomplete="email" class=" form-control form-style rounded-4 p-3" aria-label="default" required disabled>
+                    </div>
+                    <div class="row my-3">
+                        <label class="fs-5 p-2" for="user_phone">Phone Number</label>
+                        <input type="number" pattern="[0-9]{10}" name="phoneno" title="Phone Number should have a length of 10 number" autocomplete="phonenumber" id="user_phone" placeholder="<%= user.phoneno %>" class="form-control form-style rounded-4 p-3" aria-label="default input" required disabled>
+                    </div>
+                    <div class="row my-3">
+                        <label class="fs-5 p-2" for="user_address">Address</label>
+                        <textarea id="user_address" name="address" class="form-control form-style rounded-4 p-3" autocomplete="address-line1" placeholder="<%= user.address %>" required disabled></textarea>
+                    </div>
+                    <button class="btn-y bg-warning" id="updateProfileButton">Edit Profile</button>
+                </form>
+                <p id="createdAtt" class="text-end">Created At : </p>
             </div>
         </div>
     </div>
+    <br>
+    <div class="container mb-4">
+        <div class="row">
+            <div class="col-6 text-center">
+                <h1 class="text-center">Payments Due</h1>
+                <p>
+                    <h4 class="text-wrap text-end"><%= user.paymentDue %></h4>
+                </p>
+                <a href="/user/payment/<%= user.email %>"><button class="p-2 rounded fw-bold btn-y">Pay Now</button></a>
+            </div>
+            <div class="col-6 text-center">
+                <h1 class="text-center">Balance</h1>
+                <br class="d-block d-md-none">
+                <p>
+                    <h4 class="text-wrap text-end"><%= user.balanceCredit %></h4>
+                </p>
+                <a href="/user/redeem/<%= user.email %>"><button class="p-2 rounded fw-bold btn-y">Redeem Now</button></a>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <%- include('../partials/footer'); %>
+    </footer>
     <script>
         date=new Date(`<%= Date(user.createdAt) %>`)
         x=date.getDate()+"/"+date.getMonth()+"/"+date.getFullYear()
         console.log(x)
         document.getElementById('createdAtt').innerHTML+=x
+        $('#updateProfileButton').click(function () {
+            if(clicked===true){
+                $('.updateUserInfoFrom>div>input').removeAttr('disabled')
+                $('.updateUserInfoFrom>div>textarea').removeAttr('disabled')
+                $('#updateProfileButton').attr('type','submit')
+                $(this).text('Update Profile')
+            }
+            clicked=true
+        })
     </script>
 </body>
 

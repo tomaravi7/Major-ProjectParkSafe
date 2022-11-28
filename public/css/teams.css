@@ -16,3 +16,38 @@
     align-self: center;
     justify-self: center;
 }
+.bg-team{
+    background-image: url(/img/team/teampage.png);
+    background-repeat: no-repeat;
+    background-position-y: top;
+    background-position-x: right;
+    background-size: 30%;
+    
+}
+@media only screen and (max-width: 772px) {
+    .bg-team{
+        background-image: none;
+    }
+  }
+.card-bg{
+    background-color: var(--greyLight);
+    -webkit-box-shadow: 0 0.25rem 1rem 0 rgba(47, 91, 234, 0.125);
+    box-shadow: 0 0.5rem 1rem 0 rgba(50, 95, 255, 0.225);
+    border-radius: 5px;
+}
+.topclip{
+    clip-path: polygon(0 0, 100% 0%, 100% 80%, 0% 100%);   
+}
+.card-bg:hover{
+    background-color: #c5e5fa;
+    transform: scale(1.1);
+    border-radius: 15px;
+    transition: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    transition-duration: 1s;
+}
+.card-body{
+    color: aliceblue !important;
+}
+.socialIcons{
+    min-height: 15px;
+}

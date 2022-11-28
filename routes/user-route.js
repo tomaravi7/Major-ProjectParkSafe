@@ -264,4 +264,64 @@ router.post('/checkOutVehicle/:email',isAuthenticatedUser,catchAsyncErrors(async
     }
 }))
 
+router.post('/changeSpaceAvailability/:email',isAuthenticatedUser,catchAsyncErrors(async(req,res,next)=>{
+    console.log(req.body)
+    // TODO:check if the space is booked or not and then allow
+    try{
+        if(req.isAuthenticatedUser===false){
+            return res.redirect('/login')
+        }
+        const space=await Space.findOne({_id:req.body.id})
+        if(!space){
+            return res.status(404).json({
+                message:'Space Not Found'
+            })
+        }
+        if(space.occupied===true){
+            return res.status(400).json({
+                message:'Cannot change space is occupied'
+            })
+        }
+        await Space.updateOne({_id:req.body.id},{$set:{
+            available:req.body.checkedSpace
+        }})
+        res.status(200).json({
+            success: true,
+            message:`${req.body.id} Availability Changed to ${req.body.checkedSpace}`
+        })
+    }
+    catch(error){
+        console.log(error)
+    }
+}))
+router.get('/updateUser/:email', isAuthenticatedUser, catchAsyncErrors(async (req, res, next) => {
+
+    if (req.isAuthenticatedUser === false) {
+        return res.redirect('/login');
+    }
+    console.log("updateuser")
+    console.log("res.query is ",req.query);
+
+    res.redirect('back')
+}))
+router.get('/payment/:email', isAuthenticatedUser, catchAsyncErrors(async (req, res, next) => {
+    const isAuthenticatedUser = req.isAuthenticatedUser;
+    if (req.isAuthenticatedUser === false) {
+        return res.redirect('/login');
+    }
+    const requestedUser = (req.user!==undefined)?req.user:null;
+    const user = await userModel.findOne({ email: req.params.email }, { _id: 1, name: 1, email:1}); 
+    res.render('pages/parking-payment', { title: `${user.name}`,isAuthenticatedUser, user:requestedUser});
+    
+}))
+router.get('/redeem/:email', isAuthenticatedUser, catchAsyncErrors(async (req, res, next) => {
+    const isAuthenticatedUser = req.isAuthenticatedUser;
+    if (req.isAuthenticatedUser === false) {
+        return res.redirect('/login');
+    }
+    const requestedUser = (req.user!==undefined)?req.user:null;
+    const user = await userModel.findOne({ email: req.params.email }, { _id: 1, name: 1, email:1}); 
+    res.render('pages/space-payment', { title: `${user.name}`,isAuthenticatedUser, user:requestedUser});
+    
+}))
 module.exports = router;

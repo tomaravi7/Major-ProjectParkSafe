@@ -7,7 +7,7 @@ const sendToken = (user, statusCode, res) => {
 
     // Options for cookir
     const options = {
-      expiresIn: new Date(Date.now() + 24 * 24 * 60 * 60 * 1000),
+      expires: new Date(Date.now() + 1000*60*60*24*30),
     };
 
     res.status(statusCode).cookie('token',token ,options).json({
