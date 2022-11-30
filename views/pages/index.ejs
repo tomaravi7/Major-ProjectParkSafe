@@ -12,7 +12,8 @@
                 <div class="row my-5 my-md-0">
                     <h1 class="display-1 heading-psf fw-bold">ParkSafe<br>
                         <p class="h2 fw-bold">
-                            <%= tagline %>
+                            Parking Made <span id="tagLine"></span>
+
                         </p>
                     </h1>
                     <div class="row my-2 my-md-0 p-3 order-md-1 px-4 px-md-0">
@@ -34,6 +35,14 @@
     <footer>
         <%- include('../partials/footer'); %>
     </footer>
+    <script src="https://unpkg.com/typeit@8.7.0/dist/index.umd.js"></script>
+    <script>
+ new TypeIt('#tagLine', {
+   strings: ['Easy...', 'Simple...','Fun...','Safe...'],
+   breakLines: false,
+   loop: true
+}).go()
+    </script>
 
 </body>
 </html>

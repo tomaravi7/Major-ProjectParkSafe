@@ -97,3 +97,6 @@ body {
     background-color: #f6d139!important;
     color: #000000!important;
 }
+.mapboxgl-ctrl-geocoder--input{
+    color: #000000!important;
+}
