@@ -107,17 +107,21 @@ router.post('/getVehicle/:email',isAuthenticatedUser,catchAsyncErrors(async(req,
     })
 }))
 
-
 router.post('/getSpace/:email',isAuthenticatedUser,catchAsyncErrors(async(req,res,next)=>{
     console.log('get Space req.query : ',req.body.userId)
     userId=req.body.userId
     const space=await Space.find({user:req.body.userId})
     const spaceCount=await Space.find({user:req.body.userId}).count()
-    console.log(space)
+    const vehicle=await Vehicle.find()
+    const vehicleCount=await Vehicle.find({}).count()
+    console.log(vehicle)
+    // const spaOcc=await Vehicle.find({user:req.body.})
     res.status(200).json({
         success:true,
         space,
         spaceCount,
+        vehicle,
+        vehicleCount,
         message:'space'
     })
 }))
@@ -177,6 +181,31 @@ router.post('/bookSpace/:email',isAuthenticatedUser,catchAsyncErrors(async(req,r
             return res.redirect('/login')
         }
         const space=await Space.findOne({_id:req.body.sid})
+        const vehicle=await Vehicle.findOne({_id:req.body.vid})
+        if(vehicle.vehicleType>space.vehicleType){
+            return res.status(404).json({
+                message:`This vehicle(${vehicle.vehicleType} wheeler) is not compatible for this space(only ${space.vehicleType} wheelers are allowed)`
+            })
+        }
+        carParkReq = new Date()
+        carParkReq.setHours(req.body.srt.split(":")[0])
+        carParkReq.setMinutes(req.body.srt.split(":")[1])
+        startTime=space.startTime
+        endTime=space.endTime
+        startDate = new Date();
+        startDate.setHours(startTime.split(":")[0]);
+        startDate.setMinutes(startTime.split(":")[1]);
+
+        endDate = new Date();
+        endDate.setHours(endTime.split(":")[0]);
+        endDate.setMinutes(endTime.split(":")[1]);
+        valid=startDate < carParkReq && endDate > carParkReq
+        if(!valid){
+            console.log("Not in time frame")
+            return res.status(404).json({
+                message:`Sorry This space is only avilable from ${space.startTime} to ${space.endTime}`
+            })
+        }
         if(!space){
             return res.status(404).json({
                 message:'Space Not Found'
@@ -266,7 +295,6 @@ router.post('/checkOutVehicle/:email',isAuthenticatedUser,catchAsyncErrors(async
 
 router.post('/changeSpaceAvailability/:email',isAuthenticatedUser,catchAsyncErrors(async(req,res,next)=>{
     console.log(req.body)
-    // TODO:check if the space is booked or not and then allow
     try{
         if(req.isAuthenticatedUser===false){
             return res.redirect('/login')
@@ -299,9 +327,13 @@ router.get('/updateUser/:email', isAuthenticatedUser, catchAsyncErrors(async (re
     if (req.isAuthenticatedUser === false) {
         return res.redirect('/login');
     }
-    console.log("updateuser")
+    console.log("updateuser - ",req.params.email)
     console.log("res.query is ",req.query);
-
+    await userModel.updateOne({email:req.params.email},{$set:{
+        name: req.query.body,
+        phoneno : req.query.phoneno,
+        address : req.query.address
+    }})
     res.redirect('back')
 }))
 router.get('/payment/:email', isAuthenticatedUser, catchAsyncErrors(async (req, res, next) => {
@@ -312,7 +344,6 @@ router.get('/payment/:email', isAuthenticatedUser, catchAsyncErrors(async (req, 
     const requestedUser = (req.user!==undefined)?req.user:null;
     const user = await userModel.findOne({ email: req.params.email }, { _id: 1, name: 1, email:1}); 
     res.render('pages/parking-payment', { title: `${user.name}`,isAuthenticatedUser, user:requestedUser});
-    
 }))
 router.get('/redeem/:email', isAuthenticatedUser, catchAsyncErrors(async (req, res, next) => {
     const isAuthenticatedUser = req.isAuthenticatedUser;
@@ -322,6 +353,5 @@ router.get('/redeem/:email', isAuthenticatedUser, catchAsyncErrors(async (req, r
     const requestedUser = (req.user!==undefined)?req.user:null;
     const user = await userModel.findOne({ email: req.params.email }, { _id: 1, name: 1, email:1}); 
     res.render('pages/space-payment', { title: `${user.name}`,isAuthenticatedUser, user:requestedUser});
-    
 }))
 module.exports = router;

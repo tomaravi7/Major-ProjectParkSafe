@@ -57,3 +57,6 @@
 .sch{
     background-color: var(--greyLight);
 }
+.icon-img{
+    max-height: 30px;
+}

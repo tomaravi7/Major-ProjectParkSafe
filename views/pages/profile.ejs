@@ -71,13 +71,10 @@
         console.log(x)
         document.getElementById('createdAtt').innerHTML+=x
         $('#updateProfileButton').click(function () {
-            if(clicked===true){
-                $('.updateUserInfoFrom>div>input').removeAttr('disabled')
-                $('.updateUserInfoFrom>div>textarea').removeAttr('disabled')
-                $('#updateProfileButton').attr('type','submit')
-                $(this).text('Update Profile')
-            }
-            clicked=true
+            $('.updateUserInfoFrom>div>input').removeAttr('disabled')
+            $('.updateUserInfoFrom>div>textarea').removeAttr('disabled')
+            $('#updateProfileButton').attr('type','submit')
+            $(this).text('Update Profile')
         })
     </script>
 </body>

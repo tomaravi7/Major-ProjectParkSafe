@@ -184,15 +184,18 @@
                         const vehicle=`
                         <div class="box my-3 p-3 col-12">
                             <div class="row">
-                                <div class="col-6">
+                                <div class="col-9">
+                                    <img src="/img/rent/map.png" class="img-fluid icon-img">
                                     <p>
                                         ${spa.address}
                                     </p>
                                     <p>
                                         Price:Rs${spa.price}/h
                                     </p>
+                                    <p>Shaded : ${spa.shade}</p>
+                                    <p>Fenced : ${spa.fence}</p>
                                 </div>
-                                <div class="col-6">
+                                <div class="col-3">
                                     <div class="form-check form-switch toggle-outer">
                                         <input class="form-check-input" ${checked} id="availableCheckBox${i}" type="checkbox" role="switch" on id="flexSwitchCheckDefault" onclick="changeAvailability(\'${spa._id}\',${i})">
                                     </div>
@@ -206,6 +209,13 @@
                         spaceInnerHTML+=vehicle
                     }
                     else if(spa.occupied===true){
+                        var vehicleParked=''
+                        for(x=0;x<data.vehicleCount;x++){
+                            if(data.vehicle[x]._id==spa.occupiedBy){
+                                vehicleParked=data.vehicle[x]
+                                console.log
+                            }
+                        }
                         const vehicle=`
                         <div class="box my-3 p-3 col-12">
                             <div class="row">
@@ -218,8 +228,12 @@
                                     </p>
                                 </div>
                                 <div class="col-6">
-                                    <div>
-                                        Occupied By : ${spa.occupiedBy}
+                                    <div class="text-break">
+                                        <p>Occupied By : ${vehicleParked.modelName}</p>
+                                        <p>Vehicle Number : ${vehicleParked.vehiclenumber}</p>
+                                        <p class="text-break">Instructions : ${vehicleParked.instructions}</p>
+                                        <p>Start Time : ${vehicleParked.startTime}</p>
+                                        <p>Check Out : ${vehicleParked.checkOut}</p>
                                     </div>
                                 </div>
                             </div>

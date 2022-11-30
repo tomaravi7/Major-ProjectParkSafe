@@ -216,7 +216,7 @@
                         .setPopup(
                             new mapboxgl.Popup({ offset: 25 }) // add popups
                                 .setHTML(
-                                `<h6>Vehicle Type : ${space.vehicleType}</h6><p>Fenced : ${space.fence}<br>Shaded : ${space.shade}<br>Price : ${space.price}<br>Address : ${space.address}</p><br><button class="btn btn-warning" onClick="bookSpace(\'${space._id}\')">Book</button>`
+                                `<h6>Vehicle Type : ${space.vehicleType}</h6><p>Fenced : ${space.fence}<br>Shaded : ${space.shade}<br>Price : ${space.price}<br>Address : ${space.address}<br>Available From : ${space.}</p><br><button class="btn btn-warning" onClick="bookSpace(\'${space._id}\')">Book</button>`
                                 )
                         )
                         .addTo(map);
@@ -244,7 +244,7 @@
                                 <div class="row box justify-content-center align-items-center p-3" id="${veh._id}">
                                     <div class="col-md-4 col-12 text-center">
                                         <div class="p-2">${logo}</div>
-                                        <p class="h4">${veh.vehiclenumber}</p>
+                                        <p class="h4 text-break">${veh.vehiclenumber}</p>
                                     </div>
                                     <div class="col-md-8 col-12 text-start">
                                         <h5>${veh.modelName}</h5>
@@ -267,8 +267,7 @@
                                 <div class="row box justify-content-center align-items-center">
                                     <div class="col-md-4 col-12">
                                         <div class="p-2">${logo}</div>
-                                        <p class="h5 text-center">${veh.vehiclenumber}</p>
-    
+                                        <p class="h5 text-center text-break">${veh.vehiclenumber}</p>
                                     </div>
                                     <div class="col-md-8 col-12 text-start">
                                         <div class="p-1"></div>
@@ -276,8 +275,8 @@
                                         <p>MFD : ${veh.manufactureyear}</p>
                                         <p>Address : ${veh.address}</p>
                                         <p>Instruction : ${veh.instructions}</p>
-                                        <p>Parked At : ${veh.parkedAt}</p>
-                                        <p>Address Of Parking : ${veh.addressParking}</p>
+                                        <p class="text-break">Parked At : ${veh.parkedAt}</p>
+                                        <p class="text-break">Address Of Parking : ${veh.addressParking}</p>
                                         <p>Start Time:${veh.startTime}</p>
                                         <p>CheckOut Time : ${veh.checkOut}</p>
                                         <button onClick="checkOutVehicle(\'${veh._id}\')" class="btn btn-warning mb-3 fw-bolder">CheckOut</button>
