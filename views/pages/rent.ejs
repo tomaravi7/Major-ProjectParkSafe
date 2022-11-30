@@ -191,7 +191,7 @@
                                 </div>
                                 <div class="col-6">
                                     <div class="form-check form-switch toggle-outer">
-                                        <input class="form-check-input" ${checked} id="availableCheckBox" type="checkbox" role="switch" on id="flexSwitchCheckDefault" onclick="changeAvailability(\'${spa._id}\')">
+                                        <input class="form-check-input" ${checked} id="availableCheckBox${i}" type="checkbox" role="switch" on id="flexSwitchCheckDefault" onclick="changeAvailability(\'${spa._id}\',${i})">
                                     </div>
                                 </div>
                                 <div>
@@ -259,9 +259,9 @@
                 alert("Not Deleted")
             }
         }
-        function changeAvailability(id){
+        function changeAvailability(id,num){
             console.log("Changing availability of : ",id)
-            if (document.getElementById('availableCheckBox').checked) {
+            if (document.getElementById(`availableCheckBox${num}`).checked) {
                 checkedSpace=true
             } else {
                 checkedSpace=false
