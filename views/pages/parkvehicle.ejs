@@ -216,7 +216,7 @@
                         .setPopup(
                             new mapboxgl.Popup({ offset: 25 }) // add popups
                                 .setHTML(
-                                `<h6>Vehicle Type : ${space.vehicleType}</h6><p>Fenced : ${space.fence}<br>Shaded : ${space.shade}<br>Price : ${space.price}<br>Address : ${space.address}<br>Available From : ${space.}</p><br><button class="btn btn-warning" onClick="bookSpace(\'${space._id}\')">Book</button>`
+                                `<h6>Vehicle Type : ${space.vehicleType}</h6><p>Fenced : ${space.fence}<br>Shaded : ${space.shade}<br>Price : ${space.price}<br>Address : ${space.address}<br>Available From : ${space.startTime}</p><br><button class="btn btn-warning" onClick="bookSpace(\'${space._id}\')">Book</button>`
                                 )
                         )
                         .addTo(map);
