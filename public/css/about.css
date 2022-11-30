@@ -1,107 +1,14 @@
-*{
-    padding: 0;
-    margin:0;
+.bg-quot{
+    background-image: url(/img/about/quotes.png);
+    background-repeat: no-repeat;
+    background-position-x: right;
+    background-position-y: bottom;
+    background-size: inherit;
 }
-.about{
-    width:80%;
-    float:left;
-    margin: 9rem 0 2rem 5rem;
+#bgtop{
+    background-image: url(/img/about/quotes2.png);
+    background-repeat: no-repeat;
+    background-position-x: -40px;
+    background-position-y: -45px;
+    background-size: inherit;
 }
-
-.about-park{
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-}
-.about-us h1{
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 120px;
-    margin-bottom: 3rem;
-}
-.about-us img{
-    z-index: -9999;
-    position: absolute;
-    margin: -5rem 0 0 -4rem;
-}
-.img-col{
-    z-index: -9999;
-    position: relative;
-    margin: -7rem 0 41px 50rem;
-}
-.about p{
-    height: 320px;
-    font-family: 'Poppins';
-    font-weight: 700;
-    font-size: 2rem;
-    color: #FFFFFF;
-}
-.img-p{
-    margin-top:-10rem;
-}
-
-
-
-
-/* responsive css start from here */
-@media (min-width:301px) and (max-width: 420px) {
-    .about{
-        margin: 7rem 0px 0px 3rem;
-        
-    }
-    .about-us h1{
-        font-family: 'Poppins';
-        font-style: normal;
-        font-weight: 700;
-        font-size: 5.2rem;
-        
-    }
-    .about-us img {
-        z-index: -9999;
-        position: absolute;
-        margin: -11rem 0 0 -4rem;
-        width: 70% !important;
-        }
-      .about-park{
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-    }
-    .about p {
-        width: 100%;
-        font-family: 'Poppins';
-        font-size: 1.2rem;
-        line-height: 25px;
-        margin-top: 3rem;
-      }
-      .about img{
-        width: 100%;
-        margin-top: -2.8rem;
-    }
-    .img-col{
-        z-index: -9999;
-        position: relative;
-        margin: -1rem 0 0 9rem !important;
-        width: 70% !important;
-    }
-    
-  }
-
-@media (min-width:430px) and (max-width: 600px) {
-    .park-ab{
-        font-size: 4.7rem;
-        
-    }
-    .park img{
-        width:12rem;
-    }
-  }
-
-  @media (min-width:580px) and (max-width: 1000px) {
-    
-    .park img{
-        width:10rem;
-    }
-  }
-  
