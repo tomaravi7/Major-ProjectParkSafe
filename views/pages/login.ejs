@@ -14,7 +14,7 @@
                     <div>
                         <h1 class="display-1 fw-bold heading-psf">ParkSafe
                             <br>
-                            <p class="h2 fw-bold"><%= tagline %></p>
+                            <p class="h2 fw-bold">Parking Made <span id="tagLine"></span></p>
                         </h1>
                         <img src="/img/signup/signin.svg" class="img-fluid">
                     </div>
@@ -24,7 +24,7 @@
                         <div class="col-12 text-center d-md-none d-sm-flex my-3">
                             <h1 class="display-1 fw-bold heading-psf">ParkSafe
                                 <br>
-                                <p class="h2 fw-bold"><%= tagline %></p>
+                                <p class="h2 fw-bold">Parking Made Easy </p>
                             </h1>
                         </div>
                         <form id="login_form" autocomplete="on">
@@ -94,6 +94,15 @@
             const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
             const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
         </script>
+
+<script src="https://unpkg.com/typeit@8.7.0/dist/index.umd.js"></script>
+<script>
+new TypeIt('#tagLine', {
+strings: ['Easy...', 'Simple...','Fun...','Safe...'],
+breakLines: false,
+loop: true
+}).go()
+</script>
 
 </body>
 

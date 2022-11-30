@@ -54,6 +54,13 @@
         overflow:auto;
       }
 }
-.sch{
-    background-color: var(--greyLight);
+.modal{
+    backdrop-filter: blur(15px);
+}
+.modal-style{
+    background-color: var(--greyDark) !important;  
+}
+.form-style{
+    background-color: var(--greyLight) !important;
+    border: 1px solid var(--yellow);
 }
