@@ -15,7 +15,7 @@ function extraV(co) {
     }
     else{
         document.getElementById("typehidden").style.display='none'
-        console.log("fa;se") 
+        console.log("false") 
     }
 }
 

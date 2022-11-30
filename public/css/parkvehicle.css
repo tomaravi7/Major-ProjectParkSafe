@@ -18,12 +18,23 @@
 .card-vehiclepark{
     background-color: var(--greyLight);
 }
+.markeruser{
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background-color: transparent;
+    text-align: center;
+    padding-top: 2px;
+    font-weight: 900;
+}
 .marker {
     background-size: cover;
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    /* border: 2px solid blue; */
     cursor: pointer;
     background-color: transparent;
     text-align: center;
@@ -46,7 +57,7 @@
     backdrop-filter: blur(15px);
 }
 .modal-style{
-    background-color: var(--greyLight) !important;  
+    background-color: var(--greyDark) !important;  
 }
 .form-style{
     background-color: var(--greyLight) !important;
@@ -81,4 +92,8 @@
 }
 .sch{
     background-color: var(--greyLight);
+}
+.time-input{
+    background-color: var(--greyLight);
+    color: var();
 }

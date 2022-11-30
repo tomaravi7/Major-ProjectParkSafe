@@ -24,9 +24,9 @@
             <!-- space data -->
             <div class="col-12 col-md-4 scrollable">
                 <div class="container">
-                    <h1 class="display1 p-4 text-center">Rent Space</h1>
+                    <h1 class="display-3 fw-semibold py-4 text-center">Rent Space</h1>
                     <button class="button-cstm rounded-3 p-3 m-3 fw-bold h5 col" data-bs-toggle="modal"
-                        data-bs-target="#space_info_modal"><img src="/img/icons/plus.png"><br> AddSpace</button>
+                        data-bs-target="#space_info_modal"><img src="/img/icons/plus.png"><br> Add Space</button>
                 </div>
                 <div class="container mt-4">
                     <h5 class="fw-bolder">Your Parking Spots</h5>
@@ -158,7 +158,7 @@
                 }
                 console.log('data we get back',data,'\n and',data.spaceCount)
                 let spaceInnerHTML=""
-                let spaceOccupiedInnerHTML="<p>No Occupied Spaces</p>"
+                let spaceOccupiedInnerHTML=""
                 if(data.spaceCount==0){
                     spaceInnerHTML='No Space Found'
                 }
@@ -198,7 +198,7 @@
                                     </div>
                                 </div>
                                 <div>
-                                    <button onClick="deleteSpace(\'${spa._id}\')" class="btn btn-warning mb-3">Delete Space</button>
+                                    <button onClick="deleteSpace(\'${spa._id}\')" class="btn btn-warning mb-3 fw-bolder">Delete Space</button>
                                 </div>
                             </div>
                         </div>
@@ -231,6 +231,9 @@
                 let SpaceTag=document.getElementById('spaceData')
                 SpaceTag.innerHTML+=spaceInnerHTML
                 let occupiedSpaceTag=document.getElementById('spaceOccupiedData')
+                if(spaceOccupiedInnerHTML==""){
+                    spaceOccupiedInnerHTML="<p>No Occupied Spaces</p>"
+                }
                 occupiedSpaceTag.innerHTML=spaceOccupiedInnerHTML
             })
         }

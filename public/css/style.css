@@ -32,7 +32,7 @@
   
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--blueLight); 
+    background: #808080; 
   }
 
 

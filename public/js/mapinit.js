@@ -49,8 +49,8 @@ function markUserLocation() {
     localStorage.setItem("coordinate", JSON.stringify([long,lat]));
     //default marker on User
     const hm = document.createElement("div");
-    hm.className = "marker";
-    hm.style.backgroundImage = `url('/img/icons/location.png')`;
+    hm.className = "markeruser";
+    hm.style.backgroundImage = `url('/img/icons/location.svg')`;
     // console.log(latitude," + ",longitude)
     const marker1 = new mapboxgl.Marker(hm)
       .setLngLat([crd.longitude, crd.latitude])

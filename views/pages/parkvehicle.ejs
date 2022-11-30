@@ -21,37 +21,26 @@
 
     <div class="container-fluid">
         <div class="row flex-wrap-reverse">
-            <!-- start of left column -->
             <div class="col-12 col-md-4 scrollable">
-                <h1 class="display-3 text-center my-5 mt-md-3 heading-pvh fw-normal"><a href="/">Park Vehicle</a></h1>
-                <!-- start of saved vehicles list -->
-                <div class="row text-center justify-content-center align-items-center" id="allVehicles">
-                    <div class="col-6 col-md-4">
-                        <button class="button-cstm rounded-3 p-2 mt-3 h5" data-bs-toggle="modal"
-                            data-bs-target="#car_info_formmodal"><img src="/img/icons/plus.png"><br> Add
-                            Vehicle</button>
+                <div class="container">
+                    <h1 class="display-3 fw-semibold py-4 text-center">Park Vehicle</h1>
+                    <button class="button-cstm rounded-3 p-3 m-3 fw-bold h5 col" data-bs-toggle="modal"
+                        data-bs-target="#car_info_formmodal"><img src="/img/icons/plus.png"><br> Add Vehicle</button>
+                </div>
+                <div class="container mt-4">
+                    <h5 class="fw-bolder">Your Vehicles</h5>
+                    <div class="container" id="allVehicles">
+                        <!-- spaces get dynamically added here -->
                     </div>
-                    <!-- <div class="row">
-                        
-                    </div> -->
+                    <h5 class="fw-bolder">Vehicles Parked</h5>
+                    <div class="container mb-3" id="parkedVehiclesShow">
+                        <!-- occupied spaces get dynamically added here -->
+                    </div>
                 </div>
-                <!-- end of save vehicles list -->
-                <!-- start of Vehicles Parked -->
-                <!-- <div class="p-5"></div> -->
-                <div class="row py-5 justify-content-center align align-items-center" id="parkedVehiclesShow">
-                    <h5 class="py-2 heading-pvh h5" >Vehicles Parked</h5>
-                    <!-- start of parked vehiles -->
-                    <!-- end of parked vechiles -->
-                </div>
-                <!-- end of vehicles parked -->
             </div>
-            <!-- end of left column -->
-            <!-- start of right column -->
-
             <div id="map" class="frame col-12 col-md-8"></div>
         </div>
     </div>
-    <!-- form for adding vehicle -->
 
     <!-- Modal -->
     <div class="modal fade rounded-5 " id="car_info_formmodal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -101,6 +90,13 @@
                                 <label class="fs-5" for="vehicleNumber">Vehicle Number</label>
                                 <input class="form-control form-style" name="vehiclenumber" id="vehicleNumber"
                                     type="text" placeholder="Eg-DL 07DS 4391" aria-label="default input" required>
+                            </div>
+                        </div>
+                        <div class="row my-3">
+                            <div class="col">
+                                <label class="fs-5" for="modelName">Model Name</label>
+                                <input class="form-control form-style" name="modelName" id="modelName"
+                                    type="text" placeholder="Mahindra XUV 500" aria-label="default input" required>
                             </div>
                         </div>
                         <div class="row my-3">
@@ -243,31 +239,30 @@
                     }
                     if(veh.parked===false){
                         const vehicle = `
-                        <div class="col-10" onClick="selectVehicle(\'${veh._id}\')">
-                            <div class="p-2" id="${veh._id}">
-                                <div class="row box justify-content-center align-items-center">
-                                    <div class="col-md-4 col-12">
+                        <div class="col-12" onClick="selectVehicle(\'${veh._id}\')">
+                            <div class="p-2">
+                                <div class="row box justify-content-center align-items-center p-3" id="${veh._id}">
+                                    <div class="col-md-4 col-12 text-center">
                                         <div class="p-2">${logo}</div>
-                                        <p class="h5">${veh.vehiclenumber}</p>
-    
+                                        <p class="h4">${veh.vehiclenumber}</p>
                                     </div>
                                     <div class="col-md-8 col-12 text-start">
+                                        <h5>${veh.modelName}</h5>
                                         <p>Color : ${veh.vehiclecolour}</p>
                                         <p>MFD : ${veh.manufactureyear}</p>
                                         <p>Address : ${veh.address}</p>
                                         <p>Instruction : ${veh.instructions}</p>
+                                            <button onClick="deleteVehicle(\'${veh._id}\')" class="btn btn-warning mb-3 fw-bolder">Delete Vehicle</button>
                                     </div>
-                                    <div class="row">
-                                    <button onClick="deleteVehicle(\'${veh._id}\')" class="btn btn-warning mb-3">Delete</button>
-                                </div>
                                 </div>
                             </div>
-                        </div>`
+                        </div>
+                        `
                         allVehicleInnerHTML += vehicle
                     }
                     else if(veh.parked===true){
                         const vehicle=`
-                        <div class="col-10">
+                        <div class="col-12">
                             <div class="p-2" id="${veh._id}">
                                 <div class="row box justify-content-center align-items-center">
                                     <div class="col-md-4 col-12">
@@ -285,7 +280,7 @@
                                         <p>Address Of Parking : ${veh.addressParking}</p>
                                         <p>Start Time:${veh.startTime}</p>
                                         <p>CheckOut Time : ${veh.checkOut}</p>
-                                        <button onClick="checkOutVehicle(\'${veh._id}\')" class="btn btn-warning mb-3">CheckOut</button>
+                                        <button onClick="checkOutVehicle(\'${veh._id}\')" class="btn btn-warning mb-3 fw-bolder">CheckOut</button>
                                     </div>
                                 </div>
                             </div>
@@ -297,6 +292,9 @@
                 let vehiclesTag = document.getElementById('allVehicles')
                 vehiclesTag.innerHTML += allVehicleInnerHTML
                 let parkvehiclesTag = document.getElementById('parkedVehiclesShow')
+                if(parkedVehicleInnerHTML==""){
+                    parkedVehicleInnerHTML="No Parked Vehicles"
+                }
                 parkvehiclesTag.innerHTML+=parkedVehicleInnerHTML
             })
         }
@@ -309,22 +307,22 @@
             }
             else{
                 vehSel=document.getElementById(`${selectedVehicle}`)
-                $(`#${selectedVehicle}>p`).empty()
-                $(`#${selectedVehicle}>p`).remove()
+                $(`#${selectedVehicle}>form`).empty()
+                $(`#${selectedVehicle}>form`).remove()
+                $(`#${selectedVehicle}`).css("border","none")
                 selectedVehicle=vid
                 vehSel=document.getElementById(`${vid}`)
-                vehSel.style.borderRadius="10px"
-                vehSel.style.border="2px solid green"
-                vehSel.innerHTML+=`                    <form>
+                vehSel.style.border="2px solid yellow"
+                vehSel.innerHTML+=`<form>
                         <div class="row my-3">
                             <p><b>Enter Parking Time</b></p>
                             <div class="col-6">
                                 <label for="time-start" class="form-label">From:</label>
-                                <input type="time" class="form-control" name="vehStartTime" id="time-start">
+                                <input type="time" class="form-control time-input" name="vehStartTime" id="time-start">
                             </div>
                             <div class="col-6">
                                 <label for="tm-end" class="form-label">To:</label>
-                                <input type="time" class="form-control" name="vehEndTime" id="time-end">
+                                <input type="time" class="form-control time-input" name="vehEndTime" id="time-end">
                             </div>
                         </div>
                     </form>`

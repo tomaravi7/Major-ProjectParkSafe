@@ -10,6 +10,10 @@ const vehicleSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please Enter your Vehicle Number"],
   },
+  modelName:{
+    type:String,
+    required:[true,"Vehicle Model is Required"]
+  },
   vehiclecolour: {
     type: String,
     required: [true, "Please Enter your Vehicle Colour"],
