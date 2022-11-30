@@ -45,7 +45,7 @@ router.get("/faq", isAuthenticatedUser, async (req, res, next)=> {
     });
 });
 // teams page
-router.get('/team',isAuthenticatedUser, async (req, res, next) => {
+router.get('/developers',isAuthenticatedUser, async (req, res, next) => {
     const isAuthenticatedUser = req.isAuthenticatedUser;
     res.render('pages/team', { title: 'ParkSafe : Team',user: req.user,isAuthenticatedUser,tagline:'Parking Made Easy'});
 })

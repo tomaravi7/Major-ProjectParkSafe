@@ -19,14 +19,14 @@
         <%- include('../partials/navbar'); %>
     </navbar>
     <div class="container-fluid">
-        <div class="row">
-            <!-- map -->
-            <div class="col-12 col-md-7 vh-100 order-2 order-md-1" id="map"></div>
+        <div class="row flex-wrap-reverse">
+
             <!-- space data -->
-            <div class="col-12 col-md-5 order-md-2">
+            <div class="col-12 col-md-4 scrollable">
                 <div class="container">
                     <h1 class="display1 p-4 text-center">Rent Space</h1>
-                    <button class="button-cstm rounded-3 p-3 m-3 fw-bold h5 col" data-bs-toggle="modal" data-bs-target="#space_info_modal"><img src="/img/icons/plus.png"><br> AddSpace</button>
+                    <button class="button-cstm rounded-3 p-3 m-3 fw-bold h5 col" data-bs-toggle="modal"
+                        data-bs-target="#space_info_modal"><img src="/img/icons/plus.png"><br> AddSpace</button>
                 </div>
                 <div class="container mt-4">
                     <h5 class="fw-bolder">Your Parking Spots</h5>
@@ -41,6 +41,8 @@
                     </div>
                 </div>
             </div>
+            <!-- map -->
+            <div class="col-12 col-md-8 vh-100 frame" id="map"></div>
         </div>
     </div>
     <!-- Modal -->
@@ -48,7 +50,7 @@
     <div class="modal fade rounded-5 " id="space_info_modal" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog ">
-            <div class="modal-content modal-style">
+            <div class="modal-content modal-style sch">
                 <div class="modal-header text-center">
                     <h5 class="modal-title " id="exampleModalLabel">Add Vehicle</h5>
                     <button type="button" class="btn-close bg-warning" data-bs-dismiss="modal"
@@ -73,7 +75,8 @@
                         <div class="row my-3">
                             <p><b><span id="price">Price</span>/Hr</b></p>
                             <div class="p-3">
-                                <input type="range" class="form-range" min="0" max="150" name="price" id="customRange2" oninput="updateVal(this.value)">
+                                <input type="range" class="form-range" min="0" max="150" name="price" id="customRange2"
+                                    oninput="updateVal(this.value)">
                                 <div class="d-flex mb-3">
                                     <div class="me-auto">Min</div>
                                     <div>Max</div>
@@ -135,21 +138,21 @@
         coordinates=JSON.parse(localStorage.getItem("coordinate"))
         document.getElementById("coordinateForm").setAttribute("value",`${coordinates}`)
 
-        function getSpace(){
+        function getSpace() {
             console.log("executing getSpace")
-            let url='/user/getSpace/'
-            url+='<%= user.email %>'
-            console.log("url:",url)
-            fetch(url,{
+            let url = '/user/getSpace/'
+            url += '<%= user.email %>'
+            console.log("url:", url)
+            fetch(url, {
                 method: 'POST',
-                credentials:'same-origin',
-                headers:{
-                    'Accept':'application.json, text/plain, */*',
-                    'Content-Type':'application/json',
+                credentials: 'same-origin',
+                headers: {
+                    'Accept': 'application.json, text/plain, */*',
+                    'Content-Type': 'application/json',
                 },
-                body:JSON.stringify({userId})
-            }).then(res => res.json()).then(data=>{
-                if(data===false){
+                body: JSON.stringify({ userId })
+            }).then(res => res.json()).then(data => {
+                if (data === false) {
                     alert(data.message)
                     return
                 }
@@ -159,18 +162,18 @@
                 if(data.spaceCount==0){
                     spaceInnerHTML='No Space Found'
                 }
-                for(let i=0;i<data.spaceCount;i++){
-                    const spa=data.space[i]
-                    console.log("type : ",spa.vehicleType)
-                    uId=spa._id
-                    if(spa.vehicleType=='2'){
-                        logo="🏍️"
+                for (let i = 0; i < data.spaceCount; i++) {
+                    const spa = data.space[i]
+                    console.log("type : ", spa.vehicleType)
+                    uId = spa._id
+                    if (spa.vehicleType == '2') {
+                        logo = "🏍️"
                     }
-                    else if(spa.vehicleType=='3'){
-                        logo="🛺"
+                    else if (spa.vehicleType == '3') {
+                        logo = "🛺"
                     }
-                    else if(spa.vehicleType=='4'){
-                        logo="🚘"
+                    else if (spa.vehicleType == '4') {
+                        logo = "🚘"
                     }
                     if (spa.available===true) {
                         checked="checked"
@@ -233,27 +236,27 @@
         }
         getSpace()
 
-        function deleteSpace(id){
-        let text = "Are Your Sure You Want to Delete This Space!\nPress ok to Confirm";
+        function deleteSpace(id) {
+            let text = "Are Your Sure You Want to Delete This Space!\nPress ok to Confirm";
             if (confirm(text) == true) {
-                console.log("executing delete space",id)
-                url=`/user/deleteSpace/<%= user.email %>`
-                console.log("Deleteing url : ",url)
-                fetch(url,{
-                    method:'POST',
-                    credentials:'same-origin',
-                        headers:{
-                            'Accept':'application.json, text/plain, */*',
-                            'Content-Type':'application/json',
-                        },
-                        body:JSON.stringify({id})
-                        }).then(res => res.json()).then(data=>{
-                            alert(data.message)
-                            if(data===false){
-                                alert(data.message)
-                                return
-                            }
-                            location.reload();
+                console.log("executing delete space", id)
+                url = `/user/deleteSpace/<%= user.email %>`
+                console.log("Deleteing url : ", url)
+                fetch(url, {
+                    method: 'POST',
+                    credentials: 'same-origin',
+                    headers: {
+                        'Accept': 'application.json, text/plain, */*',
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ id })
+                }).then(res => res.json()).then(data => {
+                    alert(data.message)
+                    if (data === false) {
+                        alert(data.message)
+                        return
+                    }
+                    location.reload();
                 })
             } else {
                 alert("Not Deleted")
@@ -285,8 +288,8 @@
         }
     </script>
     <script src="/js/mapinit.js"></script>
-    <script src = "/js/rent.js"></script>
-    
+    <script src="/js/rent.js"></script>
+
 </body>
 
 </html>

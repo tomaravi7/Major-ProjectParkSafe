@@ -6,13 +6,35 @@
     --greyDark: #2d2d2d;
     --greyLight: #424242;
     --blueLight: #3f43fd;
+    --black:#000000;
 }
 .light{
     --greyDark:#FEFEFE;
     --white:#000000;
     --yellow:#E6F3FB;
     --greyLight:#E6F3FB;
+    --black:#ffffff;
 }
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: var(--black); 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: var(--white); 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--blueLight); 
+  }
+
 
 * {
     color: var(--white) !important;
@@ -67,4 +89,11 @@ body {
     width: 100%;
     position: fixed;
     z-index: -10;
+}
+.mapboxgl-popup-content{
+    background-color: var(--black)!important;
+}
+.tooltip-inner{
+    background-color: #f6d139!important;
+    color: #000000!important;
 }

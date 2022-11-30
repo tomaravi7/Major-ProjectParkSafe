@@ -18,3 +18,30 @@
 .toggle-outer{
     float: right;
 }
+.frame{
+    border-radius: 0 0 20px 20px;
+    height: 50vh!important;
+    overflow: hidden;
+
+}
+.scrollable{
+    height: 50vh;
+    overflow: auto
+}
+@media screen and (min-width:720px) {
+    .full{
+        height: 100vh;
+    }
+    .frame{
+        border-radius: 20px 0 0 20px;
+        overflow: hidden;
+        height: 100vh!important;
+    }
+    .scrollable{
+        height: 100vh;
+        overflow:auto;
+      }
+}
+.sch{
+    background-color: var(--greyLight);
+}
