@@ -28,6 +28,7 @@ const vehicleSchema = new mongoose.Schema({
   },
   instructions: {
     type: String,
+    default:"NA"
   },
   user: {
     type: String,
