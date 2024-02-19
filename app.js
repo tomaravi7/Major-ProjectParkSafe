@@ -1,8 +1,5 @@
 const express =require('express');
 const app = express()
-const path = require('path');
-const serverless = require('serverless-http');
-const bodyParser = require('body-parser');
 
 const CookieParser = require('cookie-parser')
 
@@ -30,9 +27,6 @@ app.get("*", function (req, res, next) {
     });
 });
 
-app.use(bodyParser.json());
-app.use('/.netlify/functions/server', router);  // path must route to lambda
-app.use('/', (req, res) => res.sendFile(path.join(__dirname, '../index.html')));
 
 // MiddleWare To handle Errors
 app.use(errorMiddleware);
