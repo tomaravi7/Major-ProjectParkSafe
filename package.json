@@ -12,12 +12,10 @@
     "mongoose": "^6.6.1",
     "nodemailer": "^6.8.0",
     "nodemon": "^3.0.3",
-    "serverless-http": "^3.2.0",
     "validator": "^13.7.0"
   },
   "scripts": {
-    "start": "node server.js",
-    "run": "node server.js"
+    "start": "node server.js"
   },
   "description": "majorproject",
   "version": "1.0.0",
