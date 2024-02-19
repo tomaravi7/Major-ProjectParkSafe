@@ -15,7 +15,9 @@
     "validator": "^13.7.0"
   },
   "scripts": {
-    "start": "node server.js"
+    "dev": "webpack --config=Scripts/config/webpack.dev.js --watch",
+    "build": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "description": "majorproject",
   "version": "1.0.0",
